@@ -388,6 +388,9 @@
     display: grid;
     align-items: center;
     grid-template-columns: 40px 1fr; }
+    .alert--main .recent-alerts-msg > div:only-of-type {
+      grid-column: 1 / -1;
+      font-size: var(--size-lg); }
     .alert--main .recent-alerts-msg br {
       display: none; }
     .alert--main .recent-alerts-msg > img {
@@ -437,3 +440,7 @@
       text-transform: uppercase;
       font-size: var(--size-xs);
       padding: 0 0 0 var(--space-md); }
+
+[data-new]:not([data-new="0"]) {
+  background: var(--bg-accent-transparent);
+  border-color: var(--border-accent-transparent); }

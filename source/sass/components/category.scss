@@ -3,3 +3,277 @@
 /*******************************
    Categories and Forums
 ********************************/
+.category {
+   max-width: 800px;
+   margin: 0 auto calc(var(--space-xl) * 3);
+   border-bottom: 1px solid var(--border-accent-transparent);
+
+   & + br {
+      display: none;
+   }
+
+   &.topics {
+      margin: calc(var(--space-xl) * 2) auto;
+   }
+
+   &::after {
+      content: '';
+      position: absolute;
+      bottom: calc(-1 * var(--space-xl));
+      left: calc(50% - 0.5px);
+      width: 1px;
+      height: var(--space-xl);
+      background: var(--border-accent-transparent);
+   }
+
+   h2 {
+      border-top: 1px solid var(--border-accent-transparent);
+      text-align: center;
+      padding: var(--space-lg);
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--text-secondary);
+      font-size: 32px;
+      margin-top: var(--space-xl);
+      margin-bottom: 0;
+
+      &::before {
+         content: '';
+         position: absolute;
+         top: calc(-1 * var(--space-xl));
+         left: calc(50% - 0.5px);
+         width: 1px;
+         height: var(--space-xl);
+         background: var(--border-accent-transparent);
+      }
+   }
+}
+
+.forum {
+   background: var(--bg-transparent-alt);
+   border-top: 1px solid var(--border-accent-transparent);
+   padding: var(--space-md) var(--space-sm);
+   display: grid;
+   align-items: center;
+
+   @include mq-up(sm) {
+      padding: var(--space-lg) var(--space-md);
+      grid-template-columns: calc(var(--space-xl) + 75px + var(--space-sm) + var(--space-sm)) auto;
+   }
+   
+   & > a {
+      position: absolute;
+   }
+
+   &--image {
+      border-left: 1px solid var(--border-tertiary);
+      padding: var(--space-sm);
+      line-height: 0;
+      border-right: 1px solid var(--border-tertiary);
+      margin-left: var(--space-xl);
+      flex: 0 0 100px;
+
+      @include mq-down(sm) {
+         display: none;
+      }
+
+      &::before {
+         content: '';
+         position: absolute;
+         top: calc(50% - 0.5px);
+         left: calc(-1 * var(--space-xl));
+         width: var(--space-xl);
+         height: 1px;
+         background: var(--border-tertiary);
+      }
+
+      img,
+      .redirect--image {
+         width: 100%;
+         aspect-ratio: 1 / 1;
+         border-radius: 2px;
+         filter: var(--default-filter) grayscale(0.8);
+         transition-duration: 0.3s;
+         height: 100%;
+      }
+
+      .redirect--image {
+         background-image: var(--bg-redirect-image);
+         background-size: cover;
+         background-position: center;
+      }
+   }
+
+   &--main {
+      display: grid;
+      width: 100%;
+
+      @include mq-up(sm) {
+         grid-template-rows: 1fr 1fr;
+      }
+   }
+
+   &--info {
+      display: grid;
+      gap: 0 var(--space-lg);
+
+      @include mq-up(xs) {
+         grid-template-columns: auto 110px;
+      }
+   }
+
+   &--stats {
+      display: flex;
+      gap: 0 var(--space-md);
+      flex-direction: column;
+      align-items: end;
+
+      @include mq-up(xs) {
+         padding-top: var(--space-sm);
+      }
+   }
+
+   &--stat {
+      font-size: var(--size-xs);
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      letter-spacing: 0.2em;
+      font-style: italic;
+      line-height: 160%;
+   }
+
+   &--title {
+      padding: var(--space-sm) var(--space-xs);
+      border-bottom: 1px solid var(--border-tertiary);
+      width: 100%;
+      font-family: var(--font-serif);
+      font-size: 20px;
+      align-self: end;
+
+      @include mq-up(sm) {
+         padding: var(--space-sm) var(--space-md);
+      }
+
+      a {
+         display: block;
+         max-width: max-content;
+      }
+
+      h3 {
+         margin: 0;
+      }
+   }
+
+   &--latest {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-sm) var(--space-xs);
+
+      @include mq-up(sm) {
+         padding: var(--space-sm) var(--space-md);
+      }
+
+      & > a {
+         text-transform: uppercase;
+         font-weight: 900;
+         font-size: var(--size-sm);
+         letter-spacing: 0.1em;
+         line-height: 160%;
+         max-width: max-content;
+      }
+
+      span {
+         text-transform: uppercase;
+         font-size: var(--size-xs);
+         letter-spacing: 0.2em;
+         line-height: 160%;
+
+         a {
+            color: var(--accent);
+            font-weight: 700;
+         }
+
+         &:last-of-type:not(.subforums) {
+            font-style: italic;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+         }
+      }
+   }
+
+   &--links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
+      width: 100%;
+      margin-top: var(--space-xs);
+
+      br {
+         display: none;
+      }
+
+      .subforums {
+         display: flex;
+         flex-wrap: wrap;
+         gap: var(--space-sm) var(--space-md);
+      }
+
+      a { 
+         line-height: 160%;
+         text-transform: uppercase;
+         letter-spacing: 0.3em;
+         font-size: var(--size-xs);
+         text-align: center;
+         font-weight: 700;
+         font-family: var(--font-body);
+         color: var(--text-accent-transparent); 
+         
+         &.subforums-macro,
+         &.macro {
+            display: none;
+         }
+      }
+   }
+
+   &.redirect {
+      background: var(--bg-accent-transparent);
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-accent-transparent);
+
+      .forum--image {
+         border-color: var(--border-accent);
+
+         &::before {
+            background: var(--border-accent);
+         }
+      }
+
+      .forum--title {
+         border-color: var(--border-accent);
+      }
+
+      .forum--links {
+         a {
+            color: var(--text-secondary);
+         }
+      }
+
+      & + .forum {
+         border-top: 0;
+      }
+   }
+
+   &:not(.redirect) {
+      .redirect--image {
+         display: none;
+      }
+      .forum--image img[src="http://"],
+      .forum--image img[src="https://"] {
+         display: none;
+
+         & + .redirect--image {
+            display: block;
+         }
+      }
+   }
+}

@@ -1,0 +1,14 @@
+.accordion--trigger::before {
+  content: '\f0fe'; }
+
+.accordion--trigger.is-active::before {
+  content: '\f2d3'; }
+
+.profile--section ul li::marker {
+  content: '\e3d6'; }
+
+.f-3 {
+  --bg-redirect-image: url(https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_guidebook_min.jpg); }
+
+.f-35 {
+  --bg-redirect-image: url(https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_start_min.jpg); }

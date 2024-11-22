@@ -526,6 +526,11 @@
             align-items: center;
             grid-template-columns: 40px 1fr;
 
+            & > div:only-of-type {
+                grid-column: 1 / -1;
+                font-size: var(--size-lg);
+            }
+
             br {
                 display: none;
             }
@@ -598,4 +603,9 @@
             }
         }
     }
+}
+
+[data-new]:not([data-new="0"]) {
+    background: var(--bg-accent-transparent);
+    border-color: var(--border-accent-transparent);
 }

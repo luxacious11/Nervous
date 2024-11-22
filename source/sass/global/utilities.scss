@@ -3,3 +3,50 @@
 /*******************************
     Utilities
 ********************************/
+[data-box-align="left"] {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+[data-box-align="center"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+[data-box-align="right"] {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+[data-text-align="left"] {
+    text-align: left !important;
+}
+[data-text-align="center"] {
+    text-align: center !important;
+}
+[data-text-align="right"] {
+    text-align: right !important;
+}
+[data-text-align="justify"] {
+    text-align: justify !important;
+}
+.columns {
+    display: grid;
+    gap: var(--space-lg);
+
+    &.two {
+        @include mq-up(xs) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        &.big-left {
+            @include mq-up(xs) {
+                grid-template-columns: 3fr 2fr;
+            }
+        }
+
+        &.big-right {
+            @include mq-up(xs) {
+                grid-template-columns: 2fr 3fr;
+            }
+        }
+    }
+}

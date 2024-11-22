@@ -17,6 +17,7 @@ if(switcher !== null) {
 /********** Initializations **********/
 setTheme();
 setSize();
+initPopupProfile('.profile', '.popup-init a[href*="showuser"]');
 
 /********** Window Click **********/
 document.querySelector('.invisibleEl').addEventListener('click', e => {
@@ -24,6 +25,32 @@ document.querySelector('.invisibleEl').addEventListener('click', e => {
     document.querySelectorAll('.button--menu').forEach(menu => menu.classList.remove('is-open'));
 	e.target.classList.remove('menu-open');
 });
+
+/********** Index & Category View Only **********/
+if(pageType === 'idx' || pageType === 'SC') {
+	initForums();
+
+    document.querySelector('.stats--recent').innerHTML = document.querySelector('#recent-topics table').outerHTML;
+    document.querySelector('#recent-topics').remove();
+
+    document.querySelectorAll('.stats--section-item.large-text a > span').forEach(el => el.innerText = capitalize(el.innerText));
+    document.querySelectorAll('.recent-topics-info a > strong').forEach(el => el.innerText = capitalize(el.innerText, [' ', '-']));
+}
+
+/********** Profile **********/
+if(pageType === 'Profile') {
+    initHashAccordion('.hash-accordion', '.profile--section', '.profile--nav a');
+    initAccordion();
+    initMarkdown();
+}
+
+/********** Post View Only **********/
+if(pageType === 'ST') {
+    initPostRowDescription();
+    initPostContentAlter();
+
+    //initDiscordTagging('#ST main > table > tbody > tr > td:last-child');
+}
 
 /********** Login **********/
 if(pageType === 'Login') {
@@ -58,6 +85,14 @@ if(pageType === 'Reg') {
     }
 }
 
+/********** Topic List Only **********/
+if(pageType === 'SF') {
+	initForums();
+    initTopicsWrap();
+    initTopicDescription('.topic--description');
+    initStickyBar();
+}
+
 /********** Topic View **********/
 if(pageType === 'ST') {
     let descript = $('.topic-desc').html();
@@ -84,6 +119,16 @@ if(pageType === 'ST') {
 
 /********** Topic View **********/
 if(pageType === 'Post') {
+    if(document.querySelector('#topic-title')) {
+        document.querySelector('#topic-title input').setAttribute('placeholder', 'Topic Title');
+        document.querySelector('#topic-desc input').setAttribute('placeholder', 'Topic Description');
+    }
+
+    if(document.querySelector('#post-preview')) {
+        initPostContentAlter('#post-preview > .row1 > .postcolor');
+    }
+    
+    initMarkdown();
     let textNodes = getAllTextNodes(document.querySelector('#post-options .pformright'));
     if(textNodes) {
         textNodes.forEach(node => {
@@ -92,6 +137,7 @@ if(pageType === 'Post') {
             paragraph.appendChild(node);
         });
     }
+
     inputWrap(`input[name="enableemo"]`, 'br');
     inputWrap(`input[name="enablesig"]`, 'br');
     inputWrap(`input[name="enabletrack"]`, 'br');
@@ -103,68 +149,48 @@ if(pageType === 'Post') {
 
 /********** User CP & Messages **********/
 if(pageType === 'UserCP' || pageType === 'Msg') {
-    /* Remove on Jcink; leave present on local */
-    document.querySelector('#ucpmenu').innerHTML = `<div class="sticky"><b>Account</b>
-    <div class="menu-section">
-    <a href="./user-edit.html">Edit Profile</a>
-    <a href="./user-avatar.html">Update Avatar</a>
-    <a href="./user-accounts.html">Sub-accounts</a>
-    <a href="./user-name.html">Edit Username</a>
-    <a href="./user-pass.html">Change Password</a>
-    <a href="./user-email.html">Update Email</a>
-    </div>
-    <b class="is-closed">Messages</b>
-    <div class="menu-section">
-    <a href="./user-inbox.html">Inbox</a>
-    <a href="./user-message.html">Send Message</a>
-    <a href="./user-viewmessage.html">View Message</a>
-    </div>
-    <b class="is-closed">Tracking</b>
-    <div class="menu-section">
-    <a href="./user-alerts.html">Alerts</a>
-    <a href="./user-forums.html">Forums</a>
-    <a href="./user-forum-none.html">Forums (None Tracked)</a>
-    <a href="./user-topics.html">Topics</a>
-    <a href="./user-topics-none.html">Topics (None Tracked)</a>
-    </div>
-    <b class="is-closed">Settings</b>
-    <div class="menu-section">
-    <a href="./user-boardset.html">Board</a>
-    <a href="./user-alertset.html">Alerts</a>
-    <a href="./user-emailset.html">Emails</a>
-    </div>
-    </div>`;
+    //ucp menu
+	initUCPMenu();
 
-    /* Uncomment on Jcink; leave commented on local
-    document.querySelector('#ucpmenu').innerHTML = `<div class="sticky"><b>Account</b>
-    <div class="menu-section">
-    <a href="?act=UserCP&CODE=01">Edit Profile</a>
-    <a href="?act=UserCP&CODE=24">Update Avatar</a>
-    <a href="?act=UserCP&CODE=54">Sub-accounts</a>
-    <a href="?act=UserCP&CODE=52">Edit Username</a>
-    <a href="?act=UserCP&CODE=28">Change Password</a>
-    <a href="?act=UserCP&CODE=08">Update Email</a>
-    </div>
-    <b class="is-closed">Messages</b>
-    <div class="menu-section">
-    <a href="?act=Msg&CODE=01">Inbox</a>
-    <a href="?act=Msg&CODE=04">Send Message</a>
-    </div>
-    <b class="is-closed">Tracking</b>
-    <div class="menu-section">
-    <a href="?act=UserCP&CODE=alerts">Alerts</a>
-    <a href="?act=UserCP&CODE=50">Forums</a>
-    <a href="?act=UserCP&CODE=26">Topics</a>
-    </div>
-    <b class="is-closed">Settings</b>
-    <div class="menu-section">
-    <a href="?act=UserCP&CODE=04">Board</a>
-    <a href="?act=UserCP&CODE=alerts_settings">Alerts</a>
-    <a href="?act=UserCP&CODE=02">Emails</a></div></div>`;
-    */
+	//Edit Profile Edits
+	if($('body.code-01').length > 0 && pageType === 'UserCP') {
+        cpShift();
+        splitProfile();
+        ucpAesthetics();
+        ucpAvatars();
+        if(fullWidthFields.length > 0) {
+            fields = createFieldArray(fullWidthFields);
+            document.querySelectorAll(fields).forEach(field => field.classList.add('fullWidth'));
+        }
+        if(thirdWidthFields.length > 0) {
+            fields = createFieldArray(thirdWidthFields);
+            document.querySelectorAll(fields).forEach(field => field.classList.add('oneThird'));
+        }
+        if(setHeightFields.length > 0) {
+            fields = createFieldArray(setHeightFields);
+            document.querySelectorAll(fields).forEach(field => field.classList.add('staticHeight'));
+        }
+        
+        toggleFields.forEach(toggle => {
+            document.querySelector(toggle).addEventListener('change', () => {
+                cpShift();
+                splitProfile();
+                ucpAesthetics();
+                ucpAvatars();
+            });
+        });
+
+        avatarImageFields.forEach(field => {
+            document.querySelector(field).addEventListener('keyup', () => {
+                setTimeout(() => {
+                    ucpAvatars();
+                }, 500);
+            });
+        });
+    }
 
     //subaccounts
-    if($('body.code-54').length > 0) {
+    if($('body.code-54').length > 0 && pageType === 'UserCP') {
         document.querySelectorAll('input[name="sub_ids[]"]').forEach(input => {
             inputWrap(input);
         });
@@ -172,7 +198,7 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
     }
 
     //alerts
-    if($('body.code-alerts').length > 0) {
+    if($('body.code-alerts').length > 0 && pageType === 'UserCP') {
         document.querySelectorAll('input[name="alert_id[]"]').forEach(input => {
             inputWrap(input);
         });
@@ -180,7 +206,7 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
     }
 
     //forum and topic subscriptions
-    if (pageClasses.contains('code-50') || pageClasses.contains('code-26')) {
+    if ((pageClasses.contains('code-50') || pageClasses.contains('code-26')) && pageType === 'UserCP') {
         document.querySelectorAll('.tableborder > table > tbody > tr').forEach(row => {
             if(row.querySelectorAll('th, td').length === 1) {
                 row.classList.add('ucp--header', 'pformstrip');
@@ -194,13 +220,27 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
     }
     
     //board settings
-    if (pageClasses.contains('code-04')) {
+    if (pageClasses.contains('code-04') && pageType === 'UserCP') {
         inputWrap(document.querySelector(`input[name="DST"]`));
         fancyBoxes();
     }
     
     //alert settings
-    if (pageClasses.contains('code-alerts_settings') || pageClasses.contains('code-02')) {
+    if ((pageClasses.contains('code-alerts_settings') || pageClasses.contains('code-02')) && pageType === 'UserCP') {
+        document.querySelectorAll(`input[type="checkbox"]`).forEach(input => inputWrap(input));
+        fancyBoxes();
+    }
+
+    //inbox
+    if($('body.code-01').length > 0 && pageType === 'Msg') {
+        document.querySelectorAll('#ucpcontent > form .dlight td:last-child .forminput[type="checkbox"]').forEach(input => {
+            inputWrap(input);
+        });
+        fancyBoxes();
+    }
+    
+    //send message
+    if (pageClasses.contains('code-04') && pageType === 'Msg') {
         document.querySelectorAll(`input[type="checkbox"]`).forEach(input => inputWrap(input));
         fancyBoxes();
     }
@@ -208,45 +248,5 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
 
 /********** Store **********/
 if(pageType === 'store') {
-    /* Remove on Jcink; leave present on local */
-    document.querySelector('#ucpmenu').innerHTML = `<div class="sticky"><b>Shop</b>
-    <div class="menu-section">
-    <a href="./store.html">Home</a>
-    <a href="./store-category.html">Category</a>
-    </div>
-    <b>Personal</b>
-    <div class="menu-section">
-    <a href="./store-inventory.html">Inventory</a>
-    <a href="./store-sendmoney.html">Send Money</a>
-    <a href="./store-senditem.html">Send Item</a>
-    </div>
-    <b class="is-closed staffOnly">Staff</b>
-    <div class="menu-section">
-    <a href="./store-fine.html" class="staffOnly">Fine</a>
-    <a href="./store-editpoints.html" class="staffOnly">Edit Points</a>
-    <a href="./store-editpoints-screen2.html" class="staffOnly">Edit Points (Page 2)</a>
-    <a href="./store-edititems.html" class="staffOnly">Edit Inventory</a>
-    <a href="./store-edititems-screen2.html" class="staffOnly">Edit Inventory (Page 2)</a>
-    </div>
-    </div>`;
-
-    /* Uncomment on Jcink; leave commented on local
-    document.querySelector('#ucpmenu').innerHTML = `<div class="sticky"><b>Shop</b>
-    <div class="menu-section">
-    <a href="?act=store&code=shop&category=1">Manually</a>
-    <a href="?act=store&code=shop&category=2">Add</a>
-    <a href="?act=store&code=shop&category=3">Categories</a>
-    </div>
-    <b>Personal</b>
-    <div class="menu-section">
-    <a href="?act=store&CODE=inventory">Inventory</a>
-    <a href="?act=store&code=donate_money">Send Money</a>
-    <a href="?act=store&code=donate_item">Send Item</a>
-    </div>
-    <b class="is-closed staffOnly">Staff</b>
-    <div class="menu-section">
-    <a href="?act=store&code=fine" class="staffOnly">Fine</a>
-    <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
-    <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a></div></div>`;
-    */
+  //store menu
 }

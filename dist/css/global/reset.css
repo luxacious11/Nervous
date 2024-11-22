@@ -68,3 +68,10 @@ body.g-28 .staffOnly {
 @media (max-width: 1024px) {
   .notMobile {
     display: none !important; } }
+
+.onlyOnly:not(:only-of-type),
+.onlyPopout {
+  display: none !important; }
+
+#popout .onlyPopout {
+  display: block !important; }

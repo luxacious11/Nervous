@@ -4,12 +4,16 @@
     Header
 ********************************/
 .header {
-    min-height: calc(100vh - (var(--size-menu) * 2));
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     z-index: 1;
+    margin: var(--space-xl) 0 calc(2 * var(--space-xl));
+
+    body#idx & {
+        min-height: calc(100vh - (var(--size-menu) * 2));
+    }
 
     &--main {
         display: flex;
@@ -42,19 +46,24 @@
             bottom: calc(-1 * var(--space-xl));
 
             @include mq-down(md) {
-                display: none;
+                body#idx & {
+                    display: none;
+                }
             }
         }
 
         & > a {
             font-family: var(--font-serif);
             text-align: center;
+        }
     
-            h1 {
-                margin: 0;
-                @include fluid-type(40, 80, 480, 1440);
-                line-height: 110%;
-            }
+        h1 {
+            color: var(--text-secondary);
+            font-family: var(--font-serif);
+            text-align: center;
+            margin: 0;
+            @include fluid-type(40, 80, 480, 1440);
+            line-height: 110%;
         }
     
         & > p {
@@ -73,12 +82,16 @@
         width: 100%;
         max-width: 800px;
         margin: calc(var(--size-md) * -1) auto 0;
-        display: grid;
+        display: none;
         gap: var(--space-lg) calc(var(--space-lg) * 2);
         padding: 0 var(--space-lg);
 
         @include mq-up(md) {
             grid-template-columns: 1fr 1fr;
+        }
+
+        body#idx & {
+            display: grid;
         }
     }
     &--left {
@@ -94,7 +107,6 @@
             color: var(--text-secondary);
         }
         p {
-            margin: var(--space-sm) 0;
             text-align: justify;
             font-style: italic;
             font-size: var(--size-md);
@@ -123,7 +135,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                filter: grayscale(1);
+                filter: var(--default-filter) grayscale(1);
             }
 
             &::before {
@@ -185,6 +197,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             text-transform: uppercase;
             line-height: 200%;
             padding: 0 var(--space-sm);
@@ -199,6 +212,79 @@
             &:hover {
                 color: var(--text-accent);
             }
+        }
+    }
+
+    //Page Specific
+    body#Profile > &,
+    body#ST > &,
+    body#UserCP > &,
+    body#Msg > & {
+        display: none;
+    }
+    &.profile--header {
+        min-height: 0;
+        margin-top: var(--space-md);
+
+        @include mq-up(xs) {
+            margin-top: var(--space-lg);
+        }
+
+        .header--info {
+            border-bottom: 1px solid var(--border-accent-transparent);
+            padding: 0 var(--space-lg) var(--space-lg);
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: calc(50% - 0.5px);
+                bottom: 0;
+                display: block;
+                width: 1px;
+                height: var(--space-xl);
+                background: var(--border-accent-transparent);
+    
+                @include mq-down(md) {
+                    display: none;
+                }
+            }
+        }
+        .header--right {
+            grid-template-columns: 125px auto;
+            gap: var(--space-lg);
+
+            @include mq-down(md) {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            & > img {
+                width: 125px;
+                height: 125px;
+                border-radius: 2px;
+                filter: var(--default-filter) grayscale(0.8);
+                transition-duration: 0.3s;
+
+                &:hover {
+                    filter: var(--default-filter) grayscale(0.5);
+                }
+            }
+        }
+    }
+    body > #popout &.profile--header {
+        margin: var(--space-lg) 0 0;
+        min-height: 0;
+
+        .header--info {
+            grid-template-columns: 1fr;
+
+            &::before {
+                display: none;
+            }
+        }
+        .header--right {
+            max-width: 400px;
+            margin: 0 auto;
         }
     }
 }

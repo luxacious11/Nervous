@@ -1,3 +1,144 @@
 /*******************************
     Board Stats
 ********************************/
+.stats h2 {
+  padding-bottom: var(--space-md); }
+
+.stats--stats {
+  display: flex;
+  justify-content: center;
+  line-height: 160%;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  font-size: var(--size-xs);
+  text-align: center;
+  font-weight: 700;
+  padding-bottom: var(--space-lg);
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg); }
+
+.stats--section {
+  background: var(--bg-transparent-alt);
+  border-top: 1px solid var(--border-accent-transparent);
+  padding: var(--space-lg);
+  display: grid; }
+  .stats--section .g-4,
+  .stats--section .g-6 {
+    --accent: rgb(183,183,183); }
+    body.light .stats--section .g-4, body.light
+    .stats--section .g-6 {
+      --accent: rgb(75, 75, 75); }
+  .stats--section .g-3 {
+    --accent: var(--text-primary);
+    font-style: italic; }
+  .stats--section a,
+  .stats--section a > span {
+    color: var(--accent); }
+  .stats--section-item {
+    display: flex;
+    flex-direction: column; }
+    .stats--section-item > strong {
+      font-size: var(--size-sm);
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--text-secondary);
+      text-transform: uppercase; }
+      .stats--section-item > strong::before {
+        content: '';
+        display: block;
+        width: 25px;
+        height: 1px;
+        background: var(--bg-accent); }
+    .stats--section-item .scroll {
+      max-height: 150px; }
+    .stats--section-item.large-text .scroll {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: var(--size-xl);
+      line-height: 140%; }
+    .stats--section-item.small-text .scroll {
+      line-height: 160%;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: var(--size-xs);
+      font-weight: 700;
+      color: var(--text-secondary);
+      gap: var(--space-sm); }
+  .stats--section-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-xl);
+    width: 100%;
+    margin-top: var(--space-xs); }
+    .stats--section-links a {
+      display: flex;
+      border: 1px solid var(--border-accent-transparent);
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      padding: var(--space-xs) var(--space-md);
+      transition-duration: 0.3s;
+      border-radius: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: var(--size-xs);
+      text-align: center;
+      font-weight: 700;
+      font-family: var(--font-body);
+      color: var(--text-primary); }
+      .stats--section-links a:hover {
+        background: var(--bg-accent-transparent);
+        color: var(--text-secondary);
+        border-color: var(--border-accent); }
+  .stats--section-topics {
+    max-height: 225px; }
+    .stats--section-topics table {
+      display: block; }
+      .stats--section-topics table tbody {
+        display: grid;
+        gap: var(--space-lg); }
+        @media (min-width: 601px) {
+          .stats--section-topics table tbody {
+            grid-template-columns: 1fr 1fr; } }
+        .stats--section-topics table tbody tr {
+          display: flex;
+          flex-direction: column; }
+          .stats--section-topics table tbody tr td:first-child {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0;
+            font-size: 0;
+            line-height: 0; }
+            .stats--section-topics table tbody tr td:first-child a:first-of-type {
+              color: var(--text-secondary);
+              font-family: var(--font-serif);
+              font-size: 20px;
+              line-height: 120%; }
+            .stats--section-topics table tbody tr td:first-child a:nth-of-type(2) {
+              text-transform: uppercase;
+              font-size: var(--size-xs);
+              letter-spacing: 0.2em;
+              line-height: 160%;
+              color: var(--accent);
+              font-weight: 700; }
+              .stats--section-topics table tbody tr td:first-child a:nth-of-type(2)::before {
+                content: 'Written by ';
+                color: var(--text-primary);
+                font-weight: normal; }
+            .stats--section-topics table tbody tr td:first-child a:last-of-type {
+              display: none; }
+          .stats--section-topics table tbody tr td:last-child {
+            width: 100%;
+            text-transform: uppercase;
+            font-size: var(--size-xs);
+            letter-spacing: 0.1em;
+            line-height: 160%;
+            font-style: italic;
+            padding: 0;
+            opacity: 0.8; }

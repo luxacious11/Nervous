@@ -1,3 +1,193 @@
 /*******************************
    Categories and Forums
 ********************************/
+.category {
+  max-width: 800px;
+  margin: 0 auto calc(var(--space-xl) * 3);
+  border-bottom: 1px solid var(--border-accent-transparent); }
+  .category + br {
+    display: none; }
+  .category.topics {
+    margin: calc(var(--space-xl) * 2) auto; }
+  .category::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--space-xl));
+    left: calc(50% - 0.5px);
+    width: 1px;
+    height: var(--space-xl);
+    background: var(--border-accent-transparent); }
+  .category h2 {
+    border-top: 1px solid var(--border-accent-transparent);
+    text-align: center;
+    padding: var(--space-lg);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: 32px;
+    margin-top: var(--space-xl);
+    margin-bottom: 0; }
+    .category h2::before {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--space-xl));
+      left: calc(50% - 0.5px);
+      width: 1px;
+      height: var(--space-xl);
+      background: var(--border-accent-transparent); }
+
+.forum {
+  background: var(--bg-transparent-alt);
+  border-top: 1px solid var(--border-accent-transparent);
+  padding: var(--space-md) var(--space-sm);
+  display: grid;
+  align-items: center; }
+  @media (min-width: 769px) {
+    .forum {
+      padding: var(--space-lg) var(--space-md);
+      grid-template-columns: calc(var(--space-xl) + 75px + var(--space-sm) + var(--space-sm)) auto; } }
+  .forum > a {
+    position: absolute; }
+  .forum--image {
+    border-left: 1px solid var(--border-tertiary);
+    padding: var(--space-sm);
+    line-height: 0;
+    border-right: 1px solid var(--border-tertiary);
+    margin-left: var(--space-xl);
+    flex: 0 0 100px; }
+    @media (max-width: 768px) {
+      .forum--image {
+        display: none; } }
+    .forum--image::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 0.5px);
+      left: calc(-1 * var(--space-xl));
+      width: var(--space-xl);
+      height: 1px;
+      background: var(--border-tertiary); }
+    .forum--image img,
+    .forum--image .redirect--image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 2px;
+      filter: var(--default-filter) grayscale(0.8);
+      transition-duration: 0.3s;
+      height: 100%; }
+    .forum--image .redirect--image {
+      background-image: var(--bg-redirect-image);
+      background-size: cover;
+      background-position: center; }
+  .forum--main {
+    display: grid;
+    width: 100%; }
+    @media (min-width: 769px) {
+      .forum--main {
+        grid-template-rows: 1fr 1fr; } }
+  .forum--info {
+    display: grid;
+    gap: 0 var(--space-lg); }
+    @media (min-width: 601px) {
+      .forum--info {
+        grid-template-columns: auto 110px; } }
+  .forum--stats {
+    display: flex;
+    gap: 0 var(--space-md);
+    flex-direction: column;
+    align-items: end; }
+    @media (min-width: 601px) {
+      .forum--stats {
+        padding-top: var(--space-sm); } }
+  .forum--stat {
+    font-size: var(--size-xs);
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    letter-spacing: 0.2em;
+    font-style: italic;
+    line-height: 160%; }
+  .forum--title {
+    padding: var(--space-sm) var(--space-xs);
+    border-bottom: 1px solid var(--border-tertiary);
+    width: 100%;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    align-self: end; }
+    @media (min-width: 769px) {
+      .forum--title {
+        padding: var(--space-sm) var(--space-md); } }
+    .forum--title a {
+      display: block;
+      max-width: max-content; }
+    .forum--title h3 {
+      margin: 0; }
+  .forum--latest {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-xs); }
+    @media (min-width: 769px) {
+      .forum--latest {
+        padding: var(--space-sm) var(--space-md); } }
+    .forum--latest > a {
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: var(--size-sm);
+      letter-spacing: 0.1em;
+      line-height: 160%;
+      max-width: max-content; }
+    .forum--latest span {
+      text-transform: uppercase;
+      font-size: var(--size-xs);
+      letter-spacing: 0.2em;
+      line-height: 160%; }
+      .forum--latest span a {
+        color: var(--accent);
+        font-weight: 700; }
+      .forum--latest span:last-of-type:not(.subforums) {
+        font-style: italic;
+        opacity: 0.8;
+        letter-spacing: 0.1em; }
+  .forum--links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+    width: 100%;
+    margin-top: var(--space-xs); }
+    .forum--links br {
+      display: none; }
+    .forum--links .subforums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md); }
+    .forum--links a {
+      line-height: 160%;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: var(--size-xs);
+      text-align: center;
+      font-weight: 700;
+      font-family: var(--font-body);
+      color: var(--text-accent-transparent); }
+      .forum--links a.subforums-macro, .forum--links a.macro {
+        display: none; }
+  .forum.redirect {
+    background: var(--bg-accent-transparent);
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-accent-transparent); }
+    .forum.redirect .forum--image {
+      border-color: var(--border-accent); }
+      .forum.redirect .forum--image::before {
+        background: var(--border-accent); }
+    .forum.redirect .forum--title {
+      border-color: var(--border-accent); }
+    .forum.redirect .forum--links a {
+      color: var(--text-secondary); }
+    .forum.redirect + .forum {
+      border-top: 0; }
+  .forum:not(.redirect) .redirect--image {
+    display: none; }
+  .forum:not(.redirect) .forum--image img[src="http://"],
+  .forum:not(.redirect) .forum--image img[src="https://"] {
+    display: none; }
+    .forum:not(.redirect) .forum--image img[src="http://"] + .redirect--image,
+    .forum:not(.redirect) .forum--image img[src="https://"] + .redirect--image {
+      display: block; }
