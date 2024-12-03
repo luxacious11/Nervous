@@ -213,6 +213,8 @@ const sortLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZX
 const modLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 const announceLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 const staffLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const speciesLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const publicSpeciesLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
 const faceReserves = `https://opensheet.elk.sh/${sheetID}/FaceReserves`;

@@ -830,6 +830,12 @@ function addRow(e) {
     } else if(e.closest('.multi-buttons').dataset.rowType === 'roles') {
         e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatRoleClaimFields());
         setMultiplePlotOptions(staticSubplots, `#${e.closest('form').getAttribute('id')}`, `.role-wrap`);
+    } else if(e.closest('.multi-buttons').dataset.rowType === 'credits') {
+        e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatCreditFields());
+    } else if(e.closest('.multi-buttons').dataset.rowType === 'abilities') {
+        e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatTextFields('ability'));
+    } else if(e.closest('.multi-buttons').dataset.rowType === 'weaknesses') {
+        e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatTextFields('weakness'));
     }
 }
 function removeRow(e) {
@@ -974,6 +980,25 @@ function formatRoleClaimFields() {
                     <option value="">(select)</option>
                 </select>
             </span>
+        </label>
+    </div>`;
+}
+function formatCreditFields() {
+    return `<div class="credit-row row" data-type="grid" data-columns="2">
+        <label class="user-name">
+            <b>Alias</b>
+            <span><input type="text" placeholder="Alias" /></span>
+        </label>
+        <label class="user-id">
+            <b>Account</b>
+            <span><input type="text" placeholder="OOC Account URL or ID" /></span>
+        </label>
+    </div>`;
+}
+function formatTextFields(type) {
+    return `<div class="${type}-row row" data-type="grid">
+        <label class="${type}">
+            <span><input type="text" placeholder="${type}" /></span>
         </label>
     </div>`;
 }

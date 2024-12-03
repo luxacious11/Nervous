@@ -61,7 +61,7 @@ document.querySelector('#form-reserve-plot').addEventListener('submit', e => {
     }
 });
 
-/***** Reserve a Role *****/
+/***** Request a Species *****/
 document.querySelector('#form-request-species').addEventListener('submit', e => {
     e.preventDefault();
 
@@ -85,7 +85,7 @@ document.querySelector('#form-request-species').addEventListener('submit', e => 
 \n\n**Ideas:**\n${getValue(ideas)}
 \n\n**Resources:**\n${getValue(resources)}
 \n\nReview collectively as staff and then, when ready, start a ticket in the public server with all staff and the member in order to discuss approval / edits / refusal. All staff should react to this request when it has been seen and read.`,
-        hook: reserveLogs,
+        hook: speciesLogs,
     };
 
 
@@ -305,7 +305,6 @@ document.querySelector('#form-sort').addEventListener('submit', e => {
     }
 
     setFormStatus(form);
-    console.log(publicDiscord.color);
 
     if(first) {
         sendAjax(form, memberData);
@@ -551,6 +550,107 @@ document.querySelector('#form-approve').addEventListener('submit', e => {
     setFormStatus(form);
     
     sendAjax(form, data, publicDiscord);
+});
+
+/***** Add Species *****/
+document.querySelector('#form-add-species').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        species = form.querySelector('#species'),
+        aging = form.querySelector('#aging'),
+        lifespan = form.querySelector('#lifespan'),
+        physiology = form.querySelector('#physiology'),
+        community = form.querySelector('#community'),
+        strength = form.querySelector('#strength'),
+        longevity = form.querySelector('#longevity'),
+        vulnerability = form.querySelector('#vulnerability'),
+        customPercent = form.querySelector('#custom-percent'),
+        customTrait = form.querySelector('#custom-trait'),
+        premium = form.querySelector('#speciescat[value="cat-premium"]').checked,
+        hide = form.querySelector('#speciescat[value="staffOnly"]').checked,
+        tagObjects = form.querySelectorAll('.form-tag'),
+        tagArray = Array.prototype.slice.call(tagObjects).filter(tag => tag.checked),
+        tags = tagArray.map(tag => tag.value).join(' '),
+        awarenessObjects = form.querySelectorAll('[name="awareness"]'),
+        awarenessArray = Array.prototype.slice.call(awarenessObjects).filter(tag => tag.checked),
+        awareness = awarenessArray[0].value,
+        knowledgeObjects = form.querySelectorAll('[name="knowledge"]'),
+        knowledgeArray = Array.prototype.slice.call(knowledgeObjects).filter(tag => tag.checked),
+        knowledge = knowledgeArray[0].value;
+        abilities = [], weaknesses = [], credits = [];
+
+    let traits = [
+        {
+            trait: 'physical strength',
+            percent: getValue(strength),
+        },
+        {
+            trait: 'longevity',
+            percent: getValue(longevity),
+        },
+        {
+            trait: 'vulnerability',
+            percent: getValue(vulnerability),
+        },
+        {
+            trait: getStandardValue(customTrait),
+            percent: getValue(customPercent),
+        },
+    ];
+
+    let abilitySets = document.querySelectorAll('.ability-row');
+    abilitySets.forEach(ability => {
+        abilities.push(getValue(ability.querySelector('input')));
+    });
+
+    let weaknessSets = document.querySelectorAll('.weakness-row');
+    weaknessSets.forEach(weakness => {
+        weaknesses.push(getValue(weakness.querySelector('input')));
+    });
+
+    let creditSets = document.querySelectorAll('.credit-row');
+    creditSets.forEach(credit => {
+        credits.push({
+            username: getStandardValue(credit.querySelector('.user-name input')),
+            userid: getAccountID(credit.querySelector('.user-id input')),
+        });
+    });
+
+    let data = {
+        SubmissionType: `add-species`,
+        Species: getStandardValue(species),
+        Aging: getStandardValue(aging),
+        Lifespan: getStandardValue(lifespan),
+        Physiology: getValue(physiology),
+        CommunityStructure: getValue(community),
+        Strengths: abilities.length > 0 ? JSON.stringify(abilities) : '',
+        Weaknesses: weaknesses.length > 0 ? JSON.stringify(weaknesses) : '',
+        Traits: traits.length > 0 ? JSON.stringify(traits) : '',
+        Credit: credits.length > 0 ? JSON.stringify(credits) : '',
+        Premium: premium,
+        Tags: tags,
+        Awareness: awareness,
+        Knowledge: knowledge,
+    }
+
+    let staffDiscord = {
+        title: `New Species Addition!`,
+        text: `**${capitalize(data.Species)}** has been added to the sheet${hide && ` for future release`}. Review them here: <https://${siteName}.jcink.net/?act=Pages&kid=species&typesearch=${data.Species.replace(' ', '').toLowerCase().trim()}>`,
+        hook: staffLogs,
+    }
+
+    let publicDiscord = {
+        title: `New Species Addition!`,
+        text: `**${capitalize(data.Species)}** has been added as a ${data.Premium ? `premium species` : `playable species`}! Read more about them here: <https://${siteName}.jcink.net/?act=Pages&kid=species&typesearch=${data.Species.replace(' ', '').toLowerCase().trim()}>`,
+        hook: publicSpeciesLogs,
+    }
+
+    setFormStatus(form);
+
+    console.log(data);
+
+    sendAjax(form, data, staffDiscord, !hide ? publicDiscord : null);
 });
 
 /***** Add Plot *****/

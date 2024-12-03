@@ -6353,6 +6353,44 @@ tag-tabset {
     margin-bottom: var(--space-md); }
     .webpage form .section-wrap > .adjustable .multi-buttons {
       height: calc(52px + var(--size-diff)); }
+  .webpage form input[type="range"] {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    height: 6px;
+    padding: 0;
+    background: var(--bg-quaternary);
+    margin: 10px 0;
+    color: var(--bg-accent-transparent);
+    border-radius: 2px; }
+    .webpage form input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--bg-accent);
+      width: 8px;
+      height: 18px;
+      border: 1px solid var(--bg-accent);
+      border-radius: 2px; }
+    .webpage form input[type="range"]::-moz-range-thumb {
+      border: none;
+      background: var(--bg-accent);
+      width: 5px;
+      height: 15px;
+      border-radius: 2px;
+      border: 1px solid var(--bg-accent); }
+    .webpage form input[type="range"]::-moz-range-progress {
+      background: var(--bg-accent-transparent);
+      height: 100%;
+      border-radius: 2px; }
+  .webpage form#form-species-add [data-type="grid"][data-gap="xs"] {
+    -webkit-box-align: start;
+    -webkit-align-items: start;
+        -ms-flex-align: start;
+            align-items: start; }
 
 /*******************************
     Jcink Defaults
