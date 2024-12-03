@@ -54,6 +54,10 @@ input[type="submit"] {
     background: transparent;
     border-color: var(--border-accent-transparent); }
 
+input[type="file"] {
+  padding: var(--space-sm);
+  height: auto; }
+
 button {
   background: none;
   border: none;
@@ -139,22 +143,1311 @@ button {
 .accordion--content:not(.is-active) {
   display: none !important; }
 
-.profile--section h7,
-.ucp--description h7,
-.post--content .postcolor h7 {
+.profile--section h2:not(.accordion--trigger),
+.profile--section .h2:not(.accordion--trigger),
+.profile--section h3:not(.accordion--trigger),
+.profile--section .h3:not(.accordion--trigger),
+.profile--section h4:not(.accordion--trigger),
+.profile--section .h4:not(.accordion--trigger),
+.profile--section h5:not(.accordion--trigger),
+.profile--section .h5:not(.accordion--trigger),
+.profile--section h6:not(.accordion--trigger),
+.profile--section .h6:not(.accordion--trigger),
+.profile--section h7:not(.accordion--trigger),
+.profile--section .h7:not(.accordion--trigger),
+.profile--section h8:not(.accordion--trigger),
+.profile--section .h8:not(.accordion--trigger),
+.ucp--description h2:not(.accordion--trigger),
+.ucp--description .h2:not(.accordion--trigger),
+.ucp--description h3:not(.accordion--trigger),
+.ucp--description .h3:not(.accordion--trigger),
+.ucp--description h4:not(.accordion--trigger),
+.ucp--description .h4:not(.accordion--trigger),
+.ucp--description h5:not(.accordion--trigger),
+.ucp--description .h5:not(.accordion--trigger),
+.ucp--description h6:not(.accordion--trigger),
+.ucp--description .h6:not(.accordion--trigger),
+.ucp--description h7:not(.accordion--trigger),
+.ucp--description .h7:not(.accordion--trigger),
+.ucp--description h8:not(.accordion--trigger),
+.ucp--description .h8:not(.accordion--trigger),
+.post--content .postcolor h2:not(.accordion--trigger),
+.post--content .postcolor .h2:not(.accordion--trigger),
+.post--content .postcolor h3:not(.accordion--trigger),
+.post--content .postcolor .h3:not(.accordion--trigger),
+.post--content .postcolor h4:not(.accordion--trigger),
+.post--content .postcolor .h4:not(.accordion--trigger),
+.post--content .postcolor h5:not(.accordion--trigger),
+.post--content .postcolor .h5:not(.accordion--trigger),
+.post--content .postcolor h6:not(.accordion--trigger),
+.post--content .postcolor .h6:not(.accordion--trigger),
+.post--content .postcolor h7:not(.accordion--trigger),
+.post--content .postcolor .h7:not(.accordion--trigger),
+.post--content .postcolor h8:not(.accordion--trigger),
+.post--content .postcolor .h8:not(.accordion--trigger),
+.webpage--content-inner h2:not(.accordion--trigger),
+.webpage--content-inner .h2:not(.accordion--trigger),
+.webpage--content-inner h3:not(.accordion--trigger),
+.webpage--content-inner .h3:not(.accordion--trigger),
+.webpage--content-inner h4:not(.accordion--trigger),
+.webpage--content-inner .h4:not(.accordion--trigger),
+.webpage--content-inner h5:not(.accordion--trigger),
+.webpage--content-inner .h5:not(.accordion--trigger),
+.webpage--content-inner h6:not(.accordion--trigger),
+.webpage--content-inner .h6:not(.accordion--trigger),
+.webpage--content-inner h7:not(.accordion--trigger),
+.webpage--content-inner .h7:not(.accordion--trigger),
+.webpage--content-inner h8:not(.accordion--trigger),
+.webpage--content-inner .h8:not(.accordion--trigger) {
+  display: block;
+  margin: var(--space-xl) 0; }
+  .profile--section h2:not(.accordion--trigger) a,
+  .profile--section .h2:not(.accordion--trigger) a,
+  .profile--section h3:not(.accordion--trigger) a,
+  .profile--section .h3:not(.accordion--trigger) a,
+  .profile--section h4:not(.accordion--trigger) a,
+  .profile--section .h4:not(.accordion--trigger) a,
+  .profile--section h5:not(.accordion--trigger) a,
+  .profile--section .h5:not(.accordion--trigger) a,
+  .profile--section h6:not(.accordion--trigger) a,
+  .profile--section .h6:not(.accordion--trigger) a,
+  .profile--section h7:not(.accordion--trigger) a,
+  .profile--section .h7:not(.accordion--trigger) a,
+  .profile--section h8:not(.accordion--trigger) a,
+  .profile--section .h8:not(.accordion--trigger) a,
+  .ucp--description h2:not(.accordion--trigger) a,
+  .ucp--description .h2:not(.accordion--trigger) a,
+  .ucp--description h3:not(.accordion--trigger) a,
+  .ucp--description .h3:not(.accordion--trigger) a,
+  .ucp--description h4:not(.accordion--trigger) a,
+  .ucp--description .h4:not(.accordion--trigger) a,
+  .ucp--description h5:not(.accordion--trigger) a,
+  .ucp--description .h5:not(.accordion--trigger) a,
+  .ucp--description h6:not(.accordion--trigger) a,
+  .ucp--description .h6:not(.accordion--trigger) a,
+  .ucp--description h7:not(.accordion--trigger) a,
+  .ucp--description .h7:not(.accordion--trigger) a,
+  .ucp--description h8:not(.accordion--trigger) a,
+  .ucp--description .h8:not(.accordion--trigger) a,
+  .post--content .postcolor h2:not(.accordion--trigger) a,
+  .post--content .postcolor .h2:not(.accordion--trigger) a,
+  .post--content .postcolor h3:not(.accordion--trigger) a,
+  .post--content .postcolor .h3:not(.accordion--trigger) a,
+  .post--content .postcolor h4:not(.accordion--trigger) a,
+  .post--content .postcolor .h4:not(.accordion--trigger) a,
+  .post--content .postcolor h5:not(.accordion--trigger) a,
+  .post--content .postcolor .h5:not(.accordion--trigger) a,
+  .post--content .postcolor h6:not(.accordion--trigger) a,
+  .post--content .postcolor .h6:not(.accordion--trigger) a,
+  .post--content .postcolor h7:not(.accordion--trigger) a,
+  .post--content .postcolor .h7:not(.accordion--trigger) a,
+  .post--content .postcolor h8:not(.accordion--trigger) a,
+  .post--content .postcolor .h8:not(.accordion--trigger) a,
+  .webpage--content-inner h2:not(.accordion--trigger) a,
+  .webpage--content-inner .h2:not(.accordion--trigger) a,
+  .webpage--content-inner h3:not(.accordion--trigger) a,
+  .webpage--content-inner .h3:not(.accordion--trigger) a,
+  .webpage--content-inner h4:not(.accordion--trigger) a,
+  .webpage--content-inner .h4:not(.accordion--trigger) a,
+  .webpage--content-inner h5:not(.accordion--trigger) a,
+  .webpage--content-inner .h5:not(.accordion--trigger) a,
+  .webpage--content-inner h6:not(.accordion--trigger) a,
+  .webpage--content-inner .h6:not(.accordion--trigger) a,
+  .webpage--content-inner h7:not(.accordion--trigger) a,
+  .webpage--content-inner .h7:not(.accordion--trigger) a,
+  .webpage--content-inner h8:not(.accordion--trigger) a,
+  .webpage--content-inner .h8:not(.accordion--trigger) a {
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+    text-transform: inherit; }
+
+.profile--section .profile--columns h2,
+.profile--section .profile--columns .h2,
+.profile--section .profile--columns h3,
+.profile--section .profile--columns .h3,
+.profile--section .profile--columns h4,
+.profile--section .profile--columns .h4,
+.profile--section .profile--columns h5,
+.profile--section .profile--columns .h5,
+.profile--section .profile--columns h6,
+.profile--section .profile--columns .h6,
+.profile--section .profile--columns h7,
+.profile--section .profile--columns .h7,
+.profile--section .profile--columns h8,
+.profile--section .profile--columns .h8,
+.ucp--description .profile--columns h2,
+.ucp--description .profile--columns .h2,
+.ucp--description .profile--columns h3,
+.ucp--description .profile--columns .h3,
+.ucp--description .profile--columns h4,
+.ucp--description .profile--columns .h4,
+.ucp--description .profile--columns h5,
+.ucp--description .profile--columns .h5,
+.ucp--description .profile--columns h6,
+.ucp--description .profile--columns .h6,
+.ucp--description .profile--columns h7,
+.ucp--description .profile--columns .h7,
+.ucp--description .profile--columns h8,
+.ucp--description .profile--columns .h8,
+.post--content .postcolor .profile--columns h2,
+.post--content .postcolor .profile--columns .h2,
+.post--content .postcolor .profile--columns h3,
+.post--content .postcolor .profile--columns .h3,
+.post--content .postcolor .profile--columns h4,
+.post--content .postcolor .profile--columns .h4,
+.post--content .postcolor .profile--columns h5,
+.post--content .postcolor .profile--columns .h5,
+.post--content .postcolor .profile--columns h6,
+.post--content .postcolor .profile--columns .h6,
+.post--content .postcolor .profile--columns h7,
+.post--content .postcolor .profile--columns .h7,
+.post--content .postcolor .profile--columns h8,
+.post--content .postcolor .profile--columns .h8,
+.webpage--content-inner .profile--columns h2,
+.webpage--content-inner .profile--columns .h2,
+.webpage--content-inner .profile--columns h3,
+.webpage--content-inner .profile--columns .h3,
+.webpage--content-inner .profile--columns h4,
+.webpage--content-inner .profile--columns .h4,
+.webpage--content-inner .profile--columns h5,
+.webpage--content-inner .profile--columns .h5,
+.webpage--content-inner .profile--columns h6,
+.webpage--content-inner .profile--columns .h6,
+.webpage--content-inner .profile--columns h7,
+.webpage--content-inner .profile--columns .h7,
+.webpage--content-inner .profile--columns h8,
+.webpage--content-inner .profile--columns .h8 {
+  margin: var(--space-sm) auto; }
+
+.profile--section h2:not(.accordion--trigger),
+.profile--section .h2:not(.accordion--trigger),
+.profile--section h3:not(.accordion--trigger),
+.profile--section .h3:not(.accordion--trigger),
+.profile--section h4:not(.accordion--trigger),
+.profile--section .h4:not(.accordion--trigger),
+.ucp--description h2:not(.accordion--trigger),
+.ucp--description .h2:not(.accordion--trigger),
+.ucp--description h3:not(.accordion--trigger),
+.ucp--description .h3:not(.accordion--trigger),
+.ucp--description h4:not(.accordion--trigger),
+.ucp--description .h4:not(.accordion--trigger),
+.post--content .postcolor h2:not(.accordion--trigger),
+.post--content .postcolor .h2:not(.accordion--trigger),
+.post--content .postcolor h3:not(.accordion--trigger),
+.post--content .postcolor .h3:not(.accordion--trigger),
+.post--content .postcolor h4:not(.accordion--trigger),
+.post--content .postcolor .h4:not(.accordion--trigger),
+.webpage--content-inner h2:not(.accordion--trigger),
+.webpage--content-inner .h2:not(.accordion--trigger),
+.webpage--content-inner h3:not(.accordion--trigger),
+.webpage--content-inner .h3:not(.accordion--trigger),
+.webpage--content-inner h4:not(.accordion--trigger),
+.webpage--content-inner .h4:not(.accordion--trigger) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-family: var(--font-serif);
+  color: var(--text-secondary); }
+  .profile--section h2:not(.accordion--trigger)::before, .profile--section h2:not(.accordion--trigger)::after,
+  .profile--section .h2:not(.accordion--trigger)::before,
+  .profile--section .h2:not(.accordion--trigger)::after,
+  .profile--section h3:not(.accordion--trigger)::before,
+  .profile--section h3:not(.accordion--trigger)::after,
+  .profile--section .h3:not(.accordion--trigger)::before,
+  .profile--section .h3:not(.accordion--trigger)::after,
+  .profile--section h4:not(.accordion--trigger)::before,
+  .profile--section h4:not(.accordion--trigger)::after,
+  .profile--section .h4:not(.accordion--trigger)::before,
+  .profile--section .h4:not(.accordion--trigger)::after,
+  .ucp--description h2:not(.accordion--trigger)::before,
+  .ucp--description h2:not(.accordion--trigger)::after,
+  .ucp--description .h2:not(.accordion--trigger)::before,
+  .ucp--description .h2:not(.accordion--trigger)::after,
+  .ucp--description h3:not(.accordion--trigger)::before,
+  .ucp--description h3:not(.accordion--trigger)::after,
+  .ucp--description .h3:not(.accordion--trigger)::before,
+  .ucp--description .h3:not(.accordion--trigger)::after,
+  .ucp--description h4:not(.accordion--trigger)::before,
+  .ucp--description h4:not(.accordion--trigger)::after,
+  .ucp--description .h4:not(.accordion--trigger)::before,
+  .ucp--description .h4:not(.accordion--trigger)::after,
+  .post--content .postcolor h2:not(.accordion--trigger)::before,
+  .post--content .postcolor h2:not(.accordion--trigger)::after,
+  .post--content .postcolor .h2:not(.accordion--trigger)::before,
+  .post--content .postcolor .h2:not(.accordion--trigger)::after,
+  .post--content .postcolor h3:not(.accordion--trigger)::before,
+  .post--content .postcolor h3:not(.accordion--trigger)::after,
+  .post--content .postcolor .h3:not(.accordion--trigger)::before,
+  .post--content .postcolor .h3:not(.accordion--trigger)::after,
+  .post--content .postcolor h4:not(.accordion--trigger)::before,
+  .post--content .postcolor h4:not(.accordion--trigger)::after,
+  .post--content .postcolor .h4:not(.accordion--trigger)::before,
+  .post--content .postcolor .h4:not(.accordion--trigger)::after,
+  .webpage--content-inner h2:not(.accordion--trigger)::before,
+  .webpage--content-inner h2:not(.accordion--trigger)::after,
+  .webpage--content-inner .h2:not(.accordion--trigger)::before,
+  .webpage--content-inner .h2:not(.accordion--trigger)::after,
+  .webpage--content-inner h3:not(.accordion--trigger)::before,
+  .webpage--content-inner h3:not(.accordion--trigger)::after,
+  .webpage--content-inner .h3:not(.accordion--trigger)::before,
+  .webpage--content-inner .h3:not(.accordion--trigger)::after,
+  .webpage--content-inner h4:not(.accordion--trigger)::before,
+  .webpage--content-inner h4:not(.accordion--trigger)::after,
+  .webpage--content-inner .h4:not(.accordion--trigger)::before,
+  .webpage--content-inner .h4:not(.accordion--trigger)::after {
+    content: '';
+    height: 1px;
+    background: var(--border-accent-transparent);
+    border-left: 1px solid var(--border-accent-transparent);
+    display: block; }
+
+.profile--section h2:not(.accordion--trigger),
+.profile--section .h2:not(.accordion--trigger),
+.ucp--description h2:not(.accordion--trigger),
+.ucp--description .h2:not(.accordion--trigger),
+.post--content .postcolor h2:not(.accordion--trigger),
+.post--content .postcolor .h2:not(.accordion--trigger),
+.webpage--content-inner h2:not(.accordion--trigger),
+.webpage--content-inner .h2:not(.accordion--trigger) {
+  font-size: 32px; }
+  @media only screen and (min-width: 480px) {
+    .profile--section h2:not(.accordion--trigger),
+    .profile--section .h2:not(.accordion--trigger),
+    .ucp--description h2:not(.accordion--trigger),
+    .ucp--description .h2:not(.accordion--trigger),
+    .post--content .postcolor h2:not(.accordion--trigger),
+    .post--content .postcolor .h2:not(.accordion--trigger),
+    .webpage--content-inner h2:not(.accordion--trigger),
+    .webpage--content-inner .h2:not(.accordion--trigger) {
+      font-size: calc(32px + 14 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    .profile--section h2:not(.accordion--trigger),
+    .profile--section .h2:not(.accordion--trigger),
+    .ucp--description h2:not(.accordion--trigger),
+    .ucp--description .h2:not(.accordion--trigger),
+    .post--content .postcolor h2:not(.accordion--trigger),
+    .post--content .postcolor .h2:not(.accordion--trigger),
+    .webpage--content-inner h2:not(.accordion--trigger),
+    .webpage--content-inner .h2:not(.accordion--trigger) {
+      font-size: 46px; } }
+  .profile--section h2:not(.accordion--trigger)::before, .profile--section h2:not(.accordion--trigger)::after,
+  .profile--section .h2:not(.accordion--trigger)::before,
+  .profile--section .h2:not(.accordion--trigger)::after,
+  .ucp--description h2:not(.accordion--trigger)::before,
+  .ucp--description h2:not(.accordion--trigger)::after,
+  .ucp--description .h2:not(.accordion--trigger)::before,
+  .ucp--description .h2:not(.accordion--trigger)::after,
+  .post--content .postcolor h2:not(.accordion--trigger)::before,
+  .post--content .postcolor h2:not(.accordion--trigger)::after,
+  .post--content .postcolor .h2:not(.accordion--trigger)::before,
+  .post--content .postcolor .h2:not(.accordion--trigger)::after,
+  .webpage--content-inner h2:not(.accordion--trigger)::before,
+  .webpage--content-inner h2:not(.accordion--trigger)::after,
+  .webpage--content-inner .h2:not(.accordion--trigger)::before,
+  .webpage--content-inner .h2:not(.accordion--trigger)::after {
+    flex-grow: 1; }
+  .profile--section h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .profile--section .h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .ucp--description h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .ucp--description .h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .post--content .postcolor h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .post--content .postcolor .h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .webpage--content-inner h2:not(.accordion--trigger)[data-box-align="left"]::before,
+  .webpage--content-inner .h2:not(.accordion--trigger)[data-box-align="left"]::before {
+    flex: 0 0 var(--space-lg); }
+  .profile--section h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h2:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h2:not(.accordion--trigger)[data-box-align="right"]::after {
+    flex: 0 0 var(--space-lg); }
+
+.profile--section h3:not(.accordion--trigger),
+.profile--section .h3:not(.accordion--trigger),
+.ucp--description h3:not(.accordion--trigger),
+.ucp--description .h3:not(.accordion--trigger),
+.post--content .postcolor h3:not(.accordion--trigger),
+.post--content .postcolor .h3:not(.accordion--trigger),
+.webpage--content-inner h3:not(.accordion--trigger),
+.webpage--content-inner .h3:not(.accordion--trigger) {
+  font-size: 24px; }
+  @media only screen and (min-width: 480px) {
+    .profile--section h3:not(.accordion--trigger),
+    .profile--section .h3:not(.accordion--trigger),
+    .ucp--description h3:not(.accordion--trigger),
+    .ucp--description .h3:not(.accordion--trigger),
+    .post--content .postcolor h3:not(.accordion--trigger),
+    .post--content .postcolor .h3:not(.accordion--trigger),
+    .webpage--content-inner h3:not(.accordion--trigger),
+    .webpage--content-inner .h3:not(.accordion--trigger) {
+      font-size: calc(24px + 12 * (100vw - 480px) / (1440 - 480)); } }
+  @media only screen and (min-width: 1440px) {
+    .profile--section h3:not(.accordion--trigger),
+    .profile--section .h3:not(.accordion--trigger),
+    .ucp--description h3:not(.accordion--trigger),
+    .ucp--description .h3:not(.accordion--trigger),
+    .post--content .postcolor h3:not(.accordion--trigger),
+    .post--content .postcolor .h3:not(.accordion--trigger),
+    .webpage--content-inner h3:not(.accordion--trigger),
+    .webpage--content-inner .h3:not(.accordion--trigger) {
+      font-size: 36px; } }
+  .profile--section h3:not(.accordion--trigger)::before,
+  .profile--section .h3:not(.accordion--trigger)::before,
+  .ucp--description h3:not(.accordion--trigger)::before,
+  .ucp--description .h3:not(.accordion--trigger)::before,
+  .post--content .postcolor h3:not(.accordion--trigger)::before,
+  .post--content .postcolor .h3:not(.accordion--trigger)::before,
+  .webpage--content-inner h3:not(.accordion--trigger)::before,
+  .webpage--content-inner .h3:not(.accordion--trigger)::before {
+    flex: 0 0 var(--space-lg); }
+  .profile--section h3:not(.accordion--trigger)::after,
+  .profile--section .h3:not(.accordion--trigger)::after,
+  .ucp--description h3:not(.accordion--trigger)::after,
+  .ucp--description .h3:not(.accordion--trigger)::after,
+  .post--content .postcolor h3:not(.accordion--trigger)::after,
+  .post--content .postcolor .h3:not(.accordion--trigger)::after,
+  .webpage--content-inner h3:not(.accordion--trigger)::after,
+  .webpage--content-inner .h3:not(.accordion--trigger)::after {
+    flex-grow: 1; }
+  .profile--section h3:not(.accordion--trigger)[data-box-align="center"]::before, .profile--section h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .profile--section .h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description .h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor .h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner h3:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h3:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner .h3:not(.accordion--trigger)[data-box-align="center"]::after {
+    flex-grow: 1; }
+  .profile--section h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h3:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h3:not(.accordion--trigger)[data-box-align="right"]::after {
+    flex: 0 0 var(--space-lg); }
+
+.profile--section h4:not(.accordion--trigger),
+.profile--section .h4:not(.accordion--trigger),
+.ucp--description h4:not(.accordion--trigger),
+.ucp--description .h4:not(.accordion--trigger),
+.post--content .postcolor h4:not(.accordion--trigger),
+.post--content .postcolor .h4:not(.accordion--trigger),
+.webpage--content-inner h4:not(.accordion--trigger),
+.webpage--content-inner .h4:not(.accordion--trigger) {
+  font-size: 20px;
+  gap: var(--space-md); }
+  .profile--section h4:not(.accordion--trigger)::before,
+  .profile--section .h4:not(.accordion--trigger)::before,
+  .ucp--description h4:not(.accordion--trigger)::before,
+  .ucp--description .h4:not(.accordion--trigger)::before,
+  .post--content .postcolor h4:not(.accordion--trigger)::before,
+  .post--content .postcolor .h4:not(.accordion--trigger)::before,
+  .webpage--content-inner h4:not(.accordion--trigger)::before,
+  .webpage--content-inner .h4:not(.accordion--trigger)::before {
+    flex: 0 0 var(--space-xl); }
+  .profile--section h4:not(.accordion--trigger)::after,
+  .profile--section .h4:not(.accordion--trigger)::after,
+  .ucp--description h4:not(.accordion--trigger)::after,
+  .ucp--description .h4:not(.accordion--trigger)::after,
+  .post--content .postcolor h4:not(.accordion--trigger)::after,
+  .post--content .postcolor .h4:not(.accordion--trigger)::after,
+  .webpage--content-inner h4:not(.accordion--trigger)::after,
+  .webpage--content-inner .h4:not(.accordion--trigger)::after {
+    flex-grow: 1; }
+  .profile--section h4:not(.accordion--trigger)[data-box-align="center"]::before, .profile--section h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .profile--section .h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description .h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor .h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner h4:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h4:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner .h4:not(.accordion--trigger)[data-box-align="center"]::after {
+    flex-grow: 1; }
+  .profile--section h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h4:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h4:not(.accordion--trigger)[data-box-align="right"]::after {
+    flex: 0 0 var(--space-xl); }
+
+.profile--section h5:not(.accordion--trigger),
+.profile--section .h5:not(.accordion--trigger),
+.profile--section h6:not(.accordion--trigger),
+.profile--section .h6:not(.accordion--trigger),
+.ucp--description h5:not(.accordion--trigger),
+.ucp--description .h5:not(.accordion--trigger),
+.ucp--description h6:not(.accordion--trigger),
+.ucp--description .h6:not(.accordion--trigger),
+.post--content .postcolor h5:not(.accordion--trigger),
+.post--content .postcolor .h5:not(.accordion--trigger),
+.post--content .postcolor h6:not(.accordion--trigger),
+.post--content .postcolor .h6:not(.accordion--trigger),
+.webpage--content-inner h5:not(.accordion--trigger),
+.webpage--content-inner .h5:not(.accordion--trigger),
+.webpage--content-inner h6:not(.accordion--trigger),
+.webpage--content-inner .h6:not(.accordion--trigger) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  width: max-content;
+  max-width: 100%; }
+  .profile--section h5:not(.accordion--trigger)::before,
+  .profile--section .h5:not(.accordion--trigger)::before,
+  .profile--section h6:not(.accordion--trigger)::before,
+  .profile--section .h6:not(.accordion--trigger)::before,
+  .ucp--description h5:not(.accordion--trigger)::before,
+  .ucp--description .h5:not(.accordion--trigger)::before,
+  .ucp--description h6:not(.accordion--trigger)::before,
+  .ucp--description .h6:not(.accordion--trigger)::before,
+  .post--content .postcolor h5:not(.accordion--trigger)::before,
+  .post--content .postcolor .h5:not(.accordion--trigger)::before,
+  .post--content .postcolor h6:not(.accordion--trigger)::before,
+  .post--content .postcolor .h6:not(.accordion--trigger)::before,
+  .webpage--content-inner h5:not(.accordion--trigger)::before,
+  .webpage--content-inner .h5:not(.accordion--trigger)::before,
+  .webpage--content-inner h6:not(.accordion--trigger)::before,
+  .webpage--content-inner .h6:not(.accordion--trigger)::before {
+    content: '';
+    display: block;
+    width: var(--space-lg);
+    height: 1px;
+    background: var(--bg-accent); }
+  .profile--section h5:not(.accordion--trigger)[data-box-align="center"]::after, .profile--section h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="right"]::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: var(--bg-accent); }
+  .profile--section h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="center"]::before,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="center"]::before {
+    width: var(--space-md); }
+  .profile--section h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="center"]::after,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="center"]::after {
+    width: var(--space-md); }
+  .profile--section h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="right"]::before,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="right"]::before,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="right"]::before {
+    display: none; }
+  .profile--section h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .profile--section .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .ucp--description .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .post--content .postcolor .h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h5:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner h6:not(.accordion--trigger)[data-box-align="right"]::after,
+  .webpage--content-inner .h6:not(.accordion--trigger)[data-box-align="right"]::after {
+    width: var(--space-lg); }
+
+.profile--section h5:not(.accordion--trigger),
+.profile--section .h5:not(.accordion--trigger),
+.ucp--description h5:not(.accordion--trigger),
+.ucp--description .h5:not(.accordion--trigger),
+.post--content .postcolor h5:not(.accordion--trigger),
+.post--content .postcolor .h5:not(.accordion--trigger),
+.webpage--content-inner h5:not(.accordion--trigger),
+.webpage--content-inner .h5:not(.accordion--trigger) {
+  font-weight: 900;
+  font-size: calc(var(--size-lg) + 1px); }
+
+.profile--section h6:not(.accordion--trigger),
+.profile--section .h6:not(.accordion--trigger),
+.ucp--description h6:not(.accordion--trigger),
+.ucp--description .h6:not(.accordion--trigger),
+.post--content .postcolor h6:not(.accordion--trigger),
+.post--content .postcolor .h6:not(.accordion--trigger),
+.webpage--content-inner h6:not(.accordion--trigger),
+.webpage--content-inner .h6:not(.accordion--trigger) {
+  font-weight: 800;
+  font-size: var(--size-sm);
+  letter-spacing: 0.4em; }
+
+.profile--section h7:not(.accordion--trigger),
+.profile--section .h7:not(.accordion--trigger),
+.ucp--description h7:not(.accordion--trigger),
+.ucp--description .h7:not(.accordion--trigger),
+.post--content .postcolor h7:not(.accordion--trigger),
+.post--content .postcolor .h7:not(.accordion--trigger),
+.webpage--content-inner h7:not(.accordion--trigger),
+.webpage--content-inner .h7:not(.accordion--trigger) {
   color: var(--text-secondary);
   text-transform: uppercase;
   font-size: 0.75em;
   letter-spacing: 0.1em;
-  font-weight: 900; }
-  .profile--section h7 a,
-  .ucp--description h7 a,
-  .post--content .postcolor h7 a {
-    font-size: inherit; }
+  font-weight: 900;
+  width: max-content;
+  max-width: 100%; }
+
+.profile--section h8:not(.accordion--trigger),
+.profile--section .h8:not(.accordion--trigger),
+.ucp--description h8:not(.accordion--trigger),
+.ucp--description .h8:not(.accordion--trigger),
+.post--content .postcolor h8:not(.accordion--trigger),
+.post--content .postcolor .h8:not(.accordion--trigger),
+.webpage--content-inner h8:not(.accordion--trigger),
+.webpage--content-inner .h8:not(.accordion--trigger) {
+  border-top: 1px solid var(--border-accent-transparent);
+  border-bottom: 1px solid var(--border-accent-transparent);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  font-size: 0.6em;
+  font-style: italic;
+  letter-spacing: 0.3em;
+  text-align: justify;
+  text-align-last: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  padding: var(--space-sm) var(--space-md); }
+
+.profile--section h2:first-child,
+.profile--section h2 + h2,
+.profile--section h2 + h3,
+.profile--section h2 + h4,
+.profile--section h2 + h5,
+.profile--section h2 + h6,
+.profile--section h2 + h7,
+.profile--section h2 + h8,
+.profile--section h2 + blockquote,
+.profile--section h2 + ul,
+.profile--section .h2:first-child,
+.profile--section .h2 + h2,
+.profile--section .h2 + h3,
+.profile--section .h2 + h4,
+.profile--section .h2 + h5,
+.profile--section .h2 + h6,
+.profile--section .h2 + h7,
+.profile--section .h2 + h8,
+.profile--section .h2 + blockquote,
+.profile--section .h2 + ul,
+.profile--section h3:first-child,
+.profile--section h3 + h2,
+.profile--section h3 + h3,
+.profile--section h3 + h4,
+.profile--section h3 + h5,
+.profile--section h3 + h6,
+.profile--section h3 + h7,
+.profile--section h3 + h8,
+.profile--section h3 + blockquote,
+.profile--section h3 + ul,
+.profile--section .h3:first-child,
+.profile--section .h3 + h2,
+.profile--section .h3 + h3,
+.profile--section .h3 + h4,
+.profile--section .h3 + h5,
+.profile--section .h3 + h6,
+.profile--section .h3 + h7,
+.profile--section .h3 + h8,
+.profile--section .h3 + blockquote,
+.profile--section .h3 + ul,
+.profile--section h4:first-child,
+.profile--section h4 + h2,
+.profile--section h4 + h3,
+.profile--section h4 + h4,
+.profile--section h4 + h5,
+.profile--section h4 + h6,
+.profile--section h4 + h7,
+.profile--section h4 + h8,
+.profile--section h4 + blockquote,
+.profile--section h4 + ul,
+.profile--section .h4:first-child,
+.profile--section .h4 + h2,
+.profile--section .h4 + h3,
+.profile--section .h4 + h4,
+.profile--section .h4 + h5,
+.profile--section .h4 + h6,
+.profile--section .h4 + h7,
+.profile--section .h4 + h8,
+.profile--section .h4 + blockquote,
+.profile--section .h4 + ul,
+.profile--section h5:first-child,
+.profile--section h5 + h2,
+.profile--section h5 + h3,
+.profile--section h5 + h4,
+.profile--section h5 + h5,
+.profile--section h5 + h6,
+.profile--section h5 + h7,
+.profile--section h5 + h8,
+.profile--section h5 + blockquote,
+.profile--section h5 + ul,
+.profile--section .h5:first-child,
+.profile--section .h5 + h2,
+.profile--section .h5 + h3,
+.profile--section .h5 + h4,
+.profile--section .h5 + h5,
+.profile--section .h5 + h6,
+.profile--section .h5 + h7,
+.profile--section .h5 + h8,
+.profile--section .h5 + blockquote,
+.profile--section .h5 + ul,
+.profile--section h6:first-child,
+.profile--section h6 + h2,
+.profile--section h6 + h3,
+.profile--section h6 + h4,
+.profile--section h6 + h5,
+.profile--section h6 + h6,
+.profile--section h6 + h7,
+.profile--section h6 + h8,
+.profile--section h6 + blockquote,
+.profile--section h6 + ul,
+.profile--section .h6:first-child,
+.profile--section .h6 + h2,
+.profile--section .h6 + h3,
+.profile--section .h6 + h4,
+.profile--section .h6 + h5,
+.profile--section .h6 + h6,
+.profile--section .h6 + h7,
+.profile--section .h6 + h8,
+.profile--section .h6 + blockquote,
+.profile--section .h6 + ul,
+.profile--section h7:first-child,
+.profile--section h7 + h2,
+.profile--section h7 + h3,
+.profile--section h7 + h4,
+.profile--section h7 + h5,
+.profile--section h7 + h6,
+.profile--section h7 + h7,
+.profile--section h7 + h8,
+.profile--section h7 + blockquote,
+.profile--section h7 + ul,
+.profile--section .h7:first-child,
+.profile--section .h7 + h2,
+.profile--section .h7 + h3,
+.profile--section .h7 + h4,
+.profile--section .h7 + h5,
+.profile--section .h7 + h6,
+.profile--section .h7 + h7,
+.profile--section .h7 + h8,
+.profile--section .h7 + blockquote,
+.profile--section .h7 + ul,
+.profile--section h8:first-child,
+.profile--section h8 + h2,
+.profile--section h8 + h3,
+.profile--section h8 + h4,
+.profile--section h8 + h5,
+.profile--section h8 + h6,
+.profile--section h8 + h7,
+.profile--section h8 + h8,
+.profile--section h8 + blockquote,
+.profile--section h8 + ul,
+.profile--section .h8:first-child,
+.profile--section .h8 + h2,
+.profile--section .h8 + h3,
+.profile--section .h8 + h4,
+.profile--section .h8 + h5,
+.profile--section .h8 + h6,
+.profile--section .h8 + h7,
+.profile--section .h8 + h8,
+.profile--section .h8 + blockquote,
+.profile--section .h8 + ul,
+.profile--section blockquote:first-child,
+.profile--section blockquote + h2,
+.profile--section blockquote + h3,
+.profile--section blockquote + h4,
+.profile--section blockquote + h5,
+.profile--section blockquote + h6,
+.profile--section blockquote + h7,
+.profile--section blockquote + h8,
+.profile--section blockquote + blockquote,
+.profile--section blockquote + ul,
+.profile--section ul:first-child,
+.profile--section ul + h2,
+.profile--section ul + h3,
+.profile--section ul + h4,
+.profile--section ul + h5,
+.profile--section ul + h6,
+.profile--section ul + h7,
+.profile--section ul + h8,
+.profile--section ul + blockquote,
+.profile--section ul + ul,
+.ucp--description h2:first-child,
+.ucp--description h2 + h2,
+.ucp--description h2 + h3,
+.ucp--description h2 + h4,
+.ucp--description h2 + h5,
+.ucp--description h2 + h6,
+.ucp--description h2 + h7,
+.ucp--description h2 + h8,
+.ucp--description h2 + blockquote,
+.ucp--description h2 + ul,
+.ucp--description .h2:first-child,
+.ucp--description .h2 + h2,
+.ucp--description .h2 + h3,
+.ucp--description .h2 + h4,
+.ucp--description .h2 + h5,
+.ucp--description .h2 + h6,
+.ucp--description .h2 + h7,
+.ucp--description .h2 + h8,
+.ucp--description .h2 + blockquote,
+.ucp--description .h2 + ul,
+.ucp--description h3:first-child,
+.ucp--description h3 + h2,
+.ucp--description h3 + h3,
+.ucp--description h3 + h4,
+.ucp--description h3 + h5,
+.ucp--description h3 + h6,
+.ucp--description h3 + h7,
+.ucp--description h3 + h8,
+.ucp--description h3 + blockquote,
+.ucp--description h3 + ul,
+.ucp--description .h3:first-child,
+.ucp--description .h3 + h2,
+.ucp--description .h3 + h3,
+.ucp--description .h3 + h4,
+.ucp--description .h3 + h5,
+.ucp--description .h3 + h6,
+.ucp--description .h3 + h7,
+.ucp--description .h3 + h8,
+.ucp--description .h3 + blockquote,
+.ucp--description .h3 + ul,
+.ucp--description h4:first-child,
+.ucp--description h4 + h2,
+.ucp--description h4 + h3,
+.ucp--description h4 + h4,
+.ucp--description h4 + h5,
+.ucp--description h4 + h6,
+.ucp--description h4 + h7,
+.ucp--description h4 + h8,
+.ucp--description h4 + blockquote,
+.ucp--description h4 + ul,
+.ucp--description .h4:first-child,
+.ucp--description .h4 + h2,
+.ucp--description .h4 + h3,
+.ucp--description .h4 + h4,
+.ucp--description .h4 + h5,
+.ucp--description .h4 + h6,
+.ucp--description .h4 + h7,
+.ucp--description .h4 + h8,
+.ucp--description .h4 + blockquote,
+.ucp--description .h4 + ul,
+.ucp--description h5:first-child,
+.ucp--description h5 + h2,
+.ucp--description h5 + h3,
+.ucp--description h5 + h4,
+.ucp--description h5 + h5,
+.ucp--description h5 + h6,
+.ucp--description h5 + h7,
+.ucp--description h5 + h8,
+.ucp--description h5 + blockquote,
+.ucp--description h5 + ul,
+.ucp--description .h5:first-child,
+.ucp--description .h5 + h2,
+.ucp--description .h5 + h3,
+.ucp--description .h5 + h4,
+.ucp--description .h5 + h5,
+.ucp--description .h5 + h6,
+.ucp--description .h5 + h7,
+.ucp--description .h5 + h8,
+.ucp--description .h5 + blockquote,
+.ucp--description .h5 + ul,
+.ucp--description h6:first-child,
+.ucp--description h6 + h2,
+.ucp--description h6 + h3,
+.ucp--description h6 + h4,
+.ucp--description h6 + h5,
+.ucp--description h6 + h6,
+.ucp--description h6 + h7,
+.ucp--description h6 + h8,
+.ucp--description h6 + blockquote,
+.ucp--description h6 + ul,
+.ucp--description .h6:first-child,
+.ucp--description .h6 + h2,
+.ucp--description .h6 + h3,
+.ucp--description .h6 + h4,
+.ucp--description .h6 + h5,
+.ucp--description .h6 + h6,
+.ucp--description .h6 + h7,
+.ucp--description .h6 + h8,
+.ucp--description .h6 + blockquote,
+.ucp--description .h6 + ul,
+.ucp--description h7:first-child,
+.ucp--description h7 + h2,
+.ucp--description h7 + h3,
+.ucp--description h7 + h4,
+.ucp--description h7 + h5,
+.ucp--description h7 + h6,
+.ucp--description h7 + h7,
+.ucp--description h7 + h8,
+.ucp--description h7 + blockquote,
+.ucp--description h7 + ul,
+.ucp--description .h7:first-child,
+.ucp--description .h7 + h2,
+.ucp--description .h7 + h3,
+.ucp--description .h7 + h4,
+.ucp--description .h7 + h5,
+.ucp--description .h7 + h6,
+.ucp--description .h7 + h7,
+.ucp--description .h7 + h8,
+.ucp--description .h7 + blockquote,
+.ucp--description .h7 + ul,
+.ucp--description h8:first-child,
+.ucp--description h8 + h2,
+.ucp--description h8 + h3,
+.ucp--description h8 + h4,
+.ucp--description h8 + h5,
+.ucp--description h8 + h6,
+.ucp--description h8 + h7,
+.ucp--description h8 + h8,
+.ucp--description h8 + blockquote,
+.ucp--description h8 + ul,
+.ucp--description .h8:first-child,
+.ucp--description .h8 + h2,
+.ucp--description .h8 + h3,
+.ucp--description .h8 + h4,
+.ucp--description .h8 + h5,
+.ucp--description .h8 + h6,
+.ucp--description .h8 + h7,
+.ucp--description .h8 + h8,
+.ucp--description .h8 + blockquote,
+.ucp--description .h8 + ul,
+.ucp--description blockquote:first-child,
+.ucp--description blockquote + h2,
+.ucp--description blockquote + h3,
+.ucp--description blockquote + h4,
+.ucp--description blockquote + h5,
+.ucp--description blockquote + h6,
+.ucp--description blockquote + h7,
+.ucp--description blockquote + h8,
+.ucp--description blockquote + blockquote,
+.ucp--description blockquote + ul,
+.ucp--description ul:first-child,
+.ucp--description ul + h2,
+.ucp--description ul + h3,
+.ucp--description ul + h4,
+.ucp--description ul + h5,
+.ucp--description ul + h6,
+.ucp--description ul + h7,
+.ucp--description ul + h8,
+.ucp--description ul + blockquote,
+.ucp--description ul + ul,
+.post--content .postcolor h2:first-child,
+.post--content .postcolor h2 + h2,
+.post--content .postcolor h2 + h3,
+.post--content .postcolor h2 + h4,
+.post--content .postcolor h2 + h5,
+.post--content .postcolor h2 + h6,
+.post--content .postcolor h2 + h7,
+.post--content .postcolor h2 + h8,
+.post--content .postcolor h2 + blockquote,
+.post--content .postcolor h2 + ul,
+.post--content .postcolor .h2:first-child,
+.post--content .postcolor .h2 + h2,
+.post--content .postcolor .h2 + h3,
+.post--content .postcolor .h2 + h4,
+.post--content .postcolor .h2 + h5,
+.post--content .postcolor .h2 + h6,
+.post--content .postcolor .h2 + h7,
+.post--content .postcolor .h2 + h8,
+.post--content .postcolor .h2 + blockquote,
+.post--content .postcolor .h2 + ul,
+.post--content .postcolor h3:first-child,
+.post--content .postcolor h3 + h2,
+.post--content .postcolor h3 + h3,
+.post--content .postcolor h3 + h4,
+.post--content .postcolor h3 + h5,
+.post--content .postcolor h3 + h6,
+.post--content .postcolor h3 + h7,
+.post--content .postcolor h3 + h8,
+.post--content .postcolor h3 + blockquote,
+.post--content .postcolor h3 + ul,
+.post--content .postcolor .h3:first-child,
+.post--content .postcolor .h3 + h2,
+.post--content .postcolor .h3 + h3,
+.post--content .postcolor .h3 + h4,
+.post--content .postcolor .h3 + h5,
+.post--content .postcolor .h3 + h6,
+.post--content .postcolor .h3 + h7,
+.post--content .postcolor .h3 + h8,
+.post--content .postcolor .h3 + blockquote,
+.post--content .postcolor .h3 + ul,
+.post--content .postcolor h4:first-child,
+.post--content .postcolor h4 + h2,
+.post--content .postcolor h4 + h3,
+.post--content .postcolor h4 + h4,
+.post--content .postcolor h4 + h5,
+.post--content .postcolor h4 + h6,
+.post--content .postcolor h4 + h7,
+.post--content .postcolor h4 + h8,
+.post--content .postcolor h4 + blockquote,
+.post--content .postcolor h4 + ul,
+.post--content .postcolor .h4:first-child,
+.post--content .postcolor .h4 + h2,
+.post--content .postcolor .h4 + h3,
+.post--content .postcolor .h4 + h4,
+.post--content .postcolor .h4 + h5,
+.post--content .postcolor .h4 + h6,
+.post--content .postcolor .h4 + h7,
+.post--content .postcolor .h4 + h8,
+.post--content .postcolor .h4 + blockquote,
+.post--content .postcolor .h4 + ul,
+.post--content .postcolor h5:first-child,
+.post--content .postcolor h5 + h2,
+.post--content .postcolor h5 + h3,
+.post--content .postcolor h5 + h4,
+.post--content .postcolor h5 + h5,
+.post--content .postcolor h5 + h6,
+.post--content .postcolor h5 + h7,
+.post--content .postcolor h5 + h8,
+.post--content .postcolor h5 + blockquote,
+.post--content .postcolor h5 + ul,
+.post--content .postcolor .h5:first-child,
+.post--content .postcolor .h5 + h2,
+.post--content .postcolor .h5 + h3,
+.post--content .postcolor .h5 + h4,
+.post--content .postcolor .h5 + h5,
+.post--content .postcolor .h5 + h6,
+.post--content .postcolor .h5 + h7,
+.post--content .postcolor .h5 + h8,
+.post--content .postcolor .h5 + blockquote,
+.post--content .postcolor .h5 + ul,
+.post--content .postcolor h6:first-child,
+.post--content .postcolor h6 + h2,
+.post--content .postcolor h6 + h3,
+.post--content .postcolor h6 + h4,
+.post--content .postcolor h6 + h5,
+.post--content .postcolor h6 + h6,
+.post--content .postcolor h6 + h7,
+.post--content .postcolor h6 + h8,
+.post--content .postcolor h6 + blockquote,
+.post--content .postcolor h6 + ul,
+.post--content .postcolor .h6:first-child,
+.post--content .postcolor .h6 + h2,
+.post--content .postcolor .h6 + h3,
+.post--content .postcolor .h6 + h4,
+.post--content .postcolor .h6 + h5,
+.post--content .postcolor .h6 + h6,
+.post--content .postcolor .h6 + h7,
+.post--content .postcolor .h6 + h8,
+.post--content .postcolor .h6 + blockquote,
+.post--content .postcolor .h6 + ul,
+.post--content .postcolor h7:first-child,
+.post--content .postcolor h7 + h2,
+.post--content .postcolor h7 + h3,
+.post--content .postcolor h7 + h4,
+.post--content .postcolor h7 + h5,
+.post--content .postcolor h7 + h6,
+.post--content .postcolor h7 + h7,
+.post--content .postcolor h7 + h8,
+.post--content .postcolor h7 + blockquote,
+.post--content .postcolor h7 + ul,
+.post--content .postcolor .h7:first-child,
+.post--content .postcolor .h7 + h2,
+.post--content .postcolor .h7 + h3,
+.post--content .postcolor .h7 + h4,
+.post--content .postcolor .h7 + h5,
+.post--content .postcolor .h7 + h6,
+.post--content .postcolor .h7 + h7,
+.post--content .postcolor .h7 + h8,
+.post--content .postcolor .h7 + blockquote,
+.post--content .postcolor .h7 + ul,
+.post--content .postcolor h8:first-child,
+.post--content .postcolor h8 + h2,
+.post--content .postcolor h8 + h3,
+.post--content .postcolor h8 + h4,
+.post--content .postcolor h8 + h5,
+.post--content .postcolor h8 + h6,
+.post--content .postcolor h8 + h7,
+.post--content .postcolor h8 + h8,
+.post--content .postcolor h8 + blockquote,
+.post--content .postcolor h8 + ul,
+.post--content .postcolor .h8:first-child,
+.post--content .postcolor .h8 + h2,
+.post--content .postcolor .h8 + h3,
+.post--content .postcolor .h8 + h4,
+.post--content .postcolor .h8 + h5,
+.post--content .postcolor .h8 + h6,
+.post--content .postcolor .h8 + h7,
+.post--content .postcolor .h8 + h8,
+.post--content .postcolor .h8 + blockquote,
+.post--content .postcolor .h8 + ul,
+.post--content .postcolor blockquote:first-child,
+.post--content .postcolor blockquote + h2,
+.post--content .postcolor blockquote + h3,
+.post--content .postcolor blockquote + h4,
+.post--content .postcolor blockquote + h5,
+.post--content .postcolor blockquote + h6,
+.post--content .postcolor blockquote + h7,
+.post--content .postcolor blockquote + h8,
+.post--content .postcolor blockquote + blockquote,
+.post--content .postcolor blockquote + ul,
+.post--content .postcolor ul:first-child,
+.post--content .postcolor ul + h2,
+.post--content .postcolor ul + h3,
+.post--content .postcolor ul + h4,
+.post--content .postcolor ul + h5,
+.post--content .postcolor ul + h6,
+.post--content .postcolor ul + h7,
+.post--content .postcolor ul + h8,
+.post--content .postcolor ul + blockquote,
+.post--content .postcolor ul + ul,
+.webpage--content-inner h2:first-child,
+.webpage--content-inner h2 + h2,
+.webpage--content-inner h2 + h3,
+.webpage--content-inner h2 + h4,
+.webpage--content-inner h2 + h5,
+.webpage--content-inner h2 + h6,
+.webpage--content-inner h2 + h7,
+.webpage--content-inner h2 + h8,
+.webpage--content-inner h2 + blockquote,
+.webpage--content-inner h2 + ul,
+.webpage--content-inner .h2:first-child,
+.webpage--content-inner .h2 + h2,
+.webpage--content-inner .h2 + h3,
+.webpage--content-inner .h2 + h4,
+.webpage--content-inner .h2 + h5,
+.webpage--content-inner .h2 + h6,
+.webpage--content-inner .h2 + h7,
+.webpage--content-inner .h2 + h8,
+.webpage--content-inner .h2 + blockquote,
+.webpage--content-inner .h2 + ul,
+.webpage--content-inner h3:first-child,
+.webpage--content-inner h3 + h2,
+.webpage--content-inner h3 + h3,
+.webpage--content-inner h3 + h4,
+.webpage--content-inner h3 + h5,
+.webpage--content-inner h3 + h6,
+.webpage--content-inner h3 + h7,
+.webpage--content-inner h3 + h8,
+.webpage--content-inner h3 + blockquote,
+.webpage--content-inner h3 + ul,
+.webpage--content-inner .h3:first-child,
+.webpage--content-inner .h3 + h2,
+.webpage--content-inner .h3 + h3,
+.webpage--content-inner .h3 + h4,
+.webpage--content-inner .h3 + h5,
+.webpage--content-inner .h3 + h6,
+.webpage--content-inner .h3 + h7,
+.webpage--content-inner .h3 + h8,
+.webpage--content-inner .h3 + blockquote,
+.webpage--content-inner .h3 + ul,
+.webpage--content-inner h4:first-child,
+.webpage--content-inner h4 + h2,
+.webpage--content-inner h4 + h3,
+.webpage--content-inner h4 + h4,
+.webpage--content-inner h4 + h5,
+.webpage--content-inner h4 + h6,
+.webpage--content-inner h4 + h7,
+.webpage--content-inner h4 + h8,
+.webpage--content-inner h4 + blockquote,
+.webpage--content-inner h4 + ul,
+.webpage--content-inner .h4:first-child,
+.webpage--content-inner .h4 + h2,
+.webpage--content-inner .h4 + h3,
+.webpage--content-inner .h4 + h4,
+.webpage--content-inner .h4 + h5,
+.webpage--content-inner .h4 + h6,
+.webpage--content-inner .h4 + h7,
+.webpage--content-inner .h4 + h8,
+.webpage--content-inner .h4 + blockquote,
+.webpage--content-inner .h4 + ul,
+.webpage--content-inner h5:first-child,
+.webpage--content-inner h5 + h2,
+.webpage--content-inner h5 + h3,
+.webpage--content-inner h5 + h4,
+.webpage--content-inner h5 + h5,
+.webpage--content-inner h5 + h6,
+.webpage--content-inner h5 + h7,
+.webpage--content-inner h5 + h8,
+.webpage--content-inner h5 + blockquote,
+.webpage--content-inner h5 + ul,
+.webpage--content-inner .h5:first-child,
+.webpage--content-inner .h5 + h2,
+.webpage--content-inner .h5 + h3,
+.webpage--content-inner .h5 + h4,
+.webpage--content-inner .h5 + h5,
+.webpage--content-inner .h5 + h6,
+.webpage--content-inner .h5 + h7,
+.webpage--content-inner .h5 + h8,
+.webpage--content-inner .h5 + blockquote,
+.webpage--content-inner .h5 + ul,
+.webpage--content-inner h6:first-child,
+.webpage--content-inner h6 + h2,
+.webpage--content-inner h6 + h3,
+.webpage--content-inner h6 + h4,
+.webpage--content-inner h6 + h5,
+.webpage--content-inner h6 + h6,
+.webpage--content-inner h6 + h7,
+.webpage--content-inner h6 + h8,
+.webpage--content-inner h6 + blockquote,
+.webpage--content-inner h6 + ul,
+.webpage--content-inner .h6:first-child,
+.webpage--content-inner .h6 + h2,
+.webpage--content-inner .h6 + h3,
+.webpage--content-inner .h6 + h4,
+.webpage--content-inner .h6 + h5,
+.webpage--content-inner .h6 + h6,
+.webpage--content-inner .h6 + h7,
+.webpage--content-inner .h6 + h8,
+.webpage--content-inner .h6 + blockquote,
+.webpage--content-inner .h6 + ul,
+.webpage--content-inner h7:first-child,
+.webpage--content-inner h7 + h2,
+.webpage--content-inner h7 + h3,
+.webpage--content-inner h7 + h4,
+.webpage--content-inner h7 + h5,
+.webpage--content-inner h7 + h6,
+.webpage--content-inner h7 + h7,
+.webpage--content-inner h7 + h8,
+.webpage--content-inner h7 + blockquote,
+.webpage--content-inner h7 + ul,
+.webpage--content-inner .h7:first-child,
+.webpage--content-inner .h7 + h2,
+.webpage--content-inner .h7 + h3,
+.webpage--content-inner .h7 + h4,
+.webpage--content-inner .h7 + h5,
+.webpage--content-inner .h7 + h6,
+.webpage--content-inner .h7 + h7,
+.webpage--content-inner .h7 + h8,
+.webpage--content-inner .h7 + blockquote,
+.webpage--content-inner .h7 + ul,
+.webpage--content-inner h8:first-child,
+.webpage--content-inner h8 + h2,
+.webpage--content-inner h8 + h3,
+.webpage--content-inner h8 + h4,
+.webpage--content-inner h8 + h5,
+.webpage--content-inner h8 + h6,
+.webpage--content-inner h8 + h7,
+.webpage--content-inner h8 + h8,
+.webpage--content-inner h8 + blockquote,
+.webpage--content-inner h8 + ul,
+.webpage--content-inner .h8:first-child,
+.webpage--content-inner .h8 + h2,
+.webpage--content-inner .h8 + h3,
+.webpage--content-inner .h8 + h4,
+.webpage--content-inner .h8 + h5,
+.webpage--content-inner .h8 + h6,
+.webpage--content-inner .h8 + h7,
+.webpage--content-inner .h8 + h8,
+.webpage--content-inner .h8 + blockquote,
+.webpage--content-inner .h8 + ul,
+.webpage--content-inner blockquote:first-child,
+.webpage--content-inner blockquote + h2,
+.webpage--content-inner blockquote + h3,
+.webpage--content-inner blockquote + h4,
+.webpage--content-inner blockquote + h5,
+.webpage--content-inner blockquote + h6,
+.webpage--content-inner blockquote + h7,
+.webpage--content-inner blockquote + h8,
+.webpage--content-inner blockquote + blockquote,
+.webpage--content-inner blockquote + ul,
+.webpage--content-inner ul:first-child,
+.webpage--content-inner ul + h2,
+.webpage--content-inner ul + h3,
+.webpage--content-inner ul + h4,
+.webpage--content-inner ul + h5,
+.webpage--content-inner ul + h6,
+.webpage--content-inner ul + h7,
+.webpage--content-inner ul + h8,
+.webpage--content-inner ul + blockquote,
+.webpage--content-inner ul + ul {
+  margin-top: 0; }
 
 .profile--section b,
 .ucp--description b,
-.post--content .postcolor b {
+.post--content .postcolor b,
+.webpage--content-inner b {
   font-weight: 900;
   color: var(--text-accent);
   font-size: 1.1em;
@@ -162,7 +1455,8 @@ button {
 
 .profile--section i,
 .ucp--description i,
-.post--content .postcolor i {
+.post--content .postcolor i,
+.webpage--content-inner i {
   font-weight: 400;
   color: var(--text-accent);
   font-size: 1.1em;
@@ -170,7 +1464,8 @@ button {
 
 .profile--section u,
 .ucp--description u,
-.post--content .postcolor u {
+.post--content .postcolor u,
+.webpage--content-inner u {
   text-decoration: none;
   padding: 0 3px;
   border-bottom: 1px solid var(--border-accent);
@@ -180,16 +1475,19 @@ button {
 
 .profile--section s,
 .ucp--description s,
-.post--content .postcolor s {
+.post--content .postcolor s,
+.webpage--content-inner s {
   text-decoration-color: var(--text-accent);
   text-decoration-thickness: 0.75px;
   text-decoration-style: wavy;
   font-size: 0.9em;
-  letter-spacing: 0.05em; }
+  letter-spacing: 0.05em;
+  color: var(--text-secondary); }
 
 .profile--section a,
 .ucp--description a,
-.post--content .postcolor a {
+.post--content .postcolor a,
+.webpage--content-inner a {
   color: var(--text-accent);
   text-transform: uppercase;
   font-size: 0.75em;
@@ -198,34 +1496,40 @@ button {
 
 .profile--section ul,
 .ucp--description ul,
-.post--content .postcolor ul {
+.post--content .postcolor ul,
+.webpage--content-inner ul {
   margin: 0;
   padding: 0;
   text-align: justify; }
   .profile--section ul:not(:last-child),
   .ucp--description ul:not(:last-child),
-  .post--content .postcolor ul:not(:last-child) {
+  .post--content .postcolor ul:not(:last-child),
+  .webpage--content-inner ul:not(:last-child) {
     margin-bottom: var(--space-md); }
   .profile--section ul li,
   .ucp--description ul li,
-  .post--content .postcolor ul li {
+  .post--content .postcolor ul li,
+  .webpage--content-inner ul li {
     margin-left: var(--space-md);
     padding-left: var(--space-md); }
     .profile--section ul li::marker,
     .ucp--description ul li::marker,
-    .post--content .postcolor ul li::marker {
+    .post--content .postcolor ul li::marker,
+    .webpage--content-inner ul li::marker {
       font-family: var(--font-fa-std);
       padding-right: 5px;
       font-weight: 300;
       color: var(--text-secondary); }
   .profile--section ul > br,
   .ucp--description ul > br,
-  .post--content .postcolor ul > br {
+  .post--content .postcolor ul > br,
+  .webpage--content-inner ul > br {
     display: none; }
 
 .profile--section blockquote,
 .ucp--description blockquote,
-.post--content .postcolor blockquote {
+.post--content .postcolor blockquote,
+.webpage--content-inner blockquote {
   border-left: 1px solid var(--border-accent);
   border-right: 1px solid var(--border-accent);
   padding: var(--space-lg);
@@ -233,6 +1537,12 @@ button {
   color: var(--text-secondary);
   margin: var(--space-lg) auto;
   max-width: 500px; }
+
+.profile--section luxblock + br,
+.ucp--description luxblock + br,
+.post--content .postcolor luxblock + br,
+.webpage--content-inner luxblock + br {
+  display: none; }
 
 *:focus {
   outline: none;
@@ -397,12 +1707,73 @@ fieldset {
     letter-spacing: 0.5em;
     color: var(--text-accent-transparent); }
 
+#loading {
+  position: fixed;
+  top: var(--size-menu);
+  left: var(--size-menu);
+  background: var(--bg-overlay);
+  width: calc(100% - (2 * var(--size-menu)));
+  height: calc(100vh - (2 * var(--size-menu)));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg); }
+  #loading .loading-bubble {
+    background: var(--bg-transparent);
+    border: 1px solid var(--border-primary);
+    border-radius: 2px;
+    padding: var(--space-lg) calc(2 * var(--space-lg));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--text-secondary);
+    gap: var(--space-md); }
+    #loading .loading-bubble i {
+      color: var(--text-accent);
+      font-size: 1.5em;
+      animation-timing-function: ease-in-out; }
+    #loading .loading-bubble p {
+      margin: 0; }
+
+tag-spoiler {
+  color: transparent;
+  background: var(--text-primary);
+  border-radius: 2px;
+  margin: 0 2px;
+  padding: 0 var(--space-xs);
+  transition-duration: 0.3s;
+  border: 1px solid var(--border-tertiary);
+  cursor: pointer; }
+  tag-spoiler:hover {
+    opacity: 0.8;
+    color: var(--bg-transparent-alt); }
+  tag-spoiler.is-visible {
+    background: var(--border-primary);
+    color: var(--text-secondary);
+    cursor: auto; }
+
+tag-tabset {
+  display: flex;
+  height: 100%;
+  overflow: hidden; }
+  tag-tabset > tag-tab {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    transition-duration: 0.75s; }
+
 .invisibleEl {
   position: fixed;
-  z-index: -999999999999;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; }
+  height: 0; }
   .invisibleEl.menu-open {
-    z-index: 8; }
+    height: 100vh; }

@@ -61,6 +61,11 @@ body.g-26 .staffOnly,
 body.g-28 .staffOnly {
   display: initial; }
 
+body.g-4 .accordion--trigger.staffOnly,
+body.g-26 .accordion--trigger.staffOnly,
+body.g-28 .accordion--trigger.staffOnly {
+  display: flex; }
+
 @media (min-width: 1025px) {
   .onlyMobile {
     display: none !important; } }

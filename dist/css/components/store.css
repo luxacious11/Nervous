@@ -9,27 +9,68 @@
     display: block; }
     #store main > table:first-of-type > tbody > tr {
       display: flex;
-      gap: var(--spacing-lg); }
+      flex-direction: column; }
       #store main > table:first-of-type > tbody > tr > td#ucpmenu {
-        flex: 0 0 150px; }
-        #store main > table:first-of-type > tbody > tr > td#ucpmenu .sticky {
-          display: flex;
-          flex-direction: column;
-          gap: var(--spacing-sm);
-          position: sticky;
-          top: var(--menuHeight); }
+        margin: var(--space-md) auto var(--space-xl);
+        background: var(--bg-transparent);
+        padding: var(--space-sm);
+        border: 1px solid var(--border-primary);
+        border-radius: 2px;
+        display: block;
+        position: sticky;
+        top: calc(var(--size-menu) + var(--space-sm));
+        z-index: 3;
+        width: 100%; }
+        #store main > table:first-of-type > tbody > tr > td#ucpmenu .accordion {
+          display: none;
+          position: absolute;
+          top: calc(100% + var(--space-sm));
+          left: var(--space-sm);
+          max-width: calc(100% - (2 * var(--space-lg)));
+          background: var(--bg-transparent);
+          padding: var(--space-sm);
+          border: 1px solid var(--border-primary);
+          border-radius: 2px;
+          min-width: 200px; }
+          #store main > table:first-of-type > tbody > tr > td#ucpmenu .accordion--content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs); }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .accordion--content:not(:last-child) {
+              padding: var(--space-xs) 0 var(--space-md); }
+            #store main > table:first-of-type > tbody > tr > td#ucpmenu .accordion--content a {
+              display: flex;
+              border: 1px solid var(--border-primary);
+              align-items: center;
+              text-align: center;
+              justify-content: center;
+              padding: 0 var(--space-md);
+              font-weight: 700;
+              letter-spacing: 0.2em;
+              transition-duration: 0.3s;
+              border-radius: 2px;
+              text-transform: uppercase;
+              font-size: var(--size-xs); }
+              #store main > table:first-of-type > tbody > tr > td#ucpmenu .accordion--content a:hover {
+                background: var(--bg-accent-transparent); }
+        #store main > table:first-of-type > tbody > tr > td#ucpmenu:not(.is-open) .macro--button .fa-xmark {
+          display: none; }
+        #store main > table:first-of-type > tbody > tr > td#ucpmenu.is-open .accordion {
+          display: block; }
+        #store main > table:first-of-type > tbody > tr > td#ucpmenu.is-open .macro--button .fa-bars {
+          display: none; }
         #store main > table:first-of-type > tbody > tr > td#ucpmenu .menu-section {
           display: flex;
           flex-direction: column;
-          gap: var(--spacing-sm); }
+          gap: var(--space-sm); }
       #store main > table:first-of-type > tbody > tr > td:nth-child(2) {
         display: none; }
       #store main > table:first-of-type > tbody > tr > td#ucpcontent {
         flex-grow: 1;
-        padding: var(--spacing-md); }
+        padding: var(--space-md); }
         @media (min-width: 601px) {
           #store main > table:first-of-type > tbody > tr > td#ucpcontent {
-            padding: var(--spacing-lg); } }
+            padding: var(--space-lg); } }
         #store main > table:first-of-type > tbody > tr > td#ucpcontent input[type="text"],
         #store main > table:first-of-type > tbody > tr > td#ucpcontent input[type="file"],
         #store main > table:first-of-type > tbody > tr > td#ucpcontent input[type="password"],
@@ -45,28 +86,28 @@
             #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
               display: flex;
               flex-direction: column;
-              gap: var(--spacing-sm);
-              margin-bottom: var(--spacing-md); }
+              gap: var(--space-sm);
+              margin-bottom: var(--space-md); }
               @media (min-width: 481px) {
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
-                  margin-bottom: var(--spacing-lg); } }
+                  margin-bottom: var(--space-lg); } }
               @media (min-width: 769px) {
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr {
-                  gap: var(--spacing-md); } }
+                  gap: var(--space-md); } }
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft b,
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft strong,
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft label {
                 line-height: 160%;
                 display: block;
                 max-width: max-content;
-                padding: var(--spacing-xs) var(--spacing-sm); }
+                padding: var(--space-xs) var(--space-sm); }
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft b ~ br,
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft strong ~ br,
                 #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformleft label ~ br {
                   display: none; }
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr .pformright {
                 display: flex;
-                gap: var(--spacing-xs);
+                gap: var(--space-xs);
                 height: max-content; }
               #store main > table:first-of-type > tbody > tr > td#ucpcontent form > table > tbody > tr > :only-child {
                 grid-column: 1 / -1; }
@@ -75,31 +116,66 @@
                 padding: 0;
                 text-align: center; }
 
-#store.store-home #ucpcontent > table > tbody > tr {
+#store.store-home #ucpcontent > table > tbody {
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  text-align: left; }
-  #store.store-home #ucpcontent > table > tbody > tr:not(:nth-child(4)) {
-    margin-top: var(--spacing-lg); }
-  #store.store-home #ucpcontent > table > tbody > tr td {
-    text-align: left;
-    padding: 0; }
-    #store.store-home #ucpcontent > table > tbody > tr td a {
-      display: block;
-      line-height: 160%;
-      max-width: max-content;
-      margin-bottom: var(--spacing-sm); }
-      #store.store-home #ucpcontent > table > tbody > tr td a + br {
-        display: none; }
-  #store.store-home #ucpcontent > table > tbody > tr:nth-child(1), #store.store-home #ucpcontent > table > tbody > tr:nth-child(2), #store.store-home #ucpcontent > table > tbody > tr:nth-child(3) {
-    display: none; }
+  gap: var(--space-xl); }
+  #store.store-home #ucpcontent > table > tbody > tr {
+    display: flex;
+    flex-direction: column;
+    text-align: left; }
+    #store.store-home #ucpcontent > table > tbody > tr:not(:nth-child(4)) {
+      margin-top: var(--space-lg); }
+    #store.store-home #ucpcontent > table > tbody > tr td {
+      text-align: left;
+      padding: 0; }
+      #store.store-home #ucpcontent > table > tbody > tr td:first-child {
+        border-top: 1px solid var(--border-accent-transparent);
+        text-align: center;
+        padding: var(--space-lg);
+        font-family: var(--font-serif);
+        font-weight: 700;
+        color: var(--text-secondary);
+        font-size: 24px;
+        margin-top: var(--space-xl);
+        margin-bottom: 0; }
+        #store.store-home #ucpcontent > table > tbody > tr td:first-child::before {
+          content: '';
+          position: absolute;
+          top: calc(-1 * var(--space-xl));
+          left: calc(50% - 0.5px);
+          width: 1px;
+          height: var(--space-xl);
+          background: var(--border-accent-transparent); }
+        #store.store-home #ucpcontent > table > tbody > tr td:first-child a {
+          margin: 0 auto; }
+      #store.store-home #ucpcontent > table > tbody > tr td:last-child {
+        background: var(--bg-transparent-alt);
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent);
+        padding: var(--space-md);
+        font-size: calc(var(--size-md) + 1px);
+        text-align: justify;
+        line-height: 200%;
+        width: 100%; }
+      #store.store-home #ucpcontent > table > tbody > tr td a {
+        display: block;
+        line-height: 160%;
+        max-width: max-content;
+        margin-bottom: var(--space-sm); }
+        #store.store-home #ucpcontent > table > tbody > tr td a + br {
+          display: none; }
+    #store.store-home #ucpcontent > table > tbody > tr:nth-child(1), #store.store-home #ucpcontent > table > tbody > tr:nth-child(2), #store.store-home #ucpcontent > table > tbody > tr:nth-child(3) {
+      display: none; }
 
 #store.store-shop #ucpcontent > table {
   display: block; }
   #store.store-shop #ucpcontent > table > tbody {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: var(--spacing-md); }
+    gap: var(--space-md); }
     @media (min-width: 769px) {
       #store.store-shop #ucpcontent > table > tbody {
         grid-template-columns: repeat(2, 1fr); } }
@@ -109,15 +185,17 @@
     #store.store-shop #ucpcontent > table > tbody > tr {
       display: flex;
       flex-wrap: wrap; }
-      @media (min-width: 769px) {
-        #store.store-shop #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc(50% - calc(var(--spacing-md) / 2)); } }
-      @media (min-width: 1025px) {
-        #store.store-shop #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3)); } }
+      #store.store-shop #ucpcontent > table > tbody > tr:has(td:only-child) {
+        grid-column: 1 / -1; }
+        #store.store-shop #ucpcontent > table > tbody > tr:has(td:only-child) td {
+          grid-column: 1 / -1;
+          padding-top: 0 !important;
+          text-align: center;
+          align-self: center;
+          justify-self: center; }
       #store.store-shop #ucpcontent > table > tbody > tr img {
-        width: var(--storeImageWidth);
-        height: var(--storeImageWidth);
+        width: 24px;
+        height: 24px;
         object-fit: contain;
         object-position: center; }
       #store.store-shop #ucpcontent > table > tbody > tr:first-child {
@@ -126,13 +204,32 @@
         grid-column: 1 / -1;
         display: flex;
         justify-content: space-between;
-        align-items: center; }
+        align-items: center;
+        background: var(--bg-transparent);
+        border: 1px solid var(--border-primary);
+        padding: var(--space-sm);
+        border-radius: 2px;
+        font-size: var(--size-xs);
+        letter-spacing: 0.1em;
+        color: var(--text-secondary);
+        text-transform: uppercase; }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child a {
+          font-size: var(--size-md);
           display: block;
-          max-width: max-content;
-          margin: 0 0 0 auto;
-          padding: var(--spacing-sm);
-          z-index: 1; }
+          padding: var(--space-xs) var(--space-md);
+          text-align: center;
+          border-radius: 2px;
+          background: var(--bg-accent-transparent);
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          font-weight: 900;
+          letter-spacing: 0.1em;
+          border-color: transparent;
+          transition-duration: 0.3s;
+          border: 1px solid var(--border-primary); }
+          #store.store-shop #ucpcontent > table > tbody > tr:last-child a:hover {
+            background: transparent;
+            border-color: var(--border-accent-transparent); }
         #store.store-shop #ucpcontent > table > tbody > tr:last-child > td {
           display: block;
           text-align: left; }
@@ -141,27 +238,42 @@
           #store.store-shop #ucpcontent > table > tbody > tr:last-child > td:last-child {
             text-align: right; }
       #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) {
-        padding: var(--spacing-md);
+        padding: var(--space-md);
         display: grid;
-        grid-template-columns: var(--storeImageWidth) 1fr 1fr var(--storeImageWidth);
-        grid-template-rows: repeat(auto-fit, minmax(0, max-content));
-        gap: var(--spacing-md); }
+        grid-template-columns: 24px 1fr 1fr 24px;
+        grid-template-rows: max-content auto max-content max-content;
+        gap: 0 var(--space-md);
+        background: var(--bg-transparent-alt);
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent); }
         #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td {
           padding: 0;
           text-align: left; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:first-child {
-            height: var(--storeImageWidth);
+            height: 24px;
             align-self: center; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(2) {
+            font-size: 20px;
+            font-family: var(--font-serif);
+            color: var(--text-secondary);
+            font-weight: 700;
             grid-column: span 3;
             line-height: 160%;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--space-xs) 0; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(3) {
             grid-column: 1 / -1;
-            padding: var(--spacing-sm) 0 var(--spacing-md); }
+            text-align: justify;
+            font-style: italic;
+            font-size: var(--size-md);
+            line-height: 160%;
+            padding-bottom: var(--space-md); }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
-            grid-column: span 2; }
+            grid-column: span 2;
+            font-size: var(--size-xs);
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(4)::before {
             content: '$'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(5) {
@@ -170,23 +282,45 @@
               content: ' In Stock'; }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child {
             grid-column: 1 / -1;
-            padding: var(--spacing-md) 0 0; }
+            padding: var(--space-md) 0 0; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a {
+              font-size: var(--size-md);
               display: block;
-              max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              padding: var(--space-xs) var(--space-md);
+              text-align: center;
+              border-radius: 2px;
+              background: var(--bg-accent-transparent);
+              color: var(--text-secondary);
+              text-transform: uppercase;
+              font-weight: 900;
+              letter-spacing: 0.1em;
+              border-color: transparent;
+              transition-duration: 0.3s;
+              border: 1px solid var(--border-primary); }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):last-child a:hover {
+                background: transparent;
+                border-color: var(--border-accent-transparent); }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child), #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child {
             grid-column: span 2;
-            padding: var(--spacing-md) 0 0;
+            padding: var(--space-md) 0 0;
             font-size: 0; }
             #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a {
-              max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1;
-              font-size: 1rem; }
+              font-size: var(--size-md);
+              display: block;
+              padding: var(--space-xs) var(--space-md);
+              text-align: center;
+              border-radius: 2px;
+              background: var(--bg-accent-transparent);
+              color: var(--text-secondary);
+              text-transform: uppercase;
+              font-weight: 900;
+              letter-spacing: 0.1em;
+              border-color: transparent;
+              transition-duration: 0.3s;
+              border: 1px solid var(--border-primary); }
+              #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(6):not(:last-child) a:hover, #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a:hover {
+                background: transparent;
+                border-color: var(--border-accent-transparent); }
           #store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child) > td:nth-child(7):last-child a::before {
             content: 'Buy '; }
 
@@ -195,7 +329,7 @@
   #store.store-inventory #ucpcontent > table > tbody {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: var(--spacing-md); }
+    gap: var(--space-md); }
     @media (min-width: 769px) {
       #store.store-inventory #ucpcontent > table > tbody {
         grid-template-columns: repeat(2, 1fr); } }
@@ -207,35 +341,62 @@
       flex-wrap: wrap; }
       @media (min-width: 769px) {
         #store.store-inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc(50% - calc(var(--spacing-md) / 2)); } }
+          flex: 0 0 calc(50% - calc(var(--space-md) / 2)); } }
       @media (min-width: 1025px) {
         #store.store-inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc((100% / 3) - calc(var(--spacing-md) * 2 / 3)); } }
+          flex: 0 0 calc((100% / 3) - calc(var(--space-md) * 2 / 3)); } }
+      #store.store-inventory #ucpcontent > table > tbody > tr:has(td:only-child) {
+        grid-column: 1 / -1; }
+        #store.store-inventory #ucpcontent > table > tbody > tr:has(td:only-child) td {
+          grid-column: 1 / -1;
+          padding-top: 0 !important;
+          text-align: center;
+          align-self: center;
+          justify-self: center; }
       #store.store-inventory #ucpcontent > table > tbody > tr img {
-        width: var(--storeImageWidth);
+        width: 24px;
         height: 24px;
         object-fit: contain;
         object-position: center; }
       #store.store-inventory #ucpcontent > table > tbody > tr:first-child {
         grid-column: 1 / -1;
-        display: grid; }
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent);
+        text-align: center;
+        padding: var(--space-lg);
+        font-family: var(--font-serif);
+        font-weight: 700;
+        color: var(--text-secondary);
+        font-size: 24px;
+        margin-top: var(--space-xl);
+        margin-bottom: 0;
+        align-items: center; }
+        #store.store-inventory #ucpcontent > table > tbody > tr:first-child::before {
+          content: '';
+          position: absolute;
+          top: calc(-1 * var(--space-xl));
+          left: calc(50% - 0.5px);
+          width: 1px;
+          height: var(--space-xl);
+          background: var(--border-accent-transparent); }
         #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td {
           width: 100%;
           padding: 0; }
           #store.store-inventory #ucpcontent > table > tbody > tr:first-child > td:first-child {
-            line-height: 160%;
-            max-width: max-content;
-            display: block;
-            max-width: max-content;
-            padding: var(--spacing-xs) var(--spacing-sm); }
+            font-size: 0.7em; }
       #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(3), #store.store-inventory #ucpcontent > table > tbody > tr:nth-child(2) {
         display: none; }
       #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
-        padding: var(--spacing-md);
+        padding: var(--space-md);
         display: grid;
-        grid-template-columns: var(--storeImageWidth) calc(100% - var(--storeImageWidth) - var(--spacing-md));
-        grid-template-rows: max-content max-content max-content max-content auto;
-        gap: var(--spacing-md); }
+        grid-template-columns: 24px 1fr 1fr 24px;
+        grid-template-rows: max-content max-content auto max-content max-content;
+        gap: 0 var(--space-md);
+        background: var(--bg-transparent-alt);
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent); }
         #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td {
           padding: 0;
           width: 100%; }
@@ -243,22 +404,35 @@
             order: 1; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(2) {
             order: 2;
+            font-size: 20px;
+            font-family: var(--font-serif);
+            color: var(--text-secondary);
+            font-weight: 700;
+            grid-column: span 3;
             line-height: 160%;
             max-width: max-content;
-            padding: var(--spacing-xs) 0 var(--spacing-xs) var(--spacing-md); }
+            padding: var(--space-xs) 0; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:not(:first-child):not(:nth-child(2)) {
             grid-column: 1 / -1; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(3) {
             text-align: justify;
             order: 4;
-            padding: var(--spacing-sm) 0 0; }
-            #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(3):empty {
-              display: none; }
+            padding: var(--space-sm) 0 0;
+            text-align: justify;
+            font-style: italic;
+            font-size: var(--size-md);
+            line-height: 160%;
+            padding-bottom: var(--space-md);
+            text-transform: none; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(4) {
             flex: 0 0 100%;
             order: 3;
             text-align: left;
-            margin-bottom: calc(-1 * var(--spacing-xs)); }
+            margin-bottom: calc(-1 * var(--space-xs));
+            font-size: var(--size-xs);
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            text-transform: uppercase; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:nth-child(4)::after {
               content: ' Owned'; }
           #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child {
@@ -266,33 +440,44 @@
             align-items: end;
             flex: 0 0 100%;
             order: 5;
-            padding: var(--spacing-md) 0 0; }
+            padding: var(--space-md) 0 0; }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a {
+              font-size: var(--size-md);
               display: block;
-              max-width: max-content;
-              margin: 0 0 0 auto;
-              padding: var(--spacing-sm);
-              z-index: 1; }
+              padding: var(--space-xs) var(--space-md);
+              text-align: center;
+              border-radius: 2px;
+              background: var(--bg-accent-transparent);
+              color: var(--text-secondary);
+              text-transform: uppercase;
+              font-weight: 900;
+              letter-spacing: 0.1em;
+              border-color: transparent;
+              transition-duration: 0.3s;
+              border: 1px solid var(--border-primary);
+              margin-left: auto; }
+              #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child a:hover {
+                background: transparent;
+                border-color: var(--border-accent-transparent); }
             #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) td:last-child br {
               display: none; }
 
 #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child),
+#store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child),
 #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
-  display: grid; }
-  @media (min-width: 769px) {
-    #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child),
-    #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child),
-    #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child),
-    #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child),
-    #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child),
-    #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
-      grid-template-columns: 250px calc(100% - 265px); } }
+  display: grid;
+  border-top: 1px solid var(--border-accent-transparent);
+  border-bottom: 1px solid var(--border-accent-transparent);
+  background: var(--bg-transparent-alt);
+  margin-bottom: var(--space-sm);
+  padding: var(--space-md); }
   #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) > td,
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) > td,
+  #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) > td,
   #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) > td,
   #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child) > td,
   #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child) > td,
@@ -304,6 +489,9 @@
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b,
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong,
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label,
+  #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b,
+  #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong,
+  #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label,
   #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b,
   #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong,
   #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label,
@@ -316,16 +504,49 @@
   #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b,
   #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong,
   #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label {
-    display: block;
-    line-height: 160%;
-    max-width: max-content;
-    padding: var(--spacing-xs) var(--spacing-sm); }
+    font-size: var(--size-sm);
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    color: var(--text-secondary);
+    text-transform: uppercase; }
+    #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before,
+    #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b::before,
+    #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong::before,
+    #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label::before {
+      content: "";
+      display: block;
+      width: 25px;
+      height: 1px;
+      background: var(--bg-accent); }
     #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b ~ br,
     #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong ~ br,
     #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label ~ br,
     #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b ~ br,
     #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong ~ br,
     #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label ~ br,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b ~ br,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong ~ br,
+    #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label ~ br,
     #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child b ~ br,
     #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child strong ~ br,
     #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft:first-child label ~ br,
@@ -341,6 +562,7 @@
       display: none; }
   #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
+  #store.store-useitem #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
   #store.store-fine #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
   #store.store-edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
   #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child) .pformleft + .pformleft,
@@ -351,58 +573,68 @@
 #store.store-do_staff_inventory #ucpcontent > table {
   display: block; }
   #store.store-do_staff_inventory #ucpcontent > table > tbody {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs); }
-    @media (min-width: 481px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-md); }
+    @media (min-width: 769px) {
       #store.store-do_staff_inventory #ucpcontent > table > tbody {
-        gap: var(--spacing-md); } }
+        grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1025px) {
+      #store.store-do_staff_inventory #ucpcontent > table > tbody {
+        grid-template-columns: repeat(3, 1fr); } }
     #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
       display: flex;
-      flex-wrap: wrap;
-      height: max-content;
-      flex: 0 0 100%; }
-      @media (min-width: 769px) {
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc(50% - ( var(--spacing-md) / 2)); } }
-      @media (min-width: 1025px) {
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr {
-          flex: 0 0 calc((100% / 3) - ( var(--spacing-lg) * 2 / 3)); } }
+      flex-wrap: wrap; }
+      #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
+        padding: var(--space-md);
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-template-rows: repeat(auto-fit, minmax(0, max-content));
+        gap: 0 var(--space-md);
+        background: var(--bg-transparent-alt);
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent); }
+        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td {
+          text-align: left;
+          padding: 0 0 var(--space-lg) 0; }
+          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:first-child {
+            width: 24px;
+            height: 24px; }
+          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(2) {
+            width: 100%;
+            font-size: 20px;
+            font-family: var(--font-serif);
+            color: var(--text-secondary);
+            font-weight: 700; }
+          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(3) {
+            grid-column: 1 / -1;
+            padding: 0;
+            text-align: justify;
+            font-style: italic;
+            font-size: var(--size-md);
+            line-height: 160%; }
+          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(4) {
+            display: none; }
+          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(5) {
+            position: absolute;
+            bottom: var(--space-sm);
+            right: var(--space-sm);
+            padding: 0;
+            text-align: right; }
+            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(5) input {
+              height: auto;
+              width: auto;
+              padding: 0; }
+            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) td:nth-child(5) .input-wrap::after {
+              content: 'Delete'; }
+      #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child {
+        grid-column: 1 / -1; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr img {
-        width: var(--storeImageWidth);
-        height: var(--storeImageWidth);
+        width: 24px;
+        height: 24px;
         object-fit: contain;
         object-position: center; }
-      #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td {
-        padding: 0;
-        height: max-content;
-        text-align: left; }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
-          flex: 0 0 calc(var(--spacing-lg) + var(--storeImageWidth));
-          padding: var(--spacing-sm) 0 0 var(--spacing-sm); }
-          @media (min-width: 481px) {
-            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:first-child {
-              padding: var(--spacing-md) 0 0 var(--spacing-md); } }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(2) {
-          flex: 0 0 calc(100% - (var(--spacing-lg) + var(--storeImageWidth) + 10px)); }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(3) {
-          flex: 0 0 calc(100% - var(--spacing-sm));
-          text-align: justify; }
-          @media (min-width: 481px) {
-            #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(3) {
-              flex: 0 0 calc(100% - var(--spacing-md)); } }
-          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(3):empty {
-            display: none; }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(4) {
-          display: none; }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(5) {
-          flex: 0 0 100%; }
-          #store.store-do_staff_inventory #ucpcontent > table > tbody > tr > td:nth-child(5) .input-wrap::after {
-            content: 'Delete'; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:first-child, #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:nth-last-child(2):not(:nth-child(2)) {
         display: none; }
       #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child {
-        flex: 0 0 100%;
         border: none; }
-        #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:last-child td {
-          flex: 0 0 100%; }

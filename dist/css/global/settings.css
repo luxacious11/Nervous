@@ -4,8 +4,16 @@
 .accordion--trigger.is-active::before {
   content: '\f2d3'; }
 
-.profile--section ul li::marker {
+.profile--section ul li::marker,
+.ucp--description ul li::marker,
+.post--content .postcolor ul li::marker,
+.webpage--content-inner ul li::marker {
   content: '\e3d6'; }
+
+.alert-section .input-wrap .fancy-input::before,
+.members--filter-group label::before,
+.members--sort-buttons button::before {
+  content: '\f00c'; }
 
 .f-3 {
   --bg-redirect-image: url(https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_guidebook_min.jpg); }

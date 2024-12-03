@@ -166,6 +166,8 @@
         color: var(--text-accent); }
   body#Profile > .header,
   body#ST > .header,
+  body#Members > .header,
+  body#Pages > .header,
   body#UserCP > .header,
   body#Msg > .header {
     display: none; }

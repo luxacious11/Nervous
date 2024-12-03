@@ -1,3 +1,188 @@
 /*******************************
     Webpages
 ********************************/
+.webpage {
+  max-width: 800px;
+  margin: 0 auto; }
+  .webpage--menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin: 0 auto var(--space-lg);
+    background: var(--bg-transparent);
+    padding: var(--space-sm);
+    border: 1px solid var(--border-primary);
+    border-radius: 2px;
+    position: sticky;
+    top: calc(var(--size-menu) + var(--space-sm));
+    z-index: 3;
+    width: 100%; }
+    .webpage--menu .accordion {
+      display: none;
+      position: absolute;
+      top: calc(100% + var(--space-sm));
+      left: var(--space-sm);
+      max-width: calc(100% - (2 * var(--space-lg)));
+      background: var(--bg-transparent);
+      padding: var(--space-sm);
+      border: 1px solid var(--border-primary);
+      border-radius: 2px;
+      width: 250px;
+      max-height: calc(100vh - (2 * var(--size-menu)) - (2 * var(--space-lg)) - var(--size-diff) - 30px);
+      height: 100vh; }
+      .webpage--menu .accordion--trigger {
+        margin-bottom: var(--space-md); }
+      .webpage--menu .accordion--content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs); }
+        .webpage--menu .accordion--content:not(:last-child) {
+          padding: var(--space-xs) 0 var(--space-md); }
+        .webpage--menu .accordion--content a {
+          display: flex;
+          border: 1px solid var(--border-primary);
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          padding: 0 var(--space-md);
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          transition-duration: 0.3s;
+          border-radius: 2px;
+          text-transform: uppercase;
+          font-size: var(--size-xs); }
+          .webpage--menu .accordion--content a:hover {
+            background: var(--bg-accent-transparent); }
+    .webpage--menu:not(.is-open) .macro--button .fa-xmark {
+      display: none; }
+    .webpage--menu.is-open .accordion {
+      display: block; }
+    .webpage--menu.is-open .macro--button .fa-bars {
+      display: none; }
+  .webpage .tab-heading {
+    border-top: 1px solid var(--border-accent-transparent);
+    border-bottom: 1px solid var(--border-accent-transparent);
+    padding: var(--space-lg) var(--space-md);
+    color: var(--text-secondary);
+    font-family: var(--font-serif);
+    text-align: center;
+    margin: var(--space-xl) auto 0;
+    font-size: 30px;
+    line-height: 110%; }
+    @media only screen and (min-width: 480px) {
+      .webpage .tab-heading {
+        font-size: calc(30px + 30 * (100vw - 480px) / (1440 - 480)); } }
+    @media only screen and (min-width: 1440px) {
+      .webpage .tab-heading {
+        font-size: 60px; } }
+    .webpage .tab-heading::before {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--space-xl));
+      left: calc(50% - 0.5px);
+      display: block;
+      width: 1px;
+      height: var(--space-xl);
+      background: var(--border-accent-transparent); }
+  .webpage--content-inner {
+    border-bottom: 1px solid var(--border-accent-transparent);
+    background: var(--bg-transparent-alt);
+    padding: var(--space-xl) var(--space-lg);
+    font-size: var(--size-lg);
+    line-height: 200%;
+    text-align: justify; }
+  .webpage--warning {
+    z-index: 1; }
+    .webpage--warning button {
+      font-size: 24px;
+      background: var(--bg-accent-transparent);
+      width: 50px;
+      height: 50px;
+      border-radius: 2px;
+      border: 1px solid var(--border-accent); }
+      .webpage--warning button i {
+        color: var(--text-secondary); }
+    .webpage--warning-text {
+      position: absolute;
+      left: var(--space-sm);
+      top: calc(50px + var(--space-sm));
+      border: 1px solid var(--border-accent);
+      background: var(--bg-quaternary);
+      padding: var(--space-lg);
+      width: calc(100vw - var(--size-menu) - (2 * var(--space-lg)) - (2 * var(--space-md)) - (2 * var(--space-sm)));
+      max-width: 680px;
+      border-radius: 2px;
+      display: none; }
+      .webpage--warning-text.is-open {
+        display: block; }
+      @media (min-width: 601px) {
+        .webpage--warning-text {
+          top: 0;
+          left: calc(50px + var(--space-sm));
+          width: calc(100vw - 50px - var(--space-sm) - (2 * var(--size-menu)) - (2 * var(--space-lg))); } }
+  .webpage form > h3 {
+    margin-bottom: 0 !important; }
+  .webpage form label {
+    display: flex;
+    flex-direction: column; }
+    .webpage form label > b {
+      font-size: var(--size-sm);
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--text-secondary);
+      text-transform: uppercase; }
+      .webpage form label > b::before {
+        content: "";
+        display: block;
+        width: 25px;
+        height: 1px;
+        background: var(--bg-accent); }
+    .webpage form label > u {
+      text-transform: uppercase;
+      font-size: var(--size-xs);
+      letter-spacing: 0.2em;
+      font-weight: 800; }
+    .webpage form label input,
+    .webpage form label select,
+    .webpage form label textarea {
+      width: 100%; }
+    .webpage form label textarea {
+      height: 125px;
+      padding: var(--space-md); }
+  .webpage form button[type="submit"],
+  .webpage form button[type="button"] {
+    background: var(--bg-accent-transparent);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    padding: var(--space-md) var(--space-lg);
+    height: auto;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    font-size: var(--size-md);
+    line-height: 160%;
+    width: max-content;
+    margin: 0 auto -15px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition-duration: 0.3s; }
+    .webpage form button[type="submit"]:hover, .webpage form button[type="submit"]:focus,
+    .webpage form button[type="button"]:hover,
+    .webpage form button[type="button"]:focus {
+      background: transparent;
+      border-color: var(--border-accent-transparent); }
+    .webpage form button[type="submit"]:disabled,
+    .webpage form button[type="button"]:disabled {
+      filter: grayscale(1);
+      opacity: 0.75;
+      background: transparent;
+      border: 1px solid var(--border-accent-transparent); }
+  .webpage form .row {
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--border-primary);
+    margin-top: var(--space-sm); }
+    .webpage form .row:last-child {
+      padding-bottom: var(--space-md); }

@@ -248,5 +248,10 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
 
 /********** Store **********/
 if(pageType === 'store') {
-  //store menu
+  initStoreMenu();
+}
+
+/********** Member List Only **********/
+if(pageType === 'Members') {
+	initMembers();
 }
