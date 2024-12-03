@@ -93,7 +93,7 @@ function setPlotSwitchers(formID, data) {
         roleField.innerHTML = roleOptions;
     });
 }
-function checkRoleLimit(form, data, success, staffDiscord, publicDiscord) {
+function checkRoleLimit(form, data, staffDiscord, publicDiscord) {
     fetch(`https://opensheet.elk.sh/${sheetID}/Claims`)
     .then((response) => response.json())
     .then((claimData) => {
@@ -124,11 +124,11 @@ function checkRoleLimit(form, data, success, staffDiscord, publicDiscord) {
         if(data.Instances >= data.Limit) {
             handleWarning(form, limitReached);
         } else {
-            checkReservedRoles(form, data, success, staffDiscord, publicDiscord);
+            checkReservedRoles(form, data, staffDiscord, publicDiscord);
         }
     });
 }
-function checkReservedRoles(form, data, success, staffDiscord = null, publicDiscord = null) {
+function checkReservedRoles(form, data, staffDiscord = null, publicDiscord = null) {
     fetch(`https://opensheet.elk.sh/${sheetID}/PlotReserves`)
     .then((response) => response.json())
     .then((reserveData) => {
@@ -144,7 +144,7 @@ function checkReservedRoles(form, data, success, staffDiscord = null, publicDisc
         }
         
         if(data.Limit !== 'unlimited' && data.Instances < data.Limit) {
-            sendAjax(form, data, success, staffDiscord, publicDiscord);
+            sendAjax(form, data, staffDiscord, publicDiscord);
         } else {
             handleWarning(form, limitReached);
         }
