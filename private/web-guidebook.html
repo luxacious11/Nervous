@@ -288,6 +288,7 @@
                         .then((response) => response.json())
                         .then((businessData) => {
                             staticBusinesses = [...businessData];
+                            setBusinessList(`.clip-businesses`, businessData);
 
                             fetch(plotReserves)
                             .then((response) => response.json())

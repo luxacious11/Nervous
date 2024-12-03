@@ -67,7 +67,8 @@
       font-size: var(--size-xs);
       font-weight: 700;
       color: var(--text-secondary);
-      gap: var(--space-sm); }
+      gap: var(--space-sm);
+      text-align: justify; }
   .stats--section-links {
     display: flex;
     flex-wrap: wrap;

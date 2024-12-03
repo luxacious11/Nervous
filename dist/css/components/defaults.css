@@ -106,6 +106,8 @@ a[href=""] {
     display: none; }
     .input-wrap input:checked ~ .fancy-input {
       color: var(--text-secondary); }
+      .input-wrap input:checked ~ .fancy-input i {
+        color: var(--text-secondary); }
   .input-wrap .fancy-input {
     border: 1px solid var(--border-accent-transparent);
     display: flex;
@@ -119,6 +121,8 @@ a[href=""] {
     background: var(--bg-secondary);
     z-index: 2;
     transition-duration: 0.3s; }
+    .input-wrap .fancy-input i {
+      color: transparent; }
     .input-wrap .fancy-input.radio {
       border-radius: 50%; }
     .input-wrap .fancy-input i {

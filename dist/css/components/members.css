@@ -163,6 +163,16 @@
   @media (min-width: 769px) {
     .member {
       height: 500px; } }
+  .member--id {
+    position: absolute;
+    top: calc(var(--space-lg));
+    right: 10px;
+    line-height: 160%;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: var(--size-xs);
+    text-align: center;
+    font-weight: 800; }
   .member--top {
     display: flex;
     flex-direction: column;

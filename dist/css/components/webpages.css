@@ -120,12 +120,27 @@
           top: 0;
           left: calc(50px + var(--space-sm));
           width: calc(100vw - 50px - var(--space-sm) - (2 * var(--size-menu)) - (2 * var(--space-lg))); } }
-  .webpage form > h3 {
+  .webpage form h2,
+  .webpage form .h2,
+  .webpage form h3,
+  .webpage form .h3,
+  .webpage form h4,
+  .webpage form .h4,
+  .webpage form h5,
+  .webpage form .h5,
+  .webpage form h6,
+  .webpage form .h6,
+  .webpage form h7,
+  .webpage form .h7,
+  .webpage form h8,
+  .webpage form .h8 {
     margin-bottom: 0 !important; }
-  .webpage form label {
+  .webpage form label,
+  .webpage form .field-wrap {
     display: flex;
     flex-direction: column; }
-    .webpage form label > b {
+    .webpage form label > b,
+    .webpage form .field-wrap > b {
       font-size: var(--size-sm);
       font-weight: 800;
       letter-spacing: 0.4em;
@@ -134,22 +149,28 @@
       gap: var(--space-md);
       color: var(--text-secondary);
       text-transform: uppercase; }
-      .webpage form label > b::before {
+      .webpage form label > b::before,
+      .webpage form .field-wrap > b::before {
         content: "";
         display: block;
         width: 25px;
         height: 1px;
         background: var(--bg-accent); }
-    .webpage form label > u {
+    .webpage form label > u,
+    .webpage form .field-wrap > u {
       text-transform: uppercase;
       font-size: var(--size-xs);
       letter-spacing: 0.2em;
       font-weight: 800; }
     .webpage form label input,
     .webpage form label select,
-    .webpage form label textarea {
+    .webpage form label textarea,
+    .webpage form .field-wrap input,
+    .webpage form .field-wrap select,
+    .webpage form .field-wrap textarea {
       width: 100%; }
-    .webpage form label textarea {
+    .webpage form label textarea,
+    .webpage form .field-wrap textarea {
       height: 125px;
       padding: var(--space-md); }
   .webpage form button[type="submit"],
@@ -180,9 +201,28 @@
       opacity: 0.75;
       background: transparent;
       border: 1px solid var(--border-accent-transparent); }
+  .webpage form .job-row,
   .webpage form .row {
     padding: var(--space-md) 0;
     border-top: 1px solid var(--border-primary);
     margin-top: var(--space-sm); }
+    .webpage form .job-row:last-child,
     .webpage form .row:last-child {
       padding-bottom: var(--space-md); }
+  .webpage form .form-multiselect .input-wrap,
+  .webpage form .field-wrap .input-wrap {
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: var(--space-sm);
+    letter-spacing: 0.1em;
+    gap: var(--space-sm); }
+    .webpage form .form-multiselect .input-wrap input:checked ~ strong,
+    .webpage form .field-wrap .input-wrap input:checked ~ strong {
+      color: var(--text-secondary); }
+  .webpage form .section-wrap > .adjustable {
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-primary);
+    margin-bottom: var(--space-md); }
+    .webpage form .section-wrap > .adjustable .multi-buttons {
+      height: calc(52px + var(--size-diff)); }

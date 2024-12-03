@@ -1648,6 +1648,8 @@ tag-code {
 .pagination {
   text-transform: uppercase;
   font-size: 0; }
+  .pagination:not(:first-child) {
+    margin-left: var(--space-md); }
   .pagination .pagination_pagetxt {
     display: none; }
     .pagination .pagination_pagetxt + .pagination_current {

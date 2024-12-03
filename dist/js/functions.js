@@ -831,6 +831,7 @@ function formatMemberRow(type, data, extraFilters = '') {
     }
     return `<div class="members--member grid-item g-${data.universal.groupID} ${data.writer.aliasClass} ${type} ${extraFilters} ${tagList}">
         <div class="member">
+            <div class="member--id">N° ${data.universal.id}</div>
             <div class="member--top">
                 <img src="${data.universal.imageWide}" loading="lazy" />
             </div>

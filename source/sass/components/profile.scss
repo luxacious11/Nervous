@@ -5,6 +5,52 @@
 ********************************/
 .profile {
 
+    &--warning {
+        border-left: 1px solid var(--border-accent);
+        border-right: 1px solid var(--border-accent);
+        padding: var(--space-lg);
+        background: var(--bg-accent-transparent);
+        color: var(--text-secondary);
+        margin: var(--space-lg) auto;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+
+        i {
+            font-style: normal !important;
+            font-family: var(--font-serif) !important;
+            font-size: 20px !important;
+            color: var(--text-secondary) !important;
+            font-weight: bold !important;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+
+            &::before {
+                font-family: 'Font Awesome 6 Pro';
+            }
+
+            &::after {
+                content: 'Trigger Warnings';
+            }
+        }
+
+        &:has(.note--body) {
+            i {
+                &::after {
+                    content: 'Notes';
+                }
+            }
+        }
+
+        & > span {
+            font-size: var(--space-sm);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+    }
+
     .header--info {
         display: grid;
     }

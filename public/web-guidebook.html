@@ -749,25 +749,359 @@
                             <tag-tab data-key="#edit-member">
                                 <h2 class="tab-heading">Edit Member Info</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-edit-member" data-type="grid">
+    <label>
+        <b>OOC Profile</b>
+        <span><input type="text" id="parentid" placeholder="URL or ID" required=""></span>
+    </label>
+    <div class="form-multiselect" data-type="flex">
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="alias">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Alias</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="pronouns">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Pronouns</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="age">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Age</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="timezone">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Timezone</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="about">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update About Text</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="triggers">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Triggers</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-member" value="ratings">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Ratings</strong>
+        </label>
+    </div>
+    <label class="hidden ifAlias">
+        <b>Alias</b>
+        <span><input type="text" id="alias" placeholder="Alias"></span>
+    </label>
+    <label class="hidden ifPronouns">
+        <b>Pronouns</b>
+        <span><input type="text" id="pronouns" placeholder="Pronouns"></span>
+    </label>
+    <label class="hidden ifAge">
+        <b>Age</b>
+        <span><input type="number" id="age" min="21"></span>
+    </label>
+    <label class="hidden ifTimezone">
+        <b>Timezone</b>
+        <span><input type="text" id="timezone" placeholder="GMT-based please!"></span>
+    </label>
+    <label class="hidden ifAbout">
+        <b>About</b>
+        <span><textarea id="about" placeholder="Tell us about yourself!"></textarea></span>
+    </label>
+    <label class="hidden ifTriggers">
+        <b>Triggers</b>
+        <span><textarea id="triggers" placeholder="If you have any triggers, please list them."></textarea></span>
+    </label>
+    <div class="hidden ifRatings" data-type="grid" data-columns="3">
+        <label>
+            <b>Mature Language</b>
+            <span>
+                <select id="language">
+                    <option value="">(select)</option>
+                    <option value="0">None</option>
+                    <option value="1">Mild</option>
+                    <option value="2">With Limits</option>
+                    <option value="3">Any</option>
+                </select>
+            </span>
+        </label>
+        <label>
+            <b>Sexual Content</b>
+            <span>
+                <select id="sex">
+                    <option value="">(select)</option>
+                    <option value="0">None</option>
+                    <option value="1">Mild</option>
+                    <option value="2">With Limits</option>
+                    <option value="3">Any</option>
+                </select>
+            </span>
+        </label>
+        <label>
+            <b>Violence</b>
+            <span>
+                <select id="violence">
+                    <option value="">(select)</option>
+                    <option value="0">None</option>
+                    <option value="1">Mild</option>
+                    <option value="2">With Limits</option>
+                    <option value="3">Any</option>
+                </select>
+            </span>
+        </label>
+    </div>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#edit-claims">
                                 <h2 class="tab-heading">Edit a Character</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-edit-character" data-type="grid">
+    <label>
+        <b>Profile</b>
+        <span><input type="text" id="accountid" placeholder="URL or ID" required=""></span>
+    </label>
+    <div class="form-multiselect" data-type="flex">
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="character">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Name</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="group">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Group</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="jobs-add">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Add Job(s)</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="jobs-change">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Change Job(s)</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="jobs-remove">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Remove Job(s)</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="roles-add">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Add Subplot Role(s)</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="roles-change">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Change Subplot Role(s)</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-character" value="roles-remove">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Remove Subplot Role(s)</strong>
+        </label>
+    </div>
+    <label class="hidden ifName">
+        <b>Name</b>
+        <span><input type="text" id="character" placeholder="Character Name"></span>
+    </label>
+    <label class="hidden ifGroup">
+        <b>Group</b>
+        <span><select id="group">
+            <option value="">(select)</option>
+            <optgroup label="Standard">
+                <option value="15">Amaranth</option>
+                <option value="7">Birch</option>
+                <option value="11">Blueberry</option>
+                <option value="40">Cattail</option>
+                <option value="22">Cedar</option>
+                <option value="38">Crowberry</option>
+                <option value="10">Dandelion</option>
+                <option value="25">Goldenrod</option>
+                <option value="13">Hemlock</option>
+                <option value="12">Juniper</option>
+                <option value="8">Lupin</option>
+                <option value="14">Nettle</option>
+                <option value="30">Periwinkle</option>
+                <option value="31">Primrose</option>
+                <option value="34">Seaweed</option>
+                <option value="9">Spruce</option>
+                <option value="16">Sundew</option>
+                <option value="36">Yarrow</option>
+            </optgroup>
+            <optgroup label="Premium">
+                <option value="19">Balsam</option>
+                <option value="37">Bearberry</option>
+                <option value="35">Buttercup</option>
+                <option value="20">Clover</option>
+                <option value="39">Dogwood</option>
+                <option value="29">Hawthorn</option>
+                <option value="23">Laurel</option>
+                <option value="24">Sage</option>
+                <option value="33">Starflower</option>
+                <option value="32">Sweetgrass</option>
+                <option value="18">Thistle</option>
+                <option value="17">Tobacco</option>
+            </optgroup>
+        </select></span>
+    </label>
+    <div class="hidden ifJobAdd adjustable field-wrap">
+        <b>Add Job(s)</b>
+        <div class="rows jobs-wrap" data-type="grid"></div>
+        <div class="multi-buttons" data-row-type="jobs">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </div>
+    <div class="hidden ifJobChange field-wrap">
+        <b>Change Job(s)</b>
+        <div id="clip-job-change" data-type="grid" data-gap="sm"></div>
+        <blockquote>There are no submitted characters matching the profile entered. Please confirm you have entered a profile correctly in the field above.</blockquote>
+    </div>
+    <div class="hidden ifJobRemove field-wrap">
+        <b>Remove Job(s)</b>
+        <div id="clip-job-remove"></div>
+        <blockquote>There are no submitted characters matching the profile entered. Please confirm you have entered a profile correctly in the field above.</blockquote>
+    </div>
+    <div class="hidden ifRoleAdd adjustable field-wrap">
+        <b>Add Role(s)</b>
+        <div class="rows roles-wrap" data-type="grid"></div>
+        <div class="multi-buttons" data-row-type="roles">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </div>
+    <div class="hidden ifRoleChange field-wrap">
+        <b>Change Role(s)</b>
+        <div id="clip-role-change"></div>
+        <blockquote>There are no submitted characters matching the profile entered. Please confirm you have entered a profile correctly in the field above.</blockquote>
+    </div>
+    <div class="hidden ifRoleRemove field-wrap">
+        <b>Remove Role(s)</b>
+        <div id="clip-role-remove"></div>
+        <blockquote>There are no submitted characters matching the profile entered. Please confirm you have entered a profile correctly in the field above.</blockquote>
+    </div>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#edit-business">
                                 <h2 class="tab-heading">Edit a Business</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-edit-business" data-type="grid">
+    <label>
+        <b>Business Name</b>
+        <span><select id="employer" class="clip-businesses" required></select></span>
+    </label>
+    <div class="form-multiselect" data-type="flex">
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-business" value="wanted">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Add / Update Want Ad</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-business" value="hiring">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Hiring Status</strong>
+        </label>
+        <label class="input-wrap">
+            <input type="checkbox" name="edit-business" value="hours">
+            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <strong>Update Hours</strong>
+        </label>
+    </div>
+    <label class="hidden ifWanted fullWidth">
+        <b>Related Wanted Ad</b>
+        <span><input type="text" id="wanted" placeholder="URL"></span>
+    </label>
+    <label class="hidden ifHiring fullWidth">
+        <b>Hiring?</b>
+        <span><select id="hiring">
+            <option value="">(select)</option>
+            <option value="yes">Yes</option>
+            <option value="ask first">Ask First</option>
+            <option value="no">No</option>
+        </select></span>
+    </label>
+    <div data-type="grid" class="hidden ifHours fullWidth">
+        <label>
+            <b>Type of Opening Hours</b>
+            <span><select id="hours">
+                <option value="">(select)</option>
+                <option value="set hours">Set Hours</option>
+                <option value="by appointment">By Appointment</option>
+                <option value="no set hours">No Set Hours / Not Open to the Public</option>
+            </select></span>
+        </label>
+        <label class="adjustable ifSetHours hidden">
+            <b>Hours</b>
+            <div class="rows hours-wrap" data-type="grid"></div>
+            <div class="multi-buttons" data-row-type="hours">
+                <button type="button" onclick="addRow(this)">+ New Row</button>
+                <button type="button" onclick="removeRow(this)">- Remove Row</button>
+            </div>
+        </label>
+    </div>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#staff-help">
                                 <h2 class="tab-heading">Request Staff Help</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-moderation" data-type="grid" data-columns="2">
+    <input type="hidden" id="requester" value="Name (#ID, IP Address)" />
+    <label class="fullWidth">
+        <b>Request Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="board">Board Addition</option>
+            <option value="thread">Thread Moderation</option>
+            <option value="account">Account Moderation</option>
+            <option value="other">Other Request</option>
+        </select></span>
+    </label>
+    <label class="hidden ifBoard">
+        <b>Board Title</b>
+        <span><input type="text" id="board" placeholder="Board" /></span>
+    </label>
+    <label class="hidden ifBoard">
+        <b>Parent Category/Board</b>
+        <span><input type="text" id="parent" placeholder="Parent Category/Board" /></span>
+    </label>
+    <label class="hidden ifThread fullWidth">
+        <b>Threads</b>
+        <span><textarea id="threads" placeholder="Threads"></textarea></span>
+    </label>
+    <label class="hidden ifThread fullWidth">
+        <b>Move To</b>
+        <span><select id="thread-location">
+            <option value="">(select)</option>
+            <option value="dev">Archive - Complete Thread</option>
+            <option value="dev">Archive - Incomplete Thread</option>
+            <option value="dev">Archive - Dev/Socials/Comms</option>
+            <option value="dev">Development</option>
+            <option value="sm">Social Media</option>
+            <option value="comm">Communications</option>
+            <option value="ooc">Out of Character</option>
+        </select></span>
+    </label>
+    <label class="hidden ifAccount fullWidth">
+        <b>Account</b>
+        <span><input type="text" id="account" placeholder="URL or Name" /></span>
+    </label>
+    <label class="hidden ifNotThread fullWidth">
+        <b>Request Details</b>
+        <span><textarea id="request" placeholder="Request"></textarea></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                         </tag-tabset>
@@ -777,7 +1111,17 @@
                             <tag-tab data-key="#announce">
                                 <h2 class="tab-heading">Announce a Character</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-approve" data-type="grid">
+    <label>
+        <b>Profile</b>
+        <span><input type="text" id="accountid" placeholder="Account ID" required /></span>
+    </label>
+    <label>
+        <b>About</b>
+        <span><textarea id="about" placeholder="Short, sweet, and to-the-point" required></textarea></span>
+    </label>
+    <button type="submit" id="submit">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#add-species">
@@ -789,7 +1133,33 @@
                             <tag-tab data-key="#add-plot">
                                 <h2 class="tab-heading">Add a Subplot</h2>
                                 <div class="webpage--content-inner">
-                                    
+                                    <form id="form-add-plot" data-type="grid" data-columns="2">
+    <label class="fullWidth">
+        <b>Plot Name</b>
+        <span><input type="text" id="plot" placeholder="Plot" required=""></span>
+    </label>
+    <label>
+        <b>Plot Hashtag</b>
+        <span><input type="text" id="id" placeholder="ID" required=""></span>
+    </label>
+    <label>
+        <b>Plot Number</b>
+        <span><input type="number" id="priority" min="1" required=""></span>
+    </label>
+    <label class="fullWidth">
+        <b>Overview</b>
+        <span><textarea id="overview" placeholder="Overview" required=""></textarea></span>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Sections</b>
+        <div class="rows"></div>
+        <div class="multi-buttons" data-row-type="plotsections">
+            <button type="button" onclick="addRow(this)">+ Add Section</button>
+            <button type="button" onclick="removeRow(this)">- Remove Section</button>
+        </div>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
                                 </div>
                             </tag-tab>
                         </tag-tabset>
@@ -816,6 +1186,7 @@
                         .then((response) => response.json())
                         .then((businessData) => {
                             staticBusinesses = [...businessData];
+                            setBusinessList(`.clip-businesses`, businessData);
 
                             fetch(plotReserves)
                             .then((response) => response.json())

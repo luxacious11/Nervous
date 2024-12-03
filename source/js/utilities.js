@@ -653,7 +653,7 @@ function getSelectText(field) {
     return standardizeText(field.options[field.selectedIndex].innerText);
 }
 function getValue(field) {
-    return field.value;
+    return field.value.trim();
 }
 function getStandardValue(field) {
     return standardizeText(getValue(field));
@@ -848,11 +848,11 @@ function formatSectionFields() {
         </label>
         <label class="adjustable">
         <b>Roles</b>
+        <div class="rows" data-type="grid" data-gap="xs"></div>
         <div class="multi-buttons" data-row-type="plotroles">
-            <button type="button" onclick="addRow(this)">+ Add</button>
-            <button type="button" onclick="removeRow(this)">- Remove</button>
+            <button type="button" onclick="addRow(this)">+ Add Role</button>
+            <button type="button" onclick="removeRow(this)">- Remove Role</button>
         </div>
-        <div class="rows" data-type="grid"></div>
     </label>
     </div>`;
 }
@@ -982,7 +982,7 @@ function formatJobChanges(data) {
     let html = ``;
     jobs.forEach(job => {
         html += `<div data-employer="${cleanText(job.employer)}" data-section="${cleanText(job.section)}" data-position="${cleanText(job.position)}" data-type="grid" data-gap="sm" class="job-row">
-            <div class="h6">${job.employer}</div>
+            <div class="h7">${job.employer}</div>
             <div data-type="grid" data-columns="2">
                 <label class="job-section">
                     <b>Section</b>
@@ -1044,7 +1044,7 @@ function formatRoleChangesl(data) {
         });
 
         html += `<div data-plot="${role.plot}" data-section="${role.section}" data-role="${role.role}" data-type="grid" data-gap="sm" class="role-row">
-            <div class="h6">${role.plot}</div>
+            <div class="h7">${role.plot}</div>
             <div data-type="grid" data-columns="2">
                 <label class="role-section">
                     <b>Section</b>
@@ -1163,5 +1163,18 @@ function setMultiplePlotSwitchers(formID, data, wrapClass) {
             });
             roleField.innerHTML = roleOptions;
         });
+    });
+}
+function setBusinessList(fieldClass, data, segmented = false) {
+    document.querySelectorAll(fieldClass).forEach(el => {
+        let html = `<option value="">(select)</option>`;
+        if(segmented) {
+            //edit data
+        }
+        data.forEach(business => {
+            html += `<option value="${cleanText(business.Employer)}">${capitalize(business.Employer)}</option>`;
+        });
+
+        el.innerHTML = html;
     });
 }

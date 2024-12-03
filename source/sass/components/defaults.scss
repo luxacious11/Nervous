@@ -146,6 +146,10 @@ a[href=""] {
         
         &:checked ~ .fancy-input {
             color: var(--text-secondary);
+
+            i {
+                color: var(--text-secondary);
+            }
         }
     }
     .fancy-input {
@@ -161,6 +165,11 @@ a[href=""] {
         background: var(--bg-secondary);
         z-index: 2;
         transition-duration: 0.3s;
+
+        i {
+            color: transparent;
+        }
+
 
         &.radio {
             border-radius: 50%;

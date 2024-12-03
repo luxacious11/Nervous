@@ -313,3 +313,302 @@ document.querySelector('#form-sort').addEventListener('submit', e => {
 
     sendAjax(form, characterData, staffDiscord, publicDiscord);
 });
+
+/***** Edit Member Claims *****/
+let editMemberForm = document.querySelector('#form-edit-member');
+let aliasBox = editMemberForm.querySelector('[value="alias"]');
+let pronounsBox = editMemberForm.querySelector('[value="pronouns"]');
+let ageBox = editMemberForm.querySelector('[value="age"]');
+let timezoneBox = editMemberForm.querySelector('[value="timezone"]');
+let aboutBox = editMemberForm.querySelector('[value="about"]');
+let triggersBox = editMemberForm.querySelector('[value="triggers"]');
+let ratingsBox = editMemberForm.querySelector('[value="ratings"]');
+checkToggle(aliasBox, '.ifAlias');
+checkToggle(pronounsBox, '.ifPronouns');
+checkToggle(ageBox, '.ifAge');
+checkToggle(timezoneBox, '.ifTimezone');
+checkToggle(aboutBox, '.ifAbout');
+checkToggle(triggersBox, '.ifTriggers');
+checkToggle(ratingsBox, '.ifRatings');
+editMemberForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        selectedChanges = Array.prototype.slice.call(form.querySelectorAll('[name="edit-member"]')).filter(item => item.checked).map(item => item.value),
+        accountId = form.querySelector('#parentid'),
+        alias = form.querySelector('#alias'),
+        pronouns = form.querySelector('#pronouns'),
+        age = form.querySelector('#age'),
+        timezone = form.querySelector('#timezone'),
+        about = form.querySelector('#about'),
+        triggers = form.querySelector('#triggers'),
+        language = form.querySelector('#language'),
+        sex = form.querySelector('#sex'),
+        violence = form.querySelector('#violence');
+
+    let data = {
+        SubmissionType: `edit-member`,
+        AccountID: getAccountID(accountId),
+        selectedChanges,
+        Alias: getStandardValue(alias),
+        Pronouns: getStandardValue(pronouns),
+        Age: getValue(age),
+        Timezone: getStandardValue(timezone),
+        About: getValue(about),
+        Triggers: getValue(triggers),
+        Language: getSelectValue(language),
+        Sex: getSelectValue(sex),
+        Violence: getSelectValue(violence),
+    }
+
+    setFormStatus(form);
+
+    editMember(form, data);
+});
+
+/***** Edit Character Claims *****/
+let editCharacterForm = document.querySelector('#form-edit-character');
+let profile = editCharacterForm.querySelector('#accountid');
+let nameBox = editCharacterForm.querySelector('[value="character"]');
+let groupBox = editCharacterForm.querySelector('[value="group"]');
+let jobAddBox = editCharacterForm.querySelector('[value="jobs-add"]');
+let jobChangeBox = editCharacterForm.querySelector('[value="jobs-change"]');
+let jobRemoveBox = editCharacterForm.querySelector('[value="jobs-remove"]');
+let roleAddBox = editCharacterForm.querySelector('[value="roles-add"]');
+let roleChangeBox = editCharacterForm.querySelector('[value="roles-change"]');
+let roleRemoveBox = editCharacterForm.querySelector('[value="roles-remove"]');
+checkToggle(nameBox, '.ifName');
+checkToggle(groupBox, '.ifGroup');
+checkToggle(jobAddBox, '.ifJobAdd');
+checkToggle(jobChangeBox, '.ifJobChange');
+checkToggle(jobRemoveBox, '.ifJobRemove');
+checkToggle(roleAddBox, '.ifRoleAdd');
+checkToggle(roleChangeBox, '.ifRoleChange');
+checkToggle(roleRemoveBox, '.ifRoleRemove');
+profile.addEventListener('input', e => {
+    pullCharacterClaims(e.currentTarget);
+});
+editCharacterForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        selectedChanges = Array.prototype.slice.call(form.querySelectorAll('[name="edit-character"]')).filter(item => item.checked).map(item => item.value),
+        accountId = form.querySelector('#accountid'),
+        character = form.querySelector('#character'),
+        group = form.querySelector('#group');
+
+    let data = {
+        SubmissionType: `edit-claims`,
+        AccountID: getAccountID(accountId),
+        selectedChanges,
+        Character: getStandardValue(character),
+        Group: getSelectText(group),
+        GroupID: getSelectValue(group),
+    }
+
+    setFormStatus(form);
+
+    editCharacter(form, data);
+});
+
+/***** Edit Business *****/
+let editBusinessForm = document.querySelector('#form-edit-business');
+let wantedBox = editBusinessForm.querySelector('[value="wanted"]');
+let hiringBox = editBusinessForm.querySelector('[value="hiring"]');
+let hoursBox = editBusinessForm.querySelector('[value="hours"]');
+let editHours = editBusinessForm.querySelector('#hours');
+checkToggle(wantedBox, '.ifWanted');
+checkToggle(hiringBox, '.ifHiring');
+checkToggle(hoursBox, '.ifHours');
+simpleFieldToggle(editHours, '.ifSetHours', 'set hours');
+editBusinessForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        selectedChanges = Array.prototype.slice.call(form.querySelectorAll('[name="edit-business"]')).filter(item => item.checked).map(item => item.value),
+        employer = form.querySelector('#employer'),
+        hiring = form.querySelector('#hiring'),
+        wanted = form.querySelector('#wanted'),
+        hours = [];
+
+    if(form.querySelector('#hours').options[form.querySelector('#hours').selectedIndex].value === 'set hours') {
+        let hourSets = form.querySelectorAll('.hours-wrap .row');
+        hourSets.forEach(set => {
+            let rangeStart = getSelectValue(set.querySelector('.days-start select'));
+            let rangeEnd = getSelectValue(set.querySelector('.days-end select'));
+            let timeStart =  capitalize(getStandardValue(set.querySelector('.time-start input')), [' ']);
+            let timeEnd = getStandardValue(set.querySelector('.time-end input')) !== `` && capitalize(getStandardValue(set.querySelector('.time-end input')), [' ']);
+
+            hours.push({
+                range: `${rangeStart} - ${rangeEnd}`.trim(),
+                time: timeEnd ? `${timeStart} - ${timeEnd}`.trim() : timeStart.trim(),
+            });
+        });
+    } else {
+        hours.push({
+            text: getSelectValue(form.querySelector('#hours')),
+        });
+    }
+
+    let data = {
+        SubmissionType: 'edit-business',
+        selectedChanges: selectedChanges,
+        Employer: getSelectText(employer),
+        Hours: JSON.stringify(hours),
+        Hiring: getSelectValue(hiring),
+        Wanted: getValue(wanted),
+    }
+
+    setFormStatus(form);
+
+    editBusiness(form, data);
+});
+
+/***** Request Help *****/
+let requestType = document.querySelector('#form-moderation #type');
+simpleFieldToggle(requestType, '.ifBoard', 'board');
+simpleFieldToggle(requestType, '.ifThread', 'thread');
+simpleFieldToggle(requestType, '.ifAccount', 'account');
+simpleFieldToggle(requestType, '.ifOther', 'other');
+complexFieldToggle(requestType, '.ifNotThread', ['', 'thread'], false);
+document.querySelector('#form-moderation').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget;
+    let type = getSelectValue(form.querySelector('#type'));
+    let requester = getStandardValue(form.querySelector('#requester'));
+    let board, parent, threads, moveTo, account, request;
+    let discord = {
+        title: `New Moderation Request: ${capitalize(type, [' '])}`,
+        text: `**Requested by:** ${capitalize(requester, [' ', '-'])}\n`,
+        hook: modLogs,
+    };
+    switch(type) {
+        case `board`:
+            board = getStandardValue(form.querySelector('#board'));
+            parent = getStandardValue(form.querySelector('#parent'));
+            request = getValue(form.querySelector('#request'));
+            discord.text += `**Board Title:** ${capitalize(board)}
+            **Location:** ${capitalize(parent)}
+            **Request Details:**
+            ${request}`;
+            break;
+        case `thread`:
+            threads = getValue(form.querySelector('#threads'));
+            moveTo = getSelectText(form.querySelector('#thread-location'));
+            discord.text += `**Move To:** ${moveTo}
+            **Thread(s) to Move:**
+            ${threads}`;
+            break;
+        case `account`:
+            account = getStandardValue(form.querySelector('#account'));
+            request = getValue(form.querySelector('#request'));
+            discord.text += `**Account:** ${account}
+            **Request:**
+            ${request}`;
+            break;
+        case `other`:
+            request = getValue(form.querySelector('#request'));
+            discord.text += `**Request:**
+            ${request}`;
+            break;
+        default:
+            break;
+    }
+
+    sendDiscordMessage(`https://discord.com/api/webhooks/${discord.hook}`, discord.title, discord.text);
+
+    form.innerHTML = successMessage;
+});
+
+/***** Approve Character *****/
+document.querySelector('#form-approve').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        id = form.querySelector('#accountid'),
+        existing = staticClaims.filter(item => item.AccountID === getAccountID(id))[0],
+        bodyText = form.querySelector('#about');
+    
+    let data = {
+        SubmissionType: 'approve-character',
+        AccountID: getAccountID(id),
+        Status: 'approved',
+    }
+
+    let publicDiscord = {
+        title: `Welcome ${capitalize(existing.Character)}!`,
+        text: `**Played by ${capitalize(existing.Member, [' ', '-'])}**
+        _looks like ${existing.Face}, belongs in ${existing.Group}_
+
+        > ${getValue(bodyText)}
+
+        [**Read More**](https://wherethehellis.jcink.net/?showuser=${existing.AccountID})`,
+        hook: announceLogs,
+        color: rgbToHex(colors[existing.Group][0], colors[existing.Group][1], colors[existing.Group][2]),
+    }
+
+    setFormStatus(form);
+    
+    sendAjax(form, data, publicDiscord);
+});
+
+/***** Add Plot *****/
+document.querySelector('#form-add-plot').addEventListener('submit', e => {
+    e.preventDefault();
+
+    let form = e.currentTarget,
+        plot = form.querySelector('#plot'),
+        id = form.querySelector('#id'),
+        priority = form.querySelector('#priority'),
+        overview = form.querySelector('#overview'),
+        sectionWraps = form.querySelectorAll('.section-wrap'),
+        sections = [];
+
+    sectionWraps.forEach((sectionWrap, i) => {
+        let title = getStandardValue(sectionWrap.querySelector('.section-title input'));
+        let priority = i + 1;
+        let overview = getValue(sectionWrap.querySelector('.section-overview textarea'));
+        let roleWraps = sectionWrap.querySelectorAll('.section-role');
+        let roles = [];
+
+        roleWraps.forEach((roleWrap, i) => {
+            let title = getStandardValue(roleWrap.querySelector('.role-title input'));
+            let priority = i + 1;
+            let limit = getStandardValue(roleWrap.querySelector('.role-limit input'));
+            let description = getValue(roleWrap.querySelector('.role-description input'));
+            roles.push({
+                role: title,
+                priority: priority,
+                limit: limit,
+                description: description,
+            });
+        });
+
+        sections.push({
+            title: title,
+            priority: priority,
+            overview: overview,
+            roles: roles,
+        });
+    });
+
+    let data = {
+        SubmissionType: 'add-plot',
+        Plot: getStandardValue(plot),
+        PlotID: getStandardValue(id),
+        Priority: getValue(priority),
+        Overview: getValue(overview),
+        Sections: JSON.stringify(sections),
+    }
+
+    let staffDiscord = {
+        title: `Plot Added`,
+        text: `No extra actions required.`,
+        hook: staffLogs,
+    }
+
+    setFormStatus(form);
+
+    sendAjax(form, data, staffDiscord);
+});
