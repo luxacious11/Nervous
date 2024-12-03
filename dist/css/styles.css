@@ -540,6 +540,10 @@ textarea {
   letter-spacing: 0;
   line-height: 160%; }
 
+textarea {
+  padding: var(--size-md);
+  height: auto; }
+
 input[type="submit"] {
   background: var(--bg-accent-transparent);
   color: var(--text-secondary);

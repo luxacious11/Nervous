@@ -206,10 +206,10 @@ const specialSpecies = [
 const sheetID = '1UaGRk6t13ZRWCaI-qwsLxPF1fbhBXmI--4sV1DDhL58';
 const deployID = 'AKfycbx2s_8hCMPQRMgs8cyw82qMlZFqlCteuFKTeYWRpEzt90Bxak64f1xvnB1RK4Mu0Scd';
 
-const reserveLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const businessLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const claimLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
-const sortLogs = `1172357121472466994/h4gBFvuwmWrNWkA_FizzToQHNea1SvAFIhQFY4RedNk8a0PHowva3S-Pldg7ER6ymmnA`;
+const reserveLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const businessLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const claimLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const sortLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
 const faceReserves = `https://opensheet.elk.sh/${sheetID}/FaceReserves`;
