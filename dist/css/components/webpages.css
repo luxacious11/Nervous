@@ -259,3 +259,5 @@
       border-radius: 2px; }
   .webpage form#form-species-add [data-type="grid"][data-gap="xs"] {
     align-items: start; }
+  .webpage #lookup-results {
+    margin-top: calc(16px + var(--space-lg) + var(--size-diff)); }

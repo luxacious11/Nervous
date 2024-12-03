@@ -282,21 +282,15 @@
                         <tag-tabset>
                             <tag-tab data-key="#temperance-neighbourhoods">
                                 <h2 class="tab-heading">Temperance, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <% temperance %>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#sydney-neighbourhoods">
                                 <h2 class="tab-heading">Sydney, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <% sydney %>
-                                </div></div>
-                            </tag-tab>
-                            <tag-tab data-key="#lookup">
-                                <h2 class="tab-heading">Address Lookup</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% lookup %>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
@@ -304,43 +298,230 @@
                         <tag-tabset>
                             <tag-tab data-key="#address">
                                 <h2 class="tab-heading">Register an Address</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-new-add %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    <form class="form-address" data-type="grid" data-columns="2">
+    <label class="fullWidth">
+        <b>Address Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="residential">Residential</option>
+            <option value="business">Business</option>
+        </select></span>
+    </label>
+    <label class="hidden residentOnly fullWidth">
+        <b>Profile</b>
+        <span><input type="text" id="id" placeholder="URL or ID" /></span>
+    </label>
+    <label class="hidden businessOnly fullWidth">
+        <b>Business Name</b>
+        <span><select id="employer" class="clip-businesses"></select></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Region</b>
+        <span><select id="region" required>
+            <option value="">(select)</option>
+            <option value="temperance">Temperance, NS</option>
+            <option value="sydney">Sydney, NS</option>
+            <option value="rural">Elsewhere</option>
+        </select></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Neighborhood</b>
+        <span><select id="neighbourhood" required>
+            <option value="">(select)</option>
+            <option value="1" class="hidden tempOnly">Main Street</option>
+            <option value="2" class="hidden tempOnly">Village</option>
+            <option value="3" class="hidden tempOnly">Waterfront</option>
+            <option value="4" class="hidden tempOnly">Inland</option>
+            <option value="5" class="hidden sydOnly">Ashby</option>
+            <option value="6" class="hidden sydOnly">Southend</option>
+            <option value="7" class="hidden sydOnly">Northend</option>
+            <option value="8" class="hidden sydOnly">Waterfront District</option>
+            <option value="9" class="hidden sydOnly">Shipyard</option>
+            <option value="10" class="hidden sydOnly">Hardwood Hill</option>
+            <option value="11" class="hidden sydOnly">Boulderwood</option>
+            <option value="12" class="hidden sydOnly">Membertou</option>
+            <option value="13" class="hidden sydOnly">Whitney Pier</option>
+            <option value="14" class="hidden sydOnly">Sydney River</option>
+            <option value="15" class="hidden sydOnly">Westmount</option>
+            <option value="16" class="hidden sydOnly">Coxheath</option>
+            <option value="17" class="hidden sydOnly">Mira Road</option>
+            <option value="18" class="hidden sydOnly">Outskirts</option>
+            <option value="" class="hidden ruralOnly">Not Applicable</option>
+        </select></span>
+    </label>
+    <label class="fullWidth hidden typeOnly">
+        <b>Street Name</b>
+        <span><input type="text" id="street" placeholder="Street Name" required /></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>House / Building Number</b>
+        <span><input type="number" id="houseNumber" min="1" placeholder="1" required /></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Unit Number (optional)</b>
+        <span><input type="number" id="apartmentNumber" min="1" placeholder="1" /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#update-address">
                                 <h2 class="tab-heading">Change an Address</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-up-add %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    <form class="form-address" data-type="grid" data-columns="2">
+    <label class="fullWidth">
+        <b>Address Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="residential">Residential</option>
+            <option value="business">Business</option>
+        </select></span>
+    </label>
+    <label class="hidden residentOnly fullWidth">
+        <b>Profile</b>
+        <span><input type="text" id="id" placeholder="URL or ID" /></span>
+    </label>
+    <label class="hidden businessOnly fullWidth">
+        <b>Business Name</b>
+        <span><select id="employer" class="clip-businesses"></select></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Region</b>
+        <span><select id="region" required>
+            <option value="">(select)</option>
+            <option value="temperance">Temperance, NS</option>
+            <option value="sydney">Sydney, NS</option>
+            <option value="rural">Elsewhere</option>
+        </select></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Neighborhood</b>
+        <span><select id="neighbourhood" required>
+            <option value="">(select)</option>
+            <option value="1" class="hidden tempOnly">Main Street</option>
+            <option value="2" class="hidden tempOnly">Village</option>
+            <option value="3" class="hidden tempOnly">Waterfront</option>
+            <option value="4" class="hidden tempOnly">Inland</option>
+            <option value="5" class="hidden sydOnly">Ashby</option>
+            <option value="6" class="hidden sydOnly">Southend</option>
+            <option value="7" class="hidden sydOnly">Northend</option>
+            <option value="8" class="hidden sydOnly">Waterfront District</option>
+            <option value="9" class="hidden sydOnly">Shipyard</option>
+            <option value="10" class="hidden sydOnly">Hardwood Hill</option>
+            <option value="11" class="hidden sydOnly">Boulderwood</option>
+            <option value="12" class="hidden sydOnly">Membertou</option>
+            <option value="13" class="hidden sydOnly">Whitney Pier</option>
+            <option value="14" class="hidden sydOnly">Sydney River</option>
+            <option value="15" class="hidden sydOnly">Westmount</option>
+            <option value="16" class="hidden sydOnly">Coxheath</option>
+            <option value="17" class="hidden sydOnly">Mira Road</option>
+            <option value="18" class="hidden sydOnly">Outskirts</option>
+            <option value="" class="hidden ruralOnly">Not Applicable</option>
+        </select></span>
+    </label>
+    <label class="fullWidth hidden typeOnly">
+        <b>Street Name</b>
+        <span><input type="text" id="street" placeholder="Street Name" required /></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>House / Building Number</b>
+        <span><input type="number" id="houseNumber" min="1" placeholder="1" required /></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Unit Number (optional)</b>
+        <span><input type="number" id="apartmentNumber" min="1" placeholder="1" /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#connection">
                                 <h2 class="tab-heading">Add a Connection</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-connect %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    <form id="form-connection" data-type="grid" data-columns="2">
+    <label>
+        <b>Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="historical">Historical</option>
+            <option value="local">Local</option>
+        </select></span>
+    </label>
+    <label>
+        <b>Profile URL / ID</b>
+        <span><input type="text" id="id" placeholder="ID" required /></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Category</b>
+        <span><select id="category" required>
+            <option value="">(select)</option>
+            <option value="1" class="hidden histOnly">Ancient History (Pre-450 AD)</option>
+            <option value="2" class="hidden histOnly">Middle Ages (450 - 1500 AD)</option>
+            <option value="3" class="hidden histOnly">Early Modern (1500 - 1700 AD)</option>
+            <option value="4" class="hidden histOnly">1700s</option>
+            <option value="5" class="hidden histOnly">1800s</option>
+            <option value="6" class="hidden histOnly">1900s</option>
+            <option value="7" class="hidden histOnly">2000s</option>
+            <option value="9" class="hidden localOnly">Local History</option>
+            <option value="10" class="hidden localOnly">Municipal Leadership</option>
+            <option value="11" class="hidden localOnly">High School</option>
+            <option value="12" class="hidden localOnly">Post-Secondary</option>
+            <option value="13" class="hidden localOnly">Volunteer Work</option>
+            <option value="14" class="hidden localOnly">Sports</option>
+            <option value="15" class="hidden localOnly">Interest Clubs</option>
+        </select></span>
+    </label>
+    <label class="hidden typeOnly">
+        <b>Subcategory</b>
+        <span><input type="text" id="subcategory" placeholder="Subcategory" required /></span>
+    </label>
+    <label class="hidden histOnly fullWidth">
+        <b>Location</b>
+        <span><input type="text" id="location" placeholder="Location" /></span>
+    </label>
+    <label class="hidden typeOnly fullWidth">
+        <b>Role / Position / Years / Detail</b>
+        <span><input type="text" id="role" placeholder="Role / Position / Detail" required /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
                     <tag-tab class="tab-category" data-category="addresses">
                         <tag-tabset>
+                            <tag-tab data-key="#lookup">
+                                <h2 class="tab-heading">Address Lookup</h2>
+                                <div class="webpage--content-inner">
+                                    <form id="form-search-address" data-type="grid" data-columns="2">
+    <label class="fullWidth">
+        <b>Character / Business Name</b>
+        <span><input type="text" id="name" placeholder="Name" /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Search</button>
+</form>
+<div id="lookup-results"></div>
+                                </div>
+                            </tag-tab>
                             <tag-tab data-key="#temperance">
                                 <h2 class="tab-heading">Temperance, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#sydney">
                                 <h2 class="tab-heading">Sydney, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#rural">
                                 <h2 class="tab-heading">Rural Cape Breton</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
@@ -348,27 +529,24 @@
                         <tag-tabset>
                             <tag-tab data-key="#historical">
                                 <h2 class="tab-heading">Historical Connections</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No figures of note.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#local">
                                 <h2 class="tab-heading">Local Connections</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No data submitted.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
                 </tag-tabset>
             </section>
 
+            <script src="../dist/js/formHelpers.js"></script>
+            <script src="../dist/js/connectionForms.js"></script>
             <script>
-                const sheetID = '1UaGRk6t13ZRWCaI-qwsLxPF1fbhBXmI--4sV1DDhL58';
-                const deployID = 'AKfycbx2s_8hCMPQRMgs8cyw82qMlZFqlCteuFKTeYWRpEzt90Bxak64f1xvnB1RK4Mu0Scd';
-
-                const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
-
                 let staticClaims = [];
 
                 fetch(claims)
@@ -376,8 +554,16 @@
                 .then((claimsData) => {
                     staticClaims = [...claimsData];
 
-                }).then(() => {
-                    initWebpages();
+                    fetch(businesses)
+                    .then((response) => response.json())
+                    .then((businessData) => {
+                        staticBusinesses = [...businessData];
+                        setBusinessList(`.clip-businesses`, businessData);
+
+                    }).then(() => {
+                        initWebpages();
+                    });
+
                 });
             </script>
 

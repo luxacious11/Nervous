@@ -333,4 +333,8 @@
             align-items: start;
         }
     }
+
+    #lookup-results {
+        margin-top: calc(16px + var(--space-lg) + var(--size-diff));
+    }
 }

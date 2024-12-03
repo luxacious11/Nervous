@@ -70,21 +70,15 @@
                         <tag-tabset>
                             <tag-tab data-key="#temperance-neighbourhoods">
                                 <h2 class="tab-heading">Temperance, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <% temperance %>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#sydney-neighbourhoods">
                                 <h2 class="tab-heading">Sydney, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <% sydney %>
-                                </div></div>
-                            </tag-tab>
-                            <tag-tab data-key="#lookup">
-                                <h2 class="tab-heading">Address Lookup</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% lookup %>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
@@ -92,43 +86,49 @@
                         <tag-tabset>
                             <tag-tab data-key="#address">
                                 <h2 class="tab-heading">Register an Address</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-new-add %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/register-address.html')
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#update-address">
                                 <h2 class="tab-heading">Change an Address</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-up-add %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/register-address.html')
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#connection">
                                 <h2 class="tab-heading">Add a Connection</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
-                                    <% f-connect %>
-                                </div></div>
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-connection.html')
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
                     <tag-tab class="tab-category" data-category="addresses">
                         <tag-tabset>
+                            <tag-tab data-key="#lookup">
+                                <h2 class="tab-heading">Address Lookup</h2>
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/address-lookup.html')
+                                </div>
+                            </tag-tab>
                             <tag-tab data-key="#temperance">
                                 <h2 class="tab-heading">Temperance, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#sydney">
                                 <h2 class="tab-heading">Sydney, NS</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#rural">
                                 <h2 class="tab-heading">Rural Cape Breton</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No residents recorded.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
@@ -136,27 +136,24 @@
                         <tag-tabset>
                             <tag-tab data-key="#historical">
                                 <h2 class="tab-heading">Historical Connections</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No figures of note.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                             <tag-tab data-key="#local">
                                 <h2 class="tab-heading">Local Connections</h2>
-                                <div class="webpage--content-inner"><div class="scroll">
+                                <div class="webpage--content-inner">
                                     <div class="h8">No data submitted.</div>
-                                </div></div>
+                                </div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
                 </tag-tabset>
             </section>
 
+            <script src="../dist/js/formHelpers.js"></script>
+            <script src="../dist/js/connectionForms.js"></script>
             <script>
-                const sheetID = '1UaGRk6t13ZRWCaI-qwsLxPF1fbhBXmI--4sV1DDhL58';
-                const deployID = 'AKfycbx2s_8hCMPQRMgs8cyw82qMlZFqlCteuFKTeYWRpEzt90Bxak64f1xvnB1RK4Mu0Scd';
-
-                const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
-
                 let staticClaims = [];
 
                 fetch(claims)
@@ -164,8 +161,16 @@
                 .then((claimsData) => {
                     staticClaims = [...claimsData];
 
-                }).then(() => {
-                    initWebpages();
+                    fetch(businesses)
+                    .then((response) => response.json())
+                    .then((businessData) => {
+                        staticBusinesses = [...businessData];
+                        setBusinessList(`.clip-businesses`, businessData);
+
+                    }).then(() => {
+                        initWebpages();
+                    });
+
                 });
             </script>
 

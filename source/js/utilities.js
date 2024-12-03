@@ -785,15 +785,23 @@ function checkToggle(field, ifclass) {
         checkToggle(e.currentTarget, ifclass);
     });
 }
-function simpleFieldToggle(field, ifclass, showIf) {
-    if(field.options[field.selectedIndex].value === showIf) {
-        document.querySelectorAll(ifclass).forEach(item => item.classList.remove('hidden'));
+function simpleFieldToggle(field, ifclass, showIf, form = null) {
+    if(form) {
+        if(field.options[field.selectedIndex].value === showIf) {
+            form.querySelectorAll(ifclass).forEach(item => item.classList.remove('hidden'));
+        } else {
+            form.querySelectorAll(ifclass).forEach(item => item.classList.add('hidden'));
+        }
     } else {
-        document.querySelectorAll(ifclass).forEach(item => item.classList.add('hidden'));
+        if(field.options[field.selectedIndex].value === showIf) {
+            document.querySelectorAll(ifclass).forEach(item => item.classList.remove('hidden'));
+        } else {
+            document.querySelectorAll(ifclass).forEach(item => item.classList.add('hidden'));
+        }
     }
 
     field.addEventListener('change', e => {
-        simpleFieldToggle(e.currentTarget, ifclass, showIf);
+        simpleFieldToggle(e.currentTarget, ifclass, showIf, form);
     });
 }
 function complexFieldToggle(field, ifclass, showIf, equals) {

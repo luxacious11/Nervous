@@ -6391,6 +6391,8 @@ tag-tabset {
     -webkit-align-items: start;
         -ms-flex-align: start;
             align-items: start; }
+  .webpage #lookup-results {
+    margin-top: calc(16px + var(--space-lg) + var(--size-diff)); }
 
 /*******************************
     Jcink Defaults
