@@ -128,6 +128,9 @@ function searchAddress(form, data) {
             </li>`;
         }
     });
+    if(lookupList.length === 0) {
+        html += `<li>No residents or businesses match this string.</li>`
+    }
     html += `</ul>`;
 
     if(html === `<ul></ul>`) {
