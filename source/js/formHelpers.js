@@ -578,13 +578,15 @@ function editBusiness(form, data) {
                     changeMessage += `\n`;
                 }
                 initialMessage += `**Hours:**\n`;
-                JSON.parse(original.Hours).forEach(set => {
-                    if(set.range) {
-                        initialMessage += `${set.range} (${set.time})`;
-                    } else {
-                        initialMessage += `${set.text}`;
-                    }
-                });
+                if(original.Hours && original.Hours !== '') {
+                    JSON.parse(original.Hours).forEach(set => {
+                        if(set.range) {
+                            initialMessage += `${set.range} (${set.time})`;
+                        } else {
+                            initialMessage += `${set.text}`;
+                        }
+                    });
+                }
                 changeMessage += `**Hours:**\n`;
                 JSON.parse(existing.Hours).forEach(set => {
                     if(set.range) {
