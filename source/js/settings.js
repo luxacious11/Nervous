@@ -206,14 +206,15 @@ const specialSpecies = [
 const sheetID = '1UaGRk6t13ZRWCaI-qwsLxPF1fbhBXmI--4sV1DDhL58';
 const deployID = 'AKfycbx2s_8hCMPQRMgs8cyw82qMlZFqlCteuFKTeYWRpEzt90Bxak64f1xvnB1RK4Mu0Scd';
 
-const reserveLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const businessLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const claimLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const reserveLogs = `1313680295563759669/-GNWyANRxxqoEbFFK54xFlt1piU2fuxqYHtgzyz8lceIA63KV47F8U4mu9SadE2sCWVa`;
+const businessLogs = `1313680542469849168/RA8uv8KJTAw9qPRoeb3FcXVLGih5A7Zao-IAAm1Xn8CwFnDrN1FWsQWCoqZo4ORQ4sYO`;
+const claimLogs = `1313680463973580840/FeT8HUgmYq3jZNO8OHxGgMR08Umj6grVICFHVgXOpKW9eD7NGt7gsuu9CAYlz9GpnZEs`;
+const modLogs = `1313680627182342164/QmqUu2abmhC1FDFhXmDioxQEgJM1D2QF7CRlLXfsrK8zWicqcjqqNWLlZSk5BwFHue72`;
+const staffLogs = `1313680779439640696/WVzrQKslzvrMKf4SZx2HUEaw-huPjGKg13XF_-TrklDEOzptjUVKtNrLoWPU8cwKENDW`;
+const speciesLogs = `1313680705473085441/slHm6Xa3x-NdFjWi_VCuKw9lV7US6zBDntrYy0QgKZQDjd6gS35wYeheZl9xew2MgGQd`;
+
 const sortLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const modLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 const announceLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const staffLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const speciesLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 const publicSpeciesLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
 
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
@@ -222,6 +223,7 @@ const plotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
 const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
+const species = `https://opensheet.elk.sh/${sheetID}/Species`;
 const speciesStats = `https://opensheet.elk.sh/${sheetID}/SpeciesStats`;
 
 const defaultReserve = 14;

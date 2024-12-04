@@ -1055,7 +1055,7 @@ function formatRoleChangesl(data) {
     let html = ``;
 
     roles.forEach(role => {
-        let activePlot = subplotDataVar.filter(plot => role.plot === plot.Plot)[0];
+        let activePlot = staticSubplots.filter(plot => role.plot === plot.Plot)[0];
         let sections = JSON.parse(activePlot.Sections);
         let sectionOptions = `<option value="">(select)</option>`;
         sections.forEach(section => {
@@ -1205,7 +1205,7 @@ function setBusinessList(fieldClass, data, segmented = false) {
             //edit data
         }
         data.forEach(business => {
-            html += `<option value="${cleanText(business.Employer)}">${capitalize(business.Employer)}</option>`;
+            html += `<option value="${cleanText(business.Employer)}">${capitalize(business.Employer, [' ', '-'])}</option>`;
         });
 
         el.innerHTML = html;

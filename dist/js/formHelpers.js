@@ -297,9 +297,9 @@ function pullCharacterClaims(field) {
         } else {
             form.querySelectorAll('.ifRoleChange, .ifRoleRemove').forEach(item => {
                 if(item.querySelector('blockquote')) {
-                    item.querySelector('blockquote').innerText = 'This character is not currently employed.';
+                    item.querySelector('blockquote').innerText = 'This character is not currently part of a subplot.';
                 } else {
-                    item.insertAdjacentHTML('beforeend', `<blockquote>This character is not currently employed.</blockquote>`)
+                    item.insertAdjacentHTML('beforeend', `<blockquote>This character is not currently part of a subplot.</blockquote>`)
                 }
             });
         }
@@ -322,6 +322,7 @@ function editCharacter(form, data) {
 
         //if member exists
         if(existing.length === 1) {
+        
             existing = existing[0];
             let original = {...existing};
             let initialMessage = ``, changeMessage = ``;
@@ -433,7 +434,7 @@ function editCharacter(form, data) {
                     }
                 });
             }
-            
+            console.log(data.selectedChanges);
             if(data.selectedChanges.includes('roles-add') || data.selectedChanges.includes('roles-change') || data.selectedChanges.includes('roles-remove')) {
                 let rolesArray = original.Roles && original.Roles !== '' ? JSON.parse(original.Roles) : [];
                 
@@ -499,9 +500,11 @@ function editCharacter(form, data) {
                     changeMessage += `\n`;
                 }
                 initialMessage += `**Previous Roles:**\n`;
-                JSON.parse(original.Roles).forEach(role => {
-                    initialMessage += `${role.plot} - ${role.section} - ${role.role}\n`;
-                });
+                if(original.Roles && original.Roles !== '') {
+                    JSON.parse(original.Roles).forEach(role => {
+                        initialMessage += `${role.plot} - ${role.section} - ${role.role}\n`;
+                    });
+                }
 
                 changeMessage += `**Updated Roles:**\n`;
                 JSON.parse(existing.Roles).forEach(role => {
