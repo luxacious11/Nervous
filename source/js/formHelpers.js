@@ -592,7 +592,7 @@ function editBusiness(form, data) {
                     if(set.range) {
                         changeMessage += `${set.range} (${set.time})`;
                     } else {
-                        changeMessage += `${set.text})`;
+                        changeMessage += `${set.text}`;
                     }
                 });
             }
