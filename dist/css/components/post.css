@@ -227,12 +227,16 @@
   .post--right {
     display: grid;
     gap: var(--space-md);
-    padding-right: var(--space-lg);
-    padding-left: var(--space-lg); }
+    padding-right: var(--space-md);
+    padding-left: var(--space-md); }
     @media (max-width: 1024px) {
       .post--right {
         border-top: 1px solid var(--border-accent-transparent);
         padding-top: var(--space-lg); } }
+    @media (min-width: 601px) {
+      .post--right {
+        padding-right: var(--space-lg);
+        padding-left: var(--space-lg); } }
     @media (min-width: 1025px) {
       .post--right {
         border-left: 1px solid var(--border-accent-transparent); } }

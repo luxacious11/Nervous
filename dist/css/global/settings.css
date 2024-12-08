@@ -7,13 +7,19 @@
 .profile--section ul li::marker,
 .ucp--description ul li::marker,
 .post--content .postcolor ul li::marker,
-.webpage--content-inner ul li::marker {
+.webpage--content-inner ul li::marker,
+.species--overview .scroll ul li::marker {
   content: '\e3d6'; }
 
 .alert-section .input-wrap .fancy-input::before,
+.webpage--filter-group label::before,
 .members--filter-group label::before,
 .members--sort-buttons button::before {
   content: '\f00c'; }
+
+a[target="_blank"]:not(.staffOnly)::after,
+a.external::after {
+  content: '\f08e'; }
 
 .f-3 {
   --bg-redirect-image: url(https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_guidebook_min.jpg); }

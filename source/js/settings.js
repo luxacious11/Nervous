@@ -1,12 +1,49 @@
+const discordChannels = [
+	{title: `#comm-tags`, hook: `1222619480731947028/udI01gRguGBnLb4uSGv7UCNkDPo6TdTYhABks68wXgS1K_U_z3LHMMnfheDoPUX-Kfyw`},
+	{title: `#thread-tags`, hook: `1222619465963929801/w3iZ_xgX6WEe-WXuqO25_wlvyZy3AIK_ggCfyeEfsB3rBQs4Hlws_Ux7abMKUf9CAQTW`},
+	{title: `#open-comms`, hook: `1222619662903279617/_rlDqv8FfEJSEPXDG2nxWzfh-u4izhO1b4D-Y02M07GO1BpUrKftXcmliBk2cwlpnxSg`},
+	{title: `#open-threads`, hook: `1222619636722569298/LNwDFoiEcRgBm4uV4WVBDQshgCbFHlemS56dyV49Oyzx0KnTlL8cW_vmliIVaH7kI7mo`},
+];
+
+const discordTags = [
+    {alias: `Athena`, id: `509884319704023040`},
+    {alias: `Atlas`, id: `388906867096813582`},
+    {alias: `Aurora`, id: `402233375391481868`},
+    {alias: `Dashin`, id: `177638202755121152`},
+    {alias: `Hermes`, id: `830491813407883306`},
+    {alias: `Iris`, id: `691131810213527592`},
+    {alias: `Ixchel`, id: `761250715720089650`},
+    {alias: `Kade`, id: `288169191914078211`},
+    {alias: `Katy`, id: `951975041350897704`},
+    {alias: `Lux`, id: `253627726886469642`},
+    {alias: `Max`, id: `359467024449142796`},
+    {alias: `Onii`, id: `289273912217567234`},
+    {alias: `Peche`, id: `283338302487265280`},
+    {alias: `Pinky`, id: `562006518099345439`},
+    {alias: `Raven`, id: `447748693962129418`},
+    {alias: `Raye`, id: `237772770241413121`},
+    {alias: `Remi`, id: `1009896626007068732`},
+    {alias: `Rin`, id: `269106704447176704`},
+    {alias: `Shay`, id: `301925093112807425`},
+    {alias: `Silence`, id: `224926781243785218`},
+    {alias: `Sparrow`, id: `1280671308111155304`},
+    {alias: `Spyder`, id: `189583247141765120`},
+    {alias: `Sunny Flower`, id: `85490376281968640`},
+    {alias: `Theo`, id: `243141923634675712`},
+    {alias: `Whisper`, id: `808086875021377627`},
+    {alias: `Zaely`, id: `545319120581951488`},
+];
+
+const discordRoles = [
+    {title: `Open`, id: `&1124169819869155451`},
+    {title: `Vox Machina`, id: `&1236751323374817382`},
+];
+
 const uploads = `uploads2`;
 const siteName = `godlybehaviour`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
 const defaultSquare = `https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_guidebook_min.jpg`;
 const staffDiscordRole = `1124161240378392717`;
-
-const staffGroups = ['4', '26', '28'];
-const oocGroups = [...staffGroups, '6'];
-const optGroups = ['3'];
 
 const colors = {
     'amaranth': [157, 99, 99],
@@ -41,9 +78,17 @@ const colors = {
     'cattail': [134, 47, 28],
 }
 
+const unusable = ['premium species', 'premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
+
+const staffGroups = ['4', '26', '28'];
+const oocGroups = [...staffGroups, '6'];
+const optGroups = ['3'];
+
 const extraSpecies = ['Werecreature', 'Dragon', 'Vampire', 'Faerie', 'Elemental', 'Centaur'];
 
-const markdownSafe = `.profile .markdown, .postcolor.no-template, .postcolor blockquote, .postcolor tag-content, .postcolor tag-block, .postcolor tag-event, .postcolor tag-msg, .postcolor tag-action`;
+const immortals = ['phoenix', 'vampire', 'jinn', 'kitsune', 'selkie', 'púca', 'barghest', 'faerie', 'spriggan', 'unicorn', 'faun', 'qilin', 'ghost', 'reaper', 'hellhound', 'aster', 'coaltus', 'marid', 'pegasus', 'supplicant'];
+
+const markdownSafe = `.profile .markdown, .postcolor.no-template, .postcolor blockquote, .postcolor tag-content, .postcolor tag-block, .postcolor tag-event, .postcolor tag-msg, .postcolor tag-action, .postcolor et-content`;
 
 /** auto-tracker code by FizzyElf - https://fizzyelf.jcink.net **/
 trackerParams = {
@@ -70,7 +115,7 @@ trackerParams = {
 }
 
 const speciesFields = [28, 58, 59, 61, 62, 63, 64];
-const fullWidthFields = [12, 13, 23, 24, 27, 77, 76, 73, 29, 30, 31, 32, 33, 34, 65, 35, 66, 67, 68, 69, 70, 78, 72, 71, 40, 79, 56, 57, ...speciesFields];
+const fullWidthFields = [12, 13, 23, 24, 27, 77, 76, 73, 29, 30, 31, 32, 33, 34, 65, 35, 66, 67, 68, 69, 70, 78, 72, 71, 40, 56, 57, 81, ...speciesFields];
 const thirdWidthFields = [16, 17, 18];
 const setHeightFields = [14, 15, 26, 77];
 
@@ -82,7 +127,7 @@ const characterFields = createFieldArray([13, 14, 15, 16, 17, 18, 19, 20, 21, 22
 const singleRelFields = createFieldArray([35]);
 const sectionRelFields = createFieldArray([66, 67, 68, 69, 70, 71, 72, 78]);
 
-const hybridFields = createFieldArray([28]);
+const hybridFields = createFieldArray([28, 81]);
 const wereFields = createFieldArray([58]);
 const dragonFields = createFieldArray([59]);
 const vampFields = createFieldArray([61]);
@@ -162,7 +207,7 @@ const charHeaders = [
 
         <p>On the other hand, if you happen to hit the character maximum for the freeform, use the "Freeform Overflow" to continue writing. In most cases, however, this field will simply be left blank.</p>
 
-        <p>Most, if not all, of our HTML-based codes in our <a href="https://wherethehellis.jcink.net/index.php?showforum=4" target="_blank">Codebank</a> should work in our freeform.</p>
+        <p>Most, if not all, of our HTML-based codes in our <a href="?showforum=5" target="_blank">Codebank</a> should work in our freeform.</p>
 
         <p>It is worth noting that these, and most, sections of the application do support some limited markdown options for easier coding. These include ** on either side to bold, _ on either side to italicize, and || on either side to spoiler. Additionally, we have quicker ways to do lists available as markdown. The code is below:</p>
 
@@ -213,9 +258,9 @@ const modLogs = `1313680627182342164/QmqUu2abmhC1FDFhXmDioxQEgJM1D2QF7CRlLXfsrK8
 const staffLogs = `1313680779439640696/WVzrQKslzvrMKf4SZx2HUEaw-huPjGKg13XF_-TrklDEOzptjUVKtNrLoWPU8cwKENDW`;
 const speciesLogs = `1313680705473085441/slHm6Xa3x-NdFjWi_VCuKw9lV7US6zBDntrYy0QgKZQDjd6gS35wYeheZl9xew2MgGQd`;
 
-const sortLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const announceLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
-const publicSpeciesLogs = `1313298065972789259/OXTRq26mhZKE5yQ7NOonYPAb-TPmustlRlqC8x9oZXKqZA2ePsLwV6kaY5ZoqP0kCC3t`;
+const sortLogs = `1124161944119685150/oH3fHzZWdI4Yzt7Td8AnvP0XcHLgXm_RJTq0pVI19s1lpCfiI2WkTqK7Y_BmpTLuFe1A`;
+const announceLogs = `1124162110750994474/YF0rNXP5bc3GvYUjn-0_Hn0yHBU5YgUF6vFfi1qLZM7xmOm95y0Zg0UtMY8KNBVRs50N`;
+const publicSpeciesLogs = `1195496716670083082/yJIenU4kdwM-T-xhA2Y1q1OhSvuwm0pDh2vicSfPaoJRzRcNSI1DrLl2K4RJvjMG5u-3`;
 
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
 const faceReserves = `https://opensheet.elk.sh/${sheetID}/FaceReserves`;
@@ -236,32 +281,29 @@ const limitReached = `<blockquote class="fullWidth warning">Uh-oh! This role has
 
 const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><b>Account</b></div>
         <div class="accordion--content" data-category="account">
-            <a href="./user-edit.html">Edit Profile</a>
-            <a href="./user-avatar.html">Update Avatar</a>
-            <a href="./user-accounts.html">Sub-accounts</a>
-            <a href="./user-name.html">Edit Username</a>
-            <a href="./user-pass.html">Change Password</a>
-            <a href="./user-email.html">Update Email</a>
+            <a href="?act=UserCP&CODE=01">Edit Profile</a>
+            <a href="?act=UserCP&CODE=24">Update Avatar</a>
+            <a href="?act=UserCP&CODE=54">Sub-accounts</a>
+            <a href="?act=UserCP&CODE=52">Edit Username</a>
+            <a href="?act=UserCP&CODE=28">Change Password</a>
+            <a href="?act=UserCP&CODE=08">Update Email</a>
         </div>
         <div class="accordion--trigger" data-category="messages"><b>Messages</b></div>
         <div class="accordion--content" data-category="messages">
-            <a href="./user-inbox.html">Inbox</a>
-            <a href="./user-sendmessage.html">Send Message</a>
-            <a href="./user-viewmessage.html">View Message</a>
+            <a href="?act=Msg&CODE=01">Inbox</a>
+            <a href="?act=Msg&CODE=04">Send Message</a>
         </div>
         <div class="accordion--trigger" data-category="tracking"><b>Tracking</b></div>
         <div class="accordion--content" data-category="tracking">
-            <a href="./user-alerts.html">Alerts</a>
-            <a href="./user-forums.html">Forums</a>
-            <a href="./user-forum-none.html">Forums - None</a>
-            <a href="./user-topics.html">Topics</a>
-            <a href="./user-topics-none.html">Topics - None</a>
+            <a href="?act=UserCP&CODE=alerts">Alerts</a>
+            <a href="?act=UserCP&CODE=50">Forums</a>
+            <a href="?act=UserCP&CODE=26">Topics</a>
         </div>
         <div class="accordion--trigger" data-category="settings"><b>Settings</b></div>
         <div class="accordion--content" data-category="settings">
-            <a href="./user-boardset.html">Board</a>
-            <a href="./user-alertset.html">Alerts</a>
-            <a href="./user-emailset.html">Emails</a>
+            <a href="?act=UserCP&CODE=04">Board</a>
+            <a href="?act=UserCP&CODE=alerts_settings">Alerts</a>
+            <a href="?act=UserCP&CODE=02">Emails</a>
         </div>`;
 
 const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
@@ -273,15 +315,16 @@ const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal
         <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
         <div class="accordion--content" data-category="shop">
             <a href="?act=store">Home</a>
-            <a href="?act=store&code=shop&category=5">Appreciation</a>
-            <a href="?act=store&code=shop&category=2">Education</a>
-            <a href="?act=store&code=shop&category=6" class="staffOnly">Events</a>
-            <a href="?act=store&code=shop&category=1">Features & Occupations</a>
-            <a href="?act=store&code=shop&category=7" class="staffOnly">Longevity</a>
-            <a href="?act=store&code=shop&category=9" class="staffOnly">Posting</a>
-            <a href="?act=store&code=shop&category=8" class="staffOnly">Productivity</a>
-            <a href="?act=store&code=shop&category=3">Relationship Status</a>
-            <a href="?act=store&code=shop&category=4">Traits & Other</a>
+            <a href="?act=store&code=shop&category=9">Appreciation</a>
+            <a href="?act=store&code=shop&category=10">Events</a>
+            <a href="?act=store&code=shop&category=3">Hobbies</a>
+            <a href="?act=store&code=shop&category=8">Loyalty</a>
+            <a href="?act=store&code=shop&category=5">Player</a>
+            <a href="?act=store&code=shop&category=11">Premium Features</a>
+            <a href="?act=store&code=shop&category=6">Relationships</a>
+            <a href="?act=store&code=shop&category=7">Species</a>
+            <a href="?act=store&code=shop&category=1">Traits</a>
+            <a href="?act=store&code=shop&category=4">Zodiac</a>
         </div>
         <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
         <div class="accordion--content staffOnly" data-category="staff">

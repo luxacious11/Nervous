@@ -38,6 +38,15 @@ a {
     &[href="<i>No Information</i>"] {
         display: none;
     }
+
+    &[target="_blank"]:not(.staffOnly)::after,
+    &.external::after {
+        font-size: 1.2em;
+        font-family: 'Font Awesome 6 Pro';
+        top: -2px;
+        position: relative;
+        margin-left: 5px;
+    }
 }
 
 input,
@@ -174,6 +183,11 @@ button {
             line-height: 100%;
             color: var(--text-secondary);
             flex: 0 0 auto;
+            max-width: calc(100vw - var(--size-menu) - (2 * var(--space-md)) - 28px - (2 * var(--space-xl)));
+
+            @include mq-up(xs) {
+                max-width: calc(100vw - var(--size-menu) - (2 * var(--space-md)) - 28px - (3 * var(--space-xl)));
+            }
 
             &::before {
                 content: '';
@@ -194,7 +208,8 @@ button {
 .profile--section,
 .ucp--description,
 .post--content .postcolor,
-.webpage--content-inner {
+.webpage--content-inner,
+.species--overview .scroll {
 
     h2:not(.accordion--trigger),
     .h2:not(.accordion--trigger),
@@ -218,6 +233,18 @@ button {
             letter-spacing: inherit;
             text-align: inherit;
             text-transform: inherit;
+        }
+
+        & + br {
+            display: none;
+        }
+    }
+
+    blockquote,
+    tl,
+    ul {
+        & + br {
+            display: none;
         }
     }
 
@@ -409,6 +436,7 @@ button {
         font-weight: 900;
         width: max-content;
         max-width: 100%;
+        margin-left: 0;
     }
     
     h8:not(.accordion--trigger),
@@ -442,7 +470,8 @@ button {
     h8,
     .h8,
     blockquote,
-    ul {
+    ul,
+    tl {
         &:first-child,
         & + h2,
         & + h3,
@@ -451,18 +480,49 @@ button {
         & + h6,
         & + h7,
         & + h8,
+        & + .h2,
+        & + .h3,
+        & + .h4,
+        & + .h5,
+        & + .h6,
+        & + .h7,
+        & + .h8,
         & + blockquote,
-        & + ul {
-            margin-top: 0;
+        & + ul,
+        & + tl,
+        & + br + h2,
+        & + br + h3,
+        & + br + h4,
+        & + br + h5,
+        & + br + h6,
+        & + br + h7,
+        & + br + h8,
+        & + br + .h2,
+        & + br + .h3,
+        & + br + .h4,
+        & + br + .h5,
+        & + br + .h6,
+        & + br + .h7,
+        & + br + .h8,
+        & + br + blockquote,
+        & + br + ul,
+        & + br + tl {
+            margin-top: 0 !important;
+            margin-bottom: var(--space-md) !important;
         }
     }
-    b {
+    tl > ul {
+        margin: 0;
+    }
+    b,
+    tag-spoken {
         font-weight: 900;
         color: var(--text-accent);
         font-size: 1.1em;
         letter-spacing: -0.03em;
     }
-    i {
+    i,
+    tag-thought {
         font-weight: 400;
         color: var(--text-accent);
         font-size: 1.1em;
@@ -491,6 +551,7 @@ button {
         letter-spacing: 0.1em;
         font-weight: 900;
     }
+    tl,
     ul {
         margin: 0;
         padding: 0;
@@ -529,6 +590,174 @@ button {
     luxblock {
         & + br {
             display: none;
+        }
+    }
+
+    hr {
+        display: block;
+        height: 6px;
+        background: var(--bg-accent-30);
+        margin: 60px auto;
+        border-radius: 1px;
+        max-width: 400px;
+        border: 1px solid var(--border-accent);
+    }
+    hl {
+        display: block;
+        height: 4px;
+        background: var(--bg-accent);
+        margin: 60px auto;
+        border-radius: 2px;
+        max-width: 400px;
+        border: 0;
+
+        &[data-style="thin"],
+        &[data-style="thin"],
+        &[data-style="thin"] {
+            height: 1px;
+            border-radius: 0;
+        }
+
+        &[data-style="outline"],
+        &[data-style="outline"],
+        &[data-style="outline"] {
+            background: var(--bg-accent-30);
+            border: 1px solid var(--border-accent);
+            border-radius: 1px;
+            height: 6px;
+        }
+
+        &[data-style="dotted"],
+        &[data-style="dotted"],
+        &[data-style="dotted"] {
+            background: none;
+            height: 0;
+            border-top: 1px dotted var(--border-accent);
+        }
+
+        &[data-width="xs"],
+        &[data-width="xs"],
+        &[data-width="xs"] {
+            width: 250px;
+        }
+
+        &[data-width="sm"],
+        &[data-width="sm"],
+        &[data-width="sm"] {
+            width: 325px;
+        }
+        
+        &[data-width="lg"],
+        &[data-width="lg"],
+        &[data-width="lg"] {
+            width: 475px;
+        }
+
+        &[data-width="xl"],
+        &[data-width="xl"],
+        &[data-width="xl"] {
+            width: 550px;
+        }
+    }
+    vl {
+        display: block;
+        height: 200px;
+        background: var(--bg-accent);
+        margin: 60px auto;
+        border-radius: 2px;
+        width: 4px;
+
+        &[data-style="thin"],
+        &[data-style="thin"],
+        &[data-style="thin"] {
+            width: 1px;
+            border-radius: 0;
+        }
+
+        &[data-style="outline"],
+        &[data-style="outline"],
+        &[data-style="outline"] {
+            background: var(--bg-accent-30);
+            border: 1px solid var(--border-accent);
+            border-radius: 1px;
+            width: 6px;
+        }
+        &[data-style="dotted"],
+        &[data-style="dotted"],
+        &[data-style="dotted"] {
+            background: none;
+            width: 0;
+            border-left: 1px dotted var(--border-accent);
+        }
+        &[data-height="xxs"],
+        &[data-height="xxs"],
+        &[data-height="xxs"] {
+            height: 30px;
+        }
+        &[data-height="xs"],
+        &[data-height="xs"],
+        &[data-height="xs"] {
+            height: 50px;
+        }
+        &[data-height="sm"],
+        &[data-height="sm"],
+        &[data-height="sm"] {
+            height: 125px;
+        }
+        &[data-height="lg"],
+        &[data-height="lg"],
+        &[data-height="lg"] {
+            height: 275px;
+        }
+        &[data-height="xl"],
+        &[data-height="xl"],
+        &[data-height="xl"] {
+            height: 350px;
+        }
+    }
+}
+
+.codeblock {
+    margin: 0 auto;
+    max-width: 320px;
+
+    .codeclick {
+        background: var(--bg-accent-transparent);
+        border: 1px solid transparent;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        width: max-content;
+        padding: 0 var(--space-md);
+        text-align: center;
+        min-width: 100px;
+        border-radius: 2px;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        font-size: var(--size-xs);
+        display: block;
+        font-weight: 400;
+        margin-bottom: var(--space-xs);
+    }
+
+    .codecon {
+        pre {
+            margin: 0;
+
+            code {
+                width: 100%;
+                height: 100px;
+                background: var(--bg-quaternary);
+                border: 1px solid var(--border-primary);
+                color: var(--text-primary);
+                font-family: var(--font-body);
+                display: block;
+                white-space: pre-wrap;
+                font-size: var(--size-md);
+                letter-spacing: 0;
+                text-transform: none;
+                padding: var(--space-xs) var(--space-sm);
+                border-radius: 2px;
+            }
         }
     }
 }
@@ -819,8 +1048,11 @@ tag-tabset {
     left: 0;
     width: 100%;
     height: 0;
+    background: var(--bg-overlay);
+    transition-duration: 0.5s;
 
     &.menu-open {
         height: 100vh;
+        z-index: 2;
     }
 }

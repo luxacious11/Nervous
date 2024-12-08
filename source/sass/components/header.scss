@@ -252,12 +252,17 @@
             }
         }
         .header--right {
-            grid-template-columns: 125px auto;
             gap: var(--space-lg);
+            display: flex;
+            flex-direction: column;
 
             @include mq-down(md) {
                 max-width: 400px;
                 margin: 0 auto;
+            }
+            @include mq-up(xs) {
+                display: grid;
+                grid-template-columns: 125px auto;
             }
 
             & > img {

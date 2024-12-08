@@ -1025,11 +1025,131 @@ function toggleListMenu(e) {
         e.closest('.webpage--menu').classList.toggle('is-open');
     }
 }
+function speciesRatios() {
+    document.querySelector('.ratios-button').innerText = 'Updating...';
+    fetch(`https://opensheet.elk.sh/${sheetID}/Species`)
+    .then((response) => response.json())
+    .then((data) => {
+
+        let ratios = data.map(item => ({
+            Species: standardizeLower(item.Species),
+            Count: 0,
+            Breakdown: null,
+            SubmissionType: 'update-ratios'
+        }));
+
+        ratios.push({Species: 'human', Count: 0, Breakdown: null, SubmissionType: 'update-ratios'});
+
+        let species = data.map(item => standardizeLower(item.Species));
+
+        species.push('human');
+
+        let filtered = accounts.filter(item => item.universal.groupID > 6 && item.universal.groupID !== 26 && item.universal.groupID !== 28 && item.universal.groupID !== 27);
+
+        filtered.forEach(account => {
+            let characterSpecies = standardizeLower(account.character.speciesRaw);
+            let extra = standardizeLower(account.character.extraSpeciesData);
+            if(species.includes(characterSpecies)) {
+                const i = ratios.findIndex(e => e.Species === characterSpecies);
+                if(characterSpecies === 'hybrid' && extra.includes('turned vampire')) {
+                    const vampIndex = ratios.findIndex(e => e.Species === 'vampire');
+                    ratios[vampIndex].Count++;
+                } else {
+                    ratios[i].Count++;
+                }
+
+                if(characterSpecies === 'werecreature' ||
+                characterSpecies === 'dragon' ||
+                characterSpecies === 'elemental' ||
+                characterSpecies === 'centaur' ||
+                characterSpecies === 'hybrid') {
+                    if(extra.includes('turned vampire')) {
+                        const vampIndex = ratios.findIndex(e => e.Species === 'vampire');
+                        const original = extra.split(`, turned vampire`)[0].split(`born `)[1];
+                        if(!ratios[vampIndex].Breakdown) {
+                            ratios[vampIndex].Breakdown = [{form: 'born', count: 0}, {form: 'turned from human', count: 0}, {form: `turned from ${original}`, count: 1}];
+                        } else {
+                            const j = ratios[vampIndex].Breakdown ? ratios[vampIndex].Breakdown.findIndex(e => e.form === extra) : -1;
+                            if(j < 0) {
+                                ratios[vampIndex].Breakdown.push({form: `turned from ${original}`, count: 1});
+                            } else {
+                                ratios[vampIndex].Breakdown[j].count++;
+                            }
+                        }
+                    } else {
+                        ratios[i].Breakdown = ratios[i].Breakdown ? ratios[i].Breakdown : [];
+                        const j = ratios[i].Breakdown ? ratios[i].Breakdown.findIndex(e => e.form === extra) : -1;
+                        if(j < 0) {
+                            ratios[i].Breakdown.push({form: extra, count: 1});
+                        } else {
+                            ratios[i].Breakdown[j].count++;
+                        }
+                    }
+                } else if (characterSpecies === 'vampire') {
+                    if(!ratios[i].Breakdown) {
+                        ratios[i].Breakdown = [{form: 'born', count: 0}, {form: 'turned from human', count: 0}];
+                    }
+                    if(extra === 'born') {
+                        ratios[i].Breakdown[0].count++;
+                    } else if(extra === 'turned') {
+                        ratios[i].Breakdown[1].count++;
+                    }
+                } else if (characterSpecies === 'faerie') {
+                    if(!ratios[i].Breakdown) {
+                        ratios[i].Breakdown = [{form: 'seelie', count: 0}, {form: 'unseelie', count: 0}];
+                    }
+                    if(extra === 'seelie') {
+                        ratios[i].Breakdown[0].count++;
+                    } else if(extra === 'unseelie') {
+                        ratios[i].Breakdown[1].count++;
+                    }
+                }
+
+            }
+        });
+
+        ratios.map(item => {
+            if(item.Breakdown) {
+                return item.Breakdown = JSON.stringify(item.Breakdown);
+            } else {
+                return item.Breakdown = '';
+            }
+        });
+
+        return ratios;
+	
+    })
+    .then((ratios) => {
+
+        ratios.forEach(ratio => {
+
+            $.ajax({
+                url: `https://script.google.com/macros/s/${deployID}/exec`,   
+                data: ratio,
+                method: "POST",
+                type: "POST",
+                dataType: "json", 
+                async: false,
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log('error');
+                },
+                complete: function () {
+                    console.log('species complete');
+                }
+            });
+        });
+
+    }).then(() => {
+        console.log('update finished!');
+        document.querySelector('.ratios-button').innerText = 'Updated!';
+        document.querySelector('.ratios-button').classList.add('is-done');
+    });
+}
 
 /****** Webpages ******/
 function initWebpages() {
     //remove staff for non-staff
-    if(!document.querySelector('body').classList.contains('g-4')) {
+    if(!document.querySelector('body').classList.contains('g-4') && !document.querySelector('body').classList.contains('g-26') && !document.querySelector('body').classList.contains('g-28')) {
         document.querySelectorAll('.staffOnly').forEach(item => item.remove());
     }
 
@@ -1050,4 +1170,193 @@ function initWebpages() {
 }
 function toggleWarning(e) {
     e.closest('.webpage--warning').querySelector('.webpage--warning-text').classList.toggle('is-open');
+}
+function initSpecies() {
+    //isotope
+    var filters = {};
+
+    //set class variables
+    let $container = $('#webpage--rows');
+    let typeSearch = `#quicksearch`;
+    let memName = `.species--title`;
+    let visible = `is-visible`;
+    let filterGroup = `.webpage--filter-group`;
+    let filterOptions = `.webpage--filter-group input`;
+    let gridItem = `.species--item`;
+    let defaultShow = ``;
+
+    function setCustomFilter() {
+        //get search value
+        qsRegex = document.querySelector(typeSearch).value;
+        
+        //add show class to all items to reset
+        elements.forEach(el => el.classList.add(visible));
+        
+        //filter by nothing
+        let searchFilter = '';
+        
+        //check each item
+        elements.forEach(el => {
+            let name = el.querySelector(memName).textContent;
+            if(!name.toLowerCase().includes(qsRegex)) {
+                el.classList.remove(visible);
+                searchFilter = `.${visible}`;
+            }
+        });
+    
+        let filterGroups = document.querySelectorAll(filterGroup);
+        let groups = [];
+        filterGroups.forEach(group => {
+            let filters = [];
+            group.querySelectorAll('label.is-checked input').forEach(filter => {
+                if(filter.value) {
+                    filters.push(filter.value);
+                }
+            });
+            groups.push({group: group.dataset.filterGroup, selected: filters});
+        });
+
+        groups.forEach(group => {
+            let tagString = group.selected.join('_');
+            appendSearchQuery(group.group, tagString);
+        });
+    
+        let filterCount = 0;
+        let comboFilters = [];
+        groups.forEach(group => {
+            // skip to next filter group if it doesn't have any values
+            if ( group.selected.length > 0 ) {
+                if ( filterCount === 0 ) {
+                    // copy groups to comboFilters
+                    comboFilters = group.selected;
+                } else {
+                    var filterSelectors = [];
+                    var groupCombo = comboFilters;
+                    // merge filter Groups
+                    for (var k = 0; k < group.selected.length; k++) {
+                        for (var j = 0; j < groupCombo.length; j++) {
+                            //accommodate weirdness with object vs not
+                            if(groupCombo[j].selected) {
+                                if(groupCombo[j].selected != group.selected[k]) {
+                                    filterSelectors.push( groupCombo[j].selected + group.selected[k] );
+                                }
+                            } else if (!groupCombo[j].selected && group.selected[k]) {
+                                if(groupCombo[j] != group.selected[k]) {
+                                    filterSelectors.push( groupCombo[j] + group.selected[k] );
+                                }
+                            }
+                        }
+                    }
+                    // apply filter selectors to combo filters for next group
+                    comboFilters = filterSelectors;
+                }
+                filterCount++;
+            }
+        });
+        
+        //set filter to blank
+        let filter = [];
+        //check if it's only search
+        if(qsRegex.length > 0 && comboFilters.length === 0) {
+            filter = [`.${visible}`];
+        }
+        //check if it's only checkboxes
+        else if(qsRegex.length === 0 && comboFilters.length > 0) {
+            let combos = comboFilters.join(',').split(',');
+            filter = [...combos];
+        }
+        //check if it's both
+        else if (qsRegex.length > 0 && comboFilters.length > 0) {
+            let dualFilters = comboFilters.map(filter => filter + `.${visible}`);
+            filter = [...dualFilters];
+        }
+    
+        //join array into string
+        filter = filter.join(', ');
+        
+        //render isotope
+        $container.isotope({
+            filter: filter
+        });
+    }
+
+    //initialize isotope
+    // quick search regex
+    let qsRegex;
+    let elements = document.querySelectorAll(gridItem);
+
+    //handle filter storage
+    let queryParamsArray = window.location.search.split('&').map(param => param.split('=')).filter(item => item.length > 1);
+    let queryParams = {};
+    queryParamsArray.forEach(param => {
+	    queryParams[param[0]] = param[1];
+    });
+    for (const param in queryParams) {
+        let key = param;
+        let values = queryParams[param].split('_');
+        
+        if(document.querySelector(`[data-filter-group="${key}"]`) && values.length > 0) {
+            document.querySelector(`[data-filter-group="${key}"] .all`).classList.remove('is-checked');
+            values.forEach(value => {
+                document.querySelector(`[data-filter-group="${key}"] [value="${value}"]`)
+                .closest('label')
+                .classList.add('is-checked');
+            });
+        }
+    }
+    setCustomFilter();
+
+    if(window.location.search.split('typesearch=')[1]) {
+        document.querySelector(typeSearch).value = window.location.search.split('typesearch=')[1].split('&')[0];
+        setCustomFilter();
+    }
+
+    //use value of input select to filter
+    let checkboxes = document.querySelectorAll(filterOptions);
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', e => {
+            if(e.currentTarget.classList.contains('all')) {
+                e.currentTarget.checked = true;
+                e.currentTarget.parentElement.classList.add('is-checked');
+                e.currentTarget.parentElement.parentElement.querySelectorAll('input:not(.all)').forEach(input => {
+                    input.checked = false;
+                    input.parentElement.classList.remove('is-checked');
+                });
+            } else {
+                if(e.currentTarget.parentElement.classList.contains('is-checked')) {
+                    e.currentTarget.checked = false;
+                    e.currentTarget.parentElement.classList.remove('is-checked');
+                } else {
+                    e.currentTarget.checked = true;
+                    e.currentTarget.parentElement.classList.add('is-checked');
+                    e.currentTarget.parentElement.parentElement.querySelector('input.all').checked = false;
+                    e.currentTarget.parentElement.parentElement.querySelector('input.all').parentElement.classList.remove('is-checked');
+                }
+            }
+            let labels = e.currentTarget.parentElement.parentElement.querySelectorAll('label');
+            let checked = 0;
+            labels.forEach(label => {
+                if(label.classList.contains('is-checked')) {
+                    checked++;
+                }
+            });
+            if(checked === 0) {
+                e.currentTarget.parentElement.parentElement.querySelector('input.all').checked = true;
+                e.currentTarget.parentElement.parentElement.querySelector('input.all').parentElement.classList.add('is-checked');
+            }
+            //set filters
+            setCustomFilter();
+        });
+    });
+    
+    // use value of search field to filter
+    document.querySelector(typeSearch).addEventListener('keyup', e => {
+	appendSearchQuery('typesearch', e.currentTarget.value);
+        setCustomFilter();
+    });
+
+    document.querySelector('body').classList.remove('loading');
+    document.querySelector('#loading').remove();
+    initAccordion();
+    initAccordion('.species-accordion', $('#webpage--rows'));
 }

@@ -193,12 +193,17 @@
           .header.profile--header .header--info::before {
             display: none; } }
     .header.profile--header .header--right {
-      grid-template-columns: 125px auto;
-      gap: var(--space-lg); }
+      gap: var(--space-lg);
+      display: flex;
+      flex-direction: column; }
       @media (max-width: 1024px) {
         .header.profile--header .header--right {
           max-width: 400px;
           margin: 0 auto; } }
+      @media (min-width: 601px) {
+        .header.profile--header .header--right {
+          display: grid;
+          grid-template-columns: 125px auto; } }
       .header.profile--header .header--right > img {
         width: 125px;
         height: 125px;

@@ -91,12 +91,15 @@ a[href=""] {
   top: 0;
   left: 0;
   width: 100%;
-  height: 0; }
+  height: 0;
+  background: var(--bg-overlay);
+  transition-duration: 0.5s; }
   .invisibleElTagging.menu-open + .alert-options .fa-tags,
   .invisibleElTagging:not(.menu-open) + .alert-options .fa-xmark {
     display: none; }
   .invisibleElTagging.menu-open {
-    height: 100vh; }
+    height: 100vh;
+    z-index: 2; }
 
 .input-wrap {
   display: flex;

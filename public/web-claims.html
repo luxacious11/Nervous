@@ -6,6 +6,8 @@
 
 <!--Styles-->
 <link rel="stylesheet" href="../dist/css/styles.css" />
+<link rel="stylesheet" href="../dist/css/templates.css" />
+<link rel="stylesheet" href="/Users/dawn.eggleton/Documents/Sites/luxacious11.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,11 +250,11 @@
                             <span>Claims</span>
                         </tag-label>
                         <div class="tab-category accordion--content" data-category="claims">
-                            <a href="#reserves">Reserves</a>
-                            <a href="./web-members.html">Members</a>
+                            <a href="#reserves">Face Reserves</a>
+                            <a href="./web-members.html" class="external">Members</a>
                             <a href="#faces">Faces</a>
-                            <a href="./web-businesses.html">Jobs</a>
-                            <a href="./web-connections.html">Connections</a>
+                            <a href="./web-businesses.html" class="external">Jobs</a>
+                            <a href="./web-connections.html" class="external">Connections</a>
                             <a href="#stats">Species Stats</a>
                         </div>
                     </tab-labels>
@@ -263,43 +265,62 @@
                             <tag-tab data-key="#reserves">
                                 <h2 class="tab-heading">Face Reserves</h2>
                                 <div class="webpage--content-inner">
-                                    face reserves
+                                    <div class="claims--filter-wrap two-col" data-type="grid">
+                                        <div>
+                                            <strong class="h7">Filter by Face</strong>
+                                            <input type="text" data-filter="#reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
+                                        </div> 
+                                        <div>
+                                            <strong class="h7">Filter by Member</strong>
+                                            <input type="text" data-filter="#reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                                        </div>
+                                    </div>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#faces">
                                 <h2 class="tab-heading">Face Claims</h2>
                                 <div class="webpage--content-inner">
-                                    face claims
+                                    <div class="claims--filter-wrap" data-type="grid">
+                                        <div>
+                                            <strong class="h7">Filter by Face</strong>
+                                            <input type="text" data-filter="#faces" data-objects=" > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <strong class="h7">Filter by Character</strong>
+                                            <input type="text" data-filter="#faces" data-objects="> a + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Character" style="width: 100%;">
+                                        </div>
+                                        <div>
+                                            <strong class="h7">Filter by Member</strong>
+                                            <input type="text" data-filter="#faces" data-objects="> a + span + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                                        </div>
+                                    </div>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#stats">
                                 <h2 class="tab-heading">Species Statistics</h2>
-                                <div class="webpage--content-inner">
-                                    Species stats
-                                </div>
+                                <div class="webpage--content-inner"></div>
                             </tag-tab>
                         </tag-tabset>
                     </tag-tab>
                 </tag-tabset>
             </section>
 
+            <script src="../dist/js/formatting.js"></script>
             <script>
-                let staticClaims = [], staticReserves = [];
-
                 fetch(claims)
                 .then((response) => response.json())
                 .then((claimsData) => {
-                    staticClaims = [...claimsData];
+                    formatFaceClaims(claimsData);
 
                     fetch(faceReserves)
                     .then((response) => response.json())
                     .then((reservesData) => {
-                        staticReserves = [...reservesData];
+                        formatFaceReserves(reservesData);
 
                         fetch(speciesStats)
                         .then((response) => response.json())
                         .then((statsData) => {
-                            //stats formatting
+                            formatSpeciesStats(statsData);
 
                         }).then(() => {
                             initWebpages();

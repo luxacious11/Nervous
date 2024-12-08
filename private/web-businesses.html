@@ -23,9 +23,46 @@
                     <p>Loading</p>
                 </div>
             </div>
-            
+
             <!--Webpage-->
-            <section class="webpage"></section>
+            <section class="webpage">
+                <div class="webpage--menu">
+                    <button class="macro--button" onclick="toggleListMenu(this)">
+                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <tab-labels class="accordion scroll">
+                        <div class="menu-filters">
+                            <strong>Filter by Business Name</strong>
+                            <input type="text" oninput="filterBusinesses(this)" placeholder="Business Name" style="margin-bottom: 10px;">
+                            <strong>Filter by Employee Name</strong>
+                            <input type="text" oninput="filterEmployees(this)" placeholder="Employee Name">
+                        </div>
+                    </tab-labels>
+                </div>
+                <tag-tabset class="webpage--content"></tag-tabset>
+            </section>
+
+            <script src="../dist/js/formatting.js"></script>
+            <script>
+                let staticClaims = [];
+
+                fetch(claims)
+                .then((response) => response.json())
+                .then((claimsData) => {
+                    staticClaims = [...claimsData];
+
+                    fetch(businesses)
+                    .then((response) => response.json())
+                    .then((businessData) => {
+                        formatBusinesses(businessData, staticClaims);
+
+                    }).then(() => {
+                        initWebpages();
+                    });;
+
+                });
+            </script>
 
             <!-- Copyright Information -->
             <div class="tableborder" align="center">

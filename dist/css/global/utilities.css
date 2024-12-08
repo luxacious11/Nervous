@@ -313,6 +313,60 @@
   [data-type="IMAGEGRID"] [data-box-align="RIGHT"] {
     max-width: max-content; }
 
+[data-type="imagegrid"][data-columns="1"],
+[data-type="imageGrid"][data-columns="1"],
+[data-type="ImageGrid"][data-columns="1"],
+[data-type="IMAGEGRID"][data-columns="1"] {
+  grid-template-columns: repeat(1, 1fr); }
+
+[data-type="imagegrid"][data-columns="2"],
+[data-type="imageGrid"][data-columns="2"],
+[data-type="ImageGrid"][data-columns="2"],
+[data-type="IMAGEGRID"][data-columns="2"] {
+  grid-template-columns: repeat(1, 1fr); }
+  @media (min-width: 601px) {
+    [data-type="imagegrid"][data-columns="2"],
+    [data-type="imageGrid"][data-columns="2"],
+    [data-type="ImageGrid"][data-columns="2"],
+    [data-type="IMAGEGRID"][data-columns="2"] {
+      grid-template-columns: repeat(2, 1fr); } }
+
+[data-type="imagegrid"][data-columns="3"],
+[data-type="imageGrid"][data-columns="3"],
+[data-type="ImageGrid"][data-columns="3"],
+[data-type="IMAGEGRID"][data-columns="3"] {
+  grid-template-columns: repeat(1, 1fr); }
+  @media (min-width: 601px) {
+    [data-type="imagegrid"][data-columns="3"],
+    [data-type="imageGrid"][data-columns="3"],
+    [data-type="ImageGrid"][data-columns="3"],
+    [data-type="IMAGEGRID"][data-columns="3"] {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 769px) {
+    [data-type="imagegrid"][data-columns="3"],
+    [data-type="imageGrid"][data-columns="3"],
+    [data-type="ImageGrid"][data-columns="3"],
+    [data-type="IMAGEGRID"][data-columns="3"] {
+      grid-template-columns: repeat(3, 1fr); } }
+
+[data-type="imagegrid"][data-columns="4"],
+[data-type="imageGrid"][data-columns="4"],
+[data-type="ImageGrid"][data-columns="4"],
+[data-type="IMAGEGRID"][data-columns="4"] {
+  grid-template-columns: repeat(1, 1fr); }
+  @media (min-width: 601px) {
+    [data-type="imagegrid"][data-columns="4"],
+    [data-type="imageGrid"][data-columns="4"],
+    [data-type="ImageGrid"][data-columns="4"],
+    [data-type="IMAGEGRID"][data-columns="4"] {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 769px) {
+    [data-type="imagegrid"][data-columns="4"],
+    [data-type="imageGrid"][data-columns="4"],
+    [data-type="ImageGrid"][data-columns="4"],
+    [data-type="IMAGEGRID"][data-columns="4"] {
+      grid-template-columns: repeat(4, 1fr); } }
+
 [data-type="imagegrid"],
 [data-type="imageGrid"],
 [data-type="ImageGrid"],
@@ -421,29 +475,78 @@
 [data-width="EXTRALARGE"] {
   max-width: 575px; }
 
-[data-ratio="1:1"] {
+ner-image[data-ratio="1:1"],
+[data-ratio="1:1"] ner-image {
   aspect-ratio: 1 / 1; }
 
-[data-ratio="2:3"] {
+ner-image[data-ratio="2:3"],
+[data-ratio="2:3"] ner-image {
   aspect-ratio: 2 / 3; }
 
-[data-ratio="3:2"] {
+ner-image[data-ratio="3:2"],
+[data-ratio="3:2"] ner-image {
   aspect-ratio: 3 / 2; }
 
-[data-ratio="3:4"] {
+ner-image[data-ratio="3:4"],
+[data-ratio="3:4"] ner-image {
   aspect-ratio: 3 / 4; }
 
-[data-ratio="4:3"] {
+ner-image[data-ratio="4:3"],
+[data-ratio="4:3"] ner-image {
   aspect-ratio: 4 / 3; }
 
-[data-ratio="4:5"] {
+ner-image[data-ratio="4:5"],
+[data-ratio="4:5"] ner-image {
   aspect-ratio: 4 / 5; }
 
-[data-ratio="5:4"] {
+ner-image[data-ratio="5:4"],
+[data-ratio="5:4"] ner-image {
   aspect-ratio: 5 / 4; }
 
-[data-ratio="9:16"] {
+ner-image[data-ratio="9:16"],
+[data-ratio="9:16"] ner-image {
   aspect-ratio: 9 / 16; }
 
-[data-ratio="16:9"] {
+ner-image[data-ratio="16:9"],
+[data-ratio="16:9"] ner-image {
   aspect-ratio: 16 / 9; }
+
+ner-scroll[data-scroll="xs"],
+ner-scroll[data-scroll="Xs"],
+ner-scroll[data-scroll="XS"],
+[data-scroll="xs"] ner-scroll,
+[data-scroll="Xs"] ner-scroll,
+[data-scroll="XS"] ner-scroll {
+  max-height: 100px; }
+
+ner-scroll[data-scroll="sm"],
+ner-scroll[data-scroll="Sm"],
+ner-scroll[data-scroll="SM"],
+[data-scroll="sm"] ner-scroll,
+[data-scroll="Sm"] ner-scroll,
+[data-scroll="SM"] ner-scroll {
+  max-height: 175px; }
+
+ner-scroll[data-scroll="md"],
+ner-scroll[data-scroll="Md"],
+ner-scroll[data-scroll="MD"],
+[data-scroll="md"] ner-scroll,
+[data-scroll="Md"] ner-scroll,
+[data-scroll="MD"] ner-scroll {
+  max-height: 250px; }
+
+ner-scroll[data-scroll="lg"],
+ner-scroll[data-scroll="Lg"],
+ner-scroll[data-scroll="LG"],
+[data-scroll="lg"] ner-scroll,
+[data-scroll="Lg"] ner-scroll,
+[data-scroll="LG"] ner-scroll {
+  max-height: 325px; }
+
+ner-scroll[data-scroll="xl"],
+ner-scroll[data-scroll="Xl"],
+ner-scroll[data-scroll="XL"],
+[data-scroll="xl"] ner-scroll,
+[data-scroll="Xl"] ner-scroll,
+[data-scroll="XL"] ner-scroll {
+  max-height: 400px; }

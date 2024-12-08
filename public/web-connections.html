@@ -6,6 +6,8 @@
 
 <!--Styles-->
 <link rel="stylesheet" href="../dist/css/styles.css" />
+<link rel="stylesheet" href="../dist/css/templates.css" />
+<link rel="stylesheet" href="/Users/dawn.eggleton/Documents/Sites/luxacious11.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -546,19 +548,22 @@
 
             <script src="../dist/js/formHelpers.js"></script>
             <script src="../dist/js/connectionForms.js"></script>
+            <script src="../dist/js/formatting.js"></script>
             <script>
-                let staticClaims = [];
+                let staticClaims = [], staticBusinesses = [];
 
                 fetch(claims)
                 .then((response) => response.json())
                 .then((claimsData) => {
                     staticClaims = [...claimsData];
+                    formatConnections(claimsData);
 
                     fetch(businesses)
                     .then((response) => response.json())
                     .then((businessData) => {
                         staticBusinesses = [...businessData];
                         setBusinessList(`.clip-businesses`, businessData);
+                        formatAddresses(staticClaims, businessData);
 
                     }).then(() => {
                         initWebpages();

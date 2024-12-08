@@ -1,76 +1,78 @@
 /***** Add/Change Address *****/
-let addressType = document.querySelectorAll('.form-address #type');
-addressType.forEach(field => {
-    setAddressType(field);
-});
-document.querySelectorAll('.form-address').forEach(form => {
-    let locationField = form.querySelector('#region');
-    simpleFieldToggle(locationField, '.tempOnly', 'temperance', form);
-    simpleFieldToggle(locationField, '.sydOnly', 'sydney', form);
-    simpleFieldToggle(locationField, '.ruralOnly', 'rural', form);
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-    
-        let form = e.currentTarget,
-            type = getSelectValue(form.querySelector('#type')),
-            identifier = type === 'residential' ? getAccountID(form.querySelector('#id')) : getSelectText(form.querySelector('#employer')),
-            region = form.querySelector('#region'),
-            neighbourhood = form.querySelector('#neighbourhood'),
-            street = form.querySelector('#street'),
-            house = form.querySelector('#houseNumber'),
-            apartment = form.querySelector('#apartmentNumber');
-    
-        let address = {
-            region: getSelectText(region),
-            neighbourhood: getSelectText(neighbourhood) !== 'not applicable' ? getSelectText(neighbourhood) : '',
-            street: getStandardValue(street),
-            house: getValue(house),
-            apartment: getValue(apartment),
-        }
-    
-        let data = {
-            SubmissionType: `${type}-address`,
-            AccountID: type === 'residential' ? identifier : null,
-            Employer: type === 'business' ? identifier : null,
-            Address: JSON.stringify(address),
-        }
-
-        let existing, discordTitle, discordText;
-
-        if(type === 'residential') {
-            existing = staticClaims.filter(item => item.AccountID && item.AccountID === identifier);
-        } else if(type === 'business') {
-            existing = staticBusinesses.filter(item => item.Employer && item.Employer === identifier);
-        }
-
-        if(existing.length > 0) {
-            if(existing[0].Address && existing[0].Address !== '') {
-                let original = JSON.parse(existing[0].Address);
-                discordTitle = `Address Changed for ${type === 'residential' ? capitalize(existing[0].Character) : capitalize(identifier, [' ', '-'])}`;
-                discordText = `**Previous Address:** ${formatAddressString(original)}`;
-                discordText = `**New Address:** ${formatAddressString(address)}`;
-            } else {
-                discordTitle = `Address Added for ${type === 'residential' ? capitalize(existing[0].Character) : capitalize(identifier, [' ', '-'])}`;
-                discordText = `**Address:** ${formatAddressString(address)}`;
-            }
-
-            let discord = {
-                title: discordTitle,
-                text: discordText,
-                hook: claimLogs
-            }
-            
-            setFormStatus(form);
-
-            console.log(data);
-        
-            sendAjax(form, data, discord);
-        } else {
-            handleWarning(form, `<blockquote class="fullWidth">No ${type === 'residential' ? 'character' : 'business'} found to assign the address to. Please double check the entered ${type === 'residential' ? 'profile URL / ID' : 'business name'} and if the information is correct and the error persists, contact Lux.</blockquote>`);
-        }
+if(document.querySelectorAll('.form-address').length > 0) {
+    let addressType = document.querySelectorAll('.form-address #type');
+    addressType.forEach(field => {
+        setAddressType(field);
     });
-});
+    document.querySelectorAll('.form-address').forEach(form => {
+        let locationField = form.querySelector('#region');
+        simpleFieldToggle(locationField, '.tempOnly', 'temperance', form);
+        simpleFieldToggle(locationField, '.sydOnly', 'sydney', form);
+        simpleFieldToggle(locationField, '.ruralOnly', 'rural', form);
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+        
+            let form = e.currentTarget,
+                type = getSelectValue(form.querySelector('#type')),
+                identifier = type === 'residential' ? getAccountID(form.querySelector('#id')) : getSelectText(form.querySelector('#employer')),
+                region = form.querySelector('#region'),
+                neighbourhood = form.querySelector('#neighbourhood'),
+                street = form.querySelector('#street'),
+                house = form.querySelector('#houseNumber'),
+                apartment = form.querySelector('#apartmentNumber');
+        
+            let address = {
+                region: getSelectText(region),
+                neighbourhood: getSelectText(neighbourhood) !== 'not applicable' ? getSelectText(neighbourhood) : '',
+                street: getStandardValue(street),
+                house: getValue(house),
+                apartment: getValue(apartment),
+            }
+        
+            let data = {
+                SubmissionType: `${type}-address`,
+                AccountID: type === 'residential' ? identifier : null,
+                Employer: type === 'business' ? identifier : null,
+                Address: JSON.stringify(address),
+            }
+
+            let existing, discordTitle, discordText;
+
+            if(type === 'residential') {
+                existing = staticClaims.filter(item => item.AccountID && item.AccountID === identifier);
+            } else if(type === 'business') {
+                existing = staticBusinesses.filter(item => item.Employer && item.Employer === identifier);
+            }
+
+            if(existing.length > 0) {
+                if(existing[0].Address && existing[0].Address !== '') {
+                    let original = JSON.parse(existing[0].Address);
+                    discordTitle = `Address Changed for ${type === 'residential' ? capitalize(existing[0].Character) : capitalize(identifier, [' ', '-'])}`;
+                    discordText = `**Previous Address:** ${formatAddressString(original)}`;
+                    discordText = `**New Address:** ${formatAddressString(address)}`;
+                } else {
+                    discordTitle = `Address Added for ${type === 'residential' ? capitalize(existing[0].Character) : capitalize(identifier, [' ', '-'])}`;
+                    discordText = `**Address:** ${formatAddressString(address)}`;
+                }
+
+                let discord = {
+                    title: discordTitle,
+                    text: discordText,
+                    hook: claimLogs
+                }
+                
+                setFormStatus(form);
+
+                console.log(data);
+            
+                sendAjax(form, data, discord);
+            } else {
+                handleWarning(form, `<blockquote class="fullWidth">No ${type === 'residential' ? 'character' : 'business'} found to assign the address to. Please double check the entered ${type === 'residential' ? 'profile URL / ID' : 'business name'} and if the information is correct and the error persists, contact Lux.</blockquote>`);
+            }
+        });
+    });
+}
 function setAddressType(field) {
     let value = field.options[field.selectedIndex].value;
     let form = field.closest('form');
@@ -97,12 +99,14 @@ function setAddressType(field) {
 }
 
 /***** Address Lookup *****/
-document.querySelector('#form-search-address').addEventListener('submit', e => {
-    e.preventDefault();
-    let form = e.currentTarget;
-    let data = [...staticClaims, ...staticBusinesses].filter(item => item.Address && item.Address !== '');
-    searchAddress(form, data);
-});
+if(document.querySelector('#form-search-address')) {
+    document.querySelector('#form-search-address').addEventListener('submit', e => {
+        e.preventDefault();
+        let form = e.currentTarget;
+        let data = [...staticClaims, ...staticBusinesses].filter(item => item.Address && item.Address !== '');
+        searchAddress(form, data);
+    });
+}
 function searchAddress(form, data) {
     let value = form.querySelector('#name').value.toLowerCase().trim();
     let html = `<h2>Results</h2><ul>`;
@@ -140,71 +144,73 @@ function searchAddress(form, data) {
     document.querySelector('#lookup-results').innerHTML = html;
 }
 function formatRegion(region) {
-    return `${region.split(', ')[0] !== 'elsewhere' ? `, ${capitalize(region.split(', ')[0]).trim()}` : ''}${region.split(', ')[1] ? region.split(', ')[1].toUpperCase().trim() : 'Rural Cape Breton'}`
+    return `${region.split(', ')[0] !== 'rural cape breton' ? `${capitalize(region.split(', ')[0]).trim()}, ` : ''}${region.split(', ')[1] ? region.split(', ')[1].toUpperCase().trim() : 'Rural Cape Breton'}`
 }
 function formatAddressString(address) {
     return `${address.apartment !== '' ? `${address.apartment}-` : ``}${address.house} ${capitalize(address.street).trim()}${address.neighbourhood ? `, ${capitalize(address.neighbourhood).trim()}` : ''}, ${formatRegion(address.region)}`;
 }
 
 /***** Add Connections *****/
-let connectionType = document.querySelectorAll('#form-connection #type');
-connectionType.forEach(field => {
-    setConnectionType(field);
-});
-document.querySelector('#form-connection').addEventListener('submit', e => {
-    e.preventDefault();
+if(document.querySelector('#form-connection')) {
+    let connectionType = document.querySelectorAll('#form-connection #type');
+    connectionType.forEach(field => {
+        setConnectionType(field);
+    });
+    document.querySelector('#form-connection').addEventListener('submit', e => {
+        e.preventDefault();
 
-    let form = e.currentTarget,
-        type = getSelectValue(form.querySelector('#type')),
-        id = form.querySelector('#id'),
-        category = form.querySelector('#category'),
-        priority = form.querySelector('#category'),
-        subcategory = form.querySelector('#subcategory'),
-        location = form.querySelector('#location'),
-        role = form.querySelector('#role');
+        let form = e.currentTarget,
+            type = getSelectValue(form.querySelector('#type')),
+            id = form.querySelector('#id'),
+            category = form.querySelector('#category'),
+            priority = form.querySelector('#category'),
+            subcategory = form.querySelector('#subcategory'),
+            location = form.querySelector('#location'),
+            role = form.querySelector('#role');
 
-    let existing = staticClaims.filter(item => item.AccountID && item.AccountID === getAccountID(id));
+        let existing = staticClaims.filter(item => item.AccountID && item.AccountID === getAccountID(id));
 
-    if(existing.length > 0) {
-        existing = existing[0];
+        if(existing.length > 0) {
+            existing = existing[0];
 
-        let connection = {
-            type,
-            category: getSelectText(category),
-            priority: getSelectValue(priority),
-            subcategory: getStandardValue(subcategory),
-            role: getStandardValue(role),
-        }
+            let connection = {
+                type,
+                category: getSelectText(category),
+                priority: getSelectValue(priority),
+                subcategory: getStandardValue(subcategory),
+                role: getStandardValue(role),
+            }
 
-        if(type === 'historical') {
-            connection.location = getStandardValue(location);
-        }
+            if(type === 'historical') {
+                connection.location = getStandardValue(location);
+            }
 
-        let connections = existing.Connections ? JSON.parse(existing.Connections) : [];
-        connections.push(connection);
+            let connections = existing.Connections ? JSON.parse(existing.Connections) : [];
+            connections.push(connection);
 
-        let data = {
-            SubmissionType: 'add-connection',
-            AccountID: getAccountID(id),
-            Connections: JSON.stringify(connections),
-        }
+            let data = {
+                SubmissionType: 'add-connection',
+                AccountID: getAccountID(id),
+                Connections: JSON.stringify(connections),
+            }
 
-        let discord = {
-            title: `New Connection Added for ${capitalize(existing.Character)}`,
-            text: `**Type:** ${capitalize(type)}
-            **Category:** ${capitalize(getSelectText(category))}
-            **Subcategory:** ${capitalize(getStandardValue(subcategory))}
-            **Role:** ${capitalize(getStandardValue(role))}`,
-            hook: claimLogs,
-        }
+            let discord = {
+                title: `New Connection Added for ${capitalize(existing.Character)}`,
+                text: `**Type:** ${capitalize(type)}
+                **Category:** ${capitalize(getSelectText(category))}
+                **Subcategory:** ${capitalize(getStandardValue(subcategory))}
+                **Role:** ${capitalize(getStandardValue(role))}`,
+                hook: claimLogs,
+            }
+            
+            setFormStatus(form);
         
-        setFormStatus(form);
-    
-        sendAjax(form, data, discord);
-    } else {
-        handleWarning(form, `<blockquote class="fullWidth">No character found to assign the connection to. Please double check the entered profile URL / ID and if the information is correct and the error persists, contact Lux.</blockquote>`);
-    }
-});
+            sendAjax(form, data, discord);
+        } else {
+            handleWarning(form, `<blockquote class="fullWidth">No character found to assign the connection to. Please double check the entered profile URL / ID and if the information is correct and the error persists, contact Lux.</blockquote>`);
+        }
+    });
+}
 function setConnectionType(field) {
     let value = field.options[field.selectedIndex].value;
     let form = field.closest('form');

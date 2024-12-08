@@ -1,16 +1,12 @@
 /***** Faces *****/
 function checkClaims(form, data, staffDiscord = null, publicDiscord = null) {
-    fetch(`https://opensheet.elk.sh/${sheetID}/Claims`)
-    .then((response) => response.json())
-    .then((claimData) => {
-        let created = claimData.filter(item => item.Face === data.Face);
+    let created = staticClaims.filter(item => item.Face === data.Face);
 
-        if(created.length > 0) {
-            handleWarning(form, claimExists);
-        } else {
-            checkReserves(form, data, staffDiscord, publicDiscord);
-        }
-    });
+    if(created.length > 0) {
+        handleWarning(form, claimExists);
+    } else {
+        checkReserves(form, data, staffDiscord, publicDiscord);
+    }
 }
 function checkReserves(form, data, staffDiscord = null, publicDiscord = null) {
     fetch(`https://opensheet.elk.sh/${sheetID}/FaceReserves`)
@@ -56,7 +52,9 @@ function setPlotOptions(data, formID, field) {
     data.forEach(plot => {
         plotOptions += `<option value="${plot.PlotID}">${capitalize(plot.Plot, [' ', '-'])}</option>`;
     });
-    document.querySelector(`${formID} ${field}`).innerHTML = plotOptions;
+    if(document.querySelector(`${formID} ${field}`)) {
+        document.querySelector(`${formID} ${field}`).innerHTML = plotOptions;
+    }
 
     setPlotSwitchers(formID, data);
 }

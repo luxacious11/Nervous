@@ -125,6 +125,8 @@ a[href=""] {
     left: 0;
     width: 100%;
     height: 0;
+    background: var(--bg-overlay);
+    transition-duration: 0.5s;
 
     &.menu-open + .alert-options .fa-tags,
     &:not(.menu-open) + .alert-options .fa-xmark {
@@ -133,6 +135,7 @@ a[href=""] {
 
     &.menu-open {
         height: 100vh;
+        z-index: 2;
     }
 }
 

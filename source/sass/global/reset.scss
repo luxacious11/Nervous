@@ -74,6 +74,10 @@ body.g-28 .accordion--trigger.staffOnly {
     display: flex;
 }
 
+#quick-login-clip .hidden {
+    display: block !important;
+}
+
 .onlyMobile {
     @include mq-up(md) {
         display: none !important;

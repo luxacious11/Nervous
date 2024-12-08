@@ -6,6 +6,8 @@
 
 <!--Styles-->
 <link rel="stylesheet" href="../dist/css/styles.css" />
+<link rel="stylesheet" href="../dist/css/templates.css" />
+<link rel="stylesheet" href="/Users/dawn.eggleton/Documents/Sites/luxacious11.github.io/dist/css/characters.css" />
 
 <!--Fonts-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1455,41 +1457,36 @@
 
             <script src="../dist/js/formHelpers.js"></script>
             <script src="../dist/js/forms.js"></script>
+            <script src="../dist/js/formatting.js"></script>
             <script>
-                let staticClaims = [], staticReserves = [], staticBusinesses = [], staticSubplots = [];
+                let staticClaims = [], staticBusinesses = [], staticSubplots = [], staticPlotReserves;
 
                 fetch(claims)
                 .then((response) => response.json())
                 .then((claimsData) => {
                     staticClaims = [...claimsData];
 
-                    fetch(faceReserves)
+                    fetch(businesses)
                     .then((response) => response.json())
-                    .then((reservesData) => {
-                        staticReserves = [...reservesData];
+                    .then((businessData) => {
+                        staticBusinesses = [...businessData];
+                        setBusinessList(`.clip-businesses`, businessData);
 
-                        fetch(businesses)
+                        fetch(plotReserves)
                         .then((response) => response.json())
-                        .then((businessData) => {
-                            staticBusinesses = [...businessData];
-                            setBusinessList(`.clip-businesses`, businessData);
+                        .then((plotReserveData) => {
+                            staticPlotReserves = [...plotReserveData];
 
-                            fetch(plotReserves)
+                            fetch(plots)
                             .then((response) => response.json())
-                            .then((subplotReservesData) => {
-                                //format plot reserves
+                            .then((subplotData) => {
+                                //format plot claims
+                                staticSubplots = [...subplotData];
+                                setPlotOptions(subplotData, `#form-reserve-plot`, `.clip-plots`);
+                                formatSubplots(subplotData, staticClaims, staticPlotReserves);
 
-                                fetch(plots)
-                                .then((response) => response.json())
-                                .then((subplotData) => {
-                                    //format plot claims
-                                    staticSubplots = [...subplotData];
-                                    setPlotOptions(subplotData, `#form-reserve-plot`, `.clip-plots`);
-
-                                }).then(() => {
-                                    initWebpages();
-                                });
-
+                            }).then(() => {
+                                initWebpages();
                             });
 
                         });

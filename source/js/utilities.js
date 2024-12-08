@@ -226,30 +226,30 @@ function cleanText(text) {
 	return text.replaceAll(' ', '').replaceAll('&amp;', '').replaceAll('&', '').replaceAll(`'`, '').replaceAll(`"`, '').replaceAll(`.`, '').replaceAll(`(`, '').replaceAll(`)`, '').replaceAll(`,`, '').replaceAll(`’`, '').replaceAll(`é`, `e`).replaceAll(`è`, `e`).replaceAll(`ê`, `e`).replaceAll(`ë`, `e`).replaceAll(`ě`, `e`).replaceAll(`ẽ`, `e`).replaceAll(`ē`, `e`).replaceAll(`ė`, `e`).replaceAll(`ę`, `e`).replaceAll(`à`, `a`).replaceAll(`á`, `a`).replaceAll(`â`, `a`).replaceAll(`ä`, `a`).replaceAll(`ǎ`, `a`).replaceAll(`æ`, `ae`).replaceAll(`ã`, `a`).replaceAll(`å`, `a`).replaceAll(`ā`, `a`).replaceAll(`í`, `i`).replaceAll(`ì`, `i`).replaceAll(`ı`, `i`).replaceAll(`î`, `i`).replaceAll(`ï`, `i`).replaceAll(`ǐ`, `i`).replaceAll(`ĭ`, `i`).replaceAll(`ī`, `i`).replaceAll(`ĩ`, `i`).replaceAll(`į`, `i`).replaceAll(`ḯ`, `i`).replaceAll(`ỉ`, `i`).replaceAll(`ó`, `o`).replaceAll(`ò`, `o`).replaceAll(`ȯ`, `o`).replaceAll(`ô`, `o`).replaceAll(`ö`, `o`).replaceAll(`ǒ`, `o`).replaceAll(`ŏ`, `o`).replaceAll(`ō`, `o`).replaceAll(`õ`, `o`).replaceAll(`ǫ`, `o`).replaceAll(`ő`, `o`).replaceAll(`ố`, `o`).replaceAll(`ồ`, `o`).replaceAll(`ø`, `o`).replaceAll(`ṓ`, `o`).replaceAll(`ṑ`, `o`).replaceAll(`ȱ`, `o`).replaceAll(`ṍ`, `o`).replaceAll(`ú`, `u`).replaceAll(`ù`, `u`).replaceAll(`û`, `u`).replaceAll(`ü`, `u`).replaceAll(`ǔ`, `u`).replaceAll(`ŭ`, `u`).replaceAll(`ū`, `u`).replaceAll(`ũ`, `u`).replaceAll(`ů`, `u`).replaceAll(`ų`, `u`).replaceAll(`ű`, `u`).replaceAll(`ʉ`, `u`).replaceAll(`ǘ`, `u`).replaceAll(`ǜ`, `u`).replaceAll(`ǚ`, `u`).replaceAll(`ṹ`, `u`).replaceAll(`ǖ`, `u`).replaceAll(`ṻ`, `u`).replaceAll(`ủ`, `u`).replaceAll(`ȕ`, `u`).replaceAll(`ȗ`, `u`).replaceAll(`ư`, `u`);
 }
 function filterValue(e) {
-    let searchValue = e.value.toLowerCase().trim();
+    let searchValue = standardizeLower(e.value);
     let names = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claim ${e.dataset.objects}`);
     let headers = document.querySelectorAll(`[data-key="${e.dataset.filter}"] ${e.dataset.headers}`);
-    let wraps = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claim-wrap`);
+    let wraps = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claims--filter-wrap`);
     if(searchValue !== '') {
         e.parentNode.classList.add('pb');
-        e.closest('.scroll').querySelectorAll('.accordion--trigger, .accordion--content').forEach(item => item.classList.add('is-active'));
+        e.closest('.webpage--content-inner').querySelectorAll('.accordion--trigger, .accordion--content').forEach(item => item.classList.add('is-active'));
         names.forEach(name => {
-            let nameValue = name.innerText.toLowerCase().trim();
+            let nameValue = standardizeLower(name.innerText);
             if (nameValue.indexOf(searchValue) > -1) {
                 name.closest('.claim').classList.remove('hidden');
             } else {
                 name.closest('.claim').classList.add('hidden');
             }
-            let childrenArray = Array.from(name.closest('.claim-wrap').querySelectorAll('.claim')).filter(item => !item.classList.contains('hidden'));
+            let childrenArray = Array.from(name.closest('.claims--grid').querySelectorAll('.claim')).filter(item => !item.classList.contains('hidden'));
             if(childrenArray.length === 0) {
-                name.closest('.claim-wrap').previousElementSibling.classList.add('hidden');
+                name.closest('.claims--grid').previousElementSibling.classList.add('hidden');
                 if (e.dataset.hideWrap === 'true') {
-                            name.closest('.claim-wrap').classList.add('hidden');
+                    name.closest('.claims--grid').classList.add('hidden');
                 }
             } else {
-                name.closest('.claim-wrap').previousElementSibling.classList.remove('hidden');
+                name.closest('.claims--grid').previousElementSibling.classList.remove('hidden');
                 if (e.dataset.hideWrap === 'true') {
-                            name.closest('.claim-wrap').classList.remove('hidden');
+                    name.closest('.claims--grid').classList.remove('hidden');
                 }
             }
         });
@@ -543,7 +543,7 @@ function initFirstHashTab(firstClasses, activeClass) {
         document.querySelector(firstClass).classList.add(activeClass);
     });
 }
-function initAccordion(target = '.accordion') {
+function initAccordion(target = '.accordion', isotopeGrid = null) {
     document.querySelectorAll(target).forEach(accordion => {
         let triggers = accordion.querySelectorAll(':scope > .accordion--trigger');
         let contents = accordion.querySelectorAll(':scope > .accordion--content');
@@ -567,6 +567,9 @@ function initAccordion(target = '.accordion') {
                 } else {
                     e.currentTarget.classList.add('is-active');
                     e.currentTarget.nextElementSibling.classList.add('is-active');
+                }
+                if(isotopeGrid) {
+                    isotopeGrid.isotope('layout');
                 }
             });
         })
@@ -1050,7 +1053,7 @@ function formatJobRemoval(data) {
     
     return html;
 }
-function formatRoleChangesl(data) {
+function formatRoleChanges(data) {
     let roles = JSON.parse(data.Roles);
     let html = ``;
 

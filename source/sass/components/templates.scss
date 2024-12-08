@@ -4,3 +4,331 @@
     Templates
 ********************************/
 
+ner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: var(--space-lg) auto;
+
+    @include mq-up(xs) {
+        margin: var(--space-xl) auto;
+    }
+
+    & > *:not(ner-song) {
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent);
+        padding: var(--space-md);
+        margin-top: var(--space-xl);
+        width: 100%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(-1* var(--space-xl));
+            left: calc(50% - 0.5px);
+            width: 1px;
+            height: var(--space-xl);
+            background: var(--border-accent-transparent);
+        }
+
+        &:only-child {
+            margin-bottom: var(--space-xl);
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: calc(-1* var(--space-xl));
+                left: calc(50% - 0.5px);
+                width: 1px;
+                height: var(--space-xl);
+                background: var(--border-accent-transparent);
+            }
+        }
+    }
+
+    &:has(ner-quotewrap)::before {
+        content: '\f10d';
+        position: absolute;
+        top: calc(var(--space-xl) - (1.6 * 14px) - var(--space-xs));
+        right: var(--space-sm);
+        line-height: 160%;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+        font-family: 'Font Awesome 6 Pro';
+        color: var(--text-secondary);
+    }
+}
+ner-comm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px !important;
+    margin: var(--space-lg) auto;
+
+    @include mq-up(xs) {
+        margin: var(--space-xl) auto;
+    }
+
+    & > * {
+        border-top: 1px solid var(--border-accent-transparent);
+        border-bottom: 1px solid var(--border-accent-transparent);
+        padding: var(--space-md);
+        margin-top: var(--space-xl);
+        width: 100%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: calc(-1* var(--space-xl));
+            left: calc(50% - 0.5px);
+            width: 1px;
+            height: var(--space-xl);
+            background: var(--border-accent-transparent);
+        }
+    }
+
+    & > ner-topper {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-md) var(--space-sm);
+
+        & + ner-msg,
+        & + ner-action {
+            margin-top: var(--space-xl);
+
+            &::before {
+                height: var(--space-xl);
+                top: calc(-1* var(--space-xl));
+            }
+        }
+    }
+
+    ner-msg,
+    ner-action {
+        margin-top: var(--space-md);
+
+        &::before {
+            height: var(--space-md);
+            top: calc(-1* var(--space-md));
+        }
+    }
+
+    ner-msg {
+        background: var(--bg-transparent-alt);
+    }
+
+    ner-action {
+        background: var(--bg-accent-transparent);
+        color: var(--text-secondary);
+        font-style: italic;
+        text-transform: uppercase;
+        font-size: var(--size-xs);
+        letter-spacing: 0.1em;
+        padding: var(--space-xs) var(--space-md);
+    }
+}
+ner-topper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+
+    @include mq-down(xs) {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+    }
+
+    & > ner-image {
+        width: 100px;
+        flex: 0 0 100px;
+
+        &:only-child {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+    }
+
+    & > ner-quote {
+        &:only-child {
+            text-align: center;
+        }
+    }
+}
+ner-quote {
+    text-transform: lowercase;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: var(--size-xl);
+    font-style: italic;
+}
+ner-image {
+    border: 1px solid var(--border-accent-transparent);
+    padding: var(--space-xs);
+    display: block;
+    line-height: 0;
+    border-radius: 2px;
+    aspect-ratio: 1 / 1;
+
+    img {
+        width: calc(100% - (2 * var(--space-xs)));
+        height: calc(100% - (2 * var(--space-xs)));
+        position: absolute;
+        top: var(--space-xs);
+        left: var(--space-xs);
+        border-radius: 2px;
+    }
+}
+ner-content {
+    padding: var(--space-md) !important;
+    text-align: justify;
+    background: var(--bg-transparent-alt);
+    font-size: calc(var(--size-md) + 1px);
+    line-height: 200%;
+
+    @include mq-up(xs) {
+        padding: var(--space-lg) !important;
+    }
+}
+ner-tag {
+    text-transform: lowercase;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--text-secondary);
+    font-size: var(--size-xl);
+    font-style: italic;
+    text-align: center;
+
+    a {
+        color: var(--text-secondary) !important;
+        text-transform: lowercase !important;
+        font: inherit !important;
+        letter-spacing: 0 !important;
+
+        &::before {
+            content: 'written for ';
+        }
+    }
+}
+ner-scroll.scroll {
+    max-height: 250px;
+    display: block;
+}
+ner-quotewrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+
+    ner-quote {
+        font-size: 24px;
+        text-transform: none;
+        line-height: 160%;
+        text-align: left;
+    }
+    ner-source {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: var(--size-xs);
+        align-self: end;
+        font-weight: 800;
+    }
+}
+ner-year {
+    width: max-content !important;
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-secondary);
+    padding: var(--space-sm) var(--space-lg) var(--space-md) !important;
+
+    &:first-child {
+        margin-top: 0;
+
+        &::before {
+            display: none;
+        }
+    }
+}
+ner-month,
+ner-event {
+    margin-top: var(--space-md) !important;
+
+    &::before {
+        height: var(--space-md) !important;
+        top: calc(-1* var(--space-md)) !important;
+    }
+}
+ner-month {
+    text-transform: uppercase;
+    font-size: var(--size-sm);
+    letter-spacing: 0.4em;
+    font-weight: 800;
+    color: var(--text-secondary);
+    width: max-content !important;
+    padding: var(--space-md) var(--space-lg) !important;
+}
+ner-event {
+    background: var(--bg-transparent-alt);
+}
+ner-song {
+    display: flex;
+    width: calc(100% - var(--space-xl));
+    border-left: 1px solid var(--border-accent-transparent);
+    border-right: 1px solid var(--border-accent-transparent);
+    padding: var(--space-md) 0 var(--space-md) var(--space-md);
+    margin-left: var(--space-xl);
+    flex-direction: column;
+    background: var(--bg-transparent-alt);
+    line-height: 160%;
+
+    &:not(:last-child) {
+        margin-bottom: var(--space-md);
+    }
+
+    &::before {
+        content: '';
+        top: calc(50% - 0.5px);
+        left: calc(-1 * var(--space-xl));
+        width: var(--space-xl);
+        height: 1px;
+        background: var(--border-accent-transparent);
+        display: block;
+        position: absolute;
+    }
+    &::after {
+        content: '\f8cf';
+        position: absolute;
+        line-height: 160%;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 600;
+        font-family: 'Font Awesome 6 Pro';
+        color: var(--text-secondary);
+        left: -18px;
+        top: calc(50% - 25px);
+    }
+    & > b {
+        font-family: var(--font-serif);
+        color: var(--text-secondary) !important;
+        font-size: calc(var(--size-xl) + 2px) !important;
+    }
+    & > span {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: var(--size-xs);
+        font-style: italic;
+    }
+}
+
+ner-wrap > br,
+ner-comm > br,
+ner-topper > br {
+    display: none;
+}
