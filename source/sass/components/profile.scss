@@ -206,7 +206,7 @@
         margin-bottom: var(--space-sm);
 
         @include mq-up(xs) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: calc(50% - (var(--space-lg) / 2)) calc(50% - (var(--space-lg) / 2));
         }
 
         & > .profile--item {

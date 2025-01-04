@@ -46,6 +46,15 @@
     .forum {
       padding: var(--space-lg) var(--space-md);
       grid-template-columns: calc(var(--space-xl) + 75px + var(--space-sm) + var(--space-sm)) auto; } }
+  @media (max-width: 768px) {
+    .forum.forum-new-post > a:first-child {
+      position: absolute;
+      top: var(--space-md);
+      left: 0; }
+      .forum.forum-new-post > a:first-child .macro--indicator {
+        top: 0;
+        transform: translateY(0);
+        text-align: left; } }
   .forum > a {
     position: absolute; }
   .forum--image {

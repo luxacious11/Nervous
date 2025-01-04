@@ -315,16 +315,7 @@ const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal
         <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
         <div class="accordion--content" data-category="shop">
             <a href="?act=store">Home</a>
-            <a href="?act=store&code=shop&category=9">Appreciation</a>
-            <a href="?act=store&code=shop&category=10">Events</a>
-            <a href="?act=store&code=shop&category=3">Hobbies</a>
-            <a href="?act=store&code=shop&category=8">Loyalty</a>
-            <a href="?act=store&code=shop&category=5">Player</a>
-            <a href="?act=store&code=shop&category=11">Premium Features</a>
-            <a href="?act=store&code=shop&category=6">Relationships</a>
-            <a href="?act=store&code=shop&category=7">Species</a>
-            <a href="?act=store&code=shop&category=1">Traits</a>
-            <a href="?act=store&code=shop&category=4">Zodiac</a>
+            <a href="?act=store&code=shop&category=000">Category</a>
         </div>
         <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
         <div class="accordion--content staffOnly" data-category="staff">

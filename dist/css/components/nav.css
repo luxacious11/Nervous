@@ -411,10 +411,9 @@
       grid-row: 2 / 3;
       font-style: italic;
       letter-spacing: 0.1em;
-      line-height: 160%; }
-      .alert--main .recent-alerts-msg:not(.reg-alert) > a:first-of-type::before {
-        content: 'Written by\00A0'; }
-    .alert--main .recent-alerts-msg:not(.reg-alert) > a:nth-of-type(2) {
+      line-height: 160%;
+      color: var(--text-primary); }
+    .alert--main .recent-alerts-msg:not(.reg-alert) > a:nth-of-type(2):not(:last-of-type) {
       display: none; }
     .alert--main .recent-alerts-msg:not(.reg-alert) > a:last-of-type {
       grid-row: 1 / 2;

@@ -32,8 +32,8 @@ function checkReserves(form, data, staffDiscord = null, publicDiscord = null) {
                     if(reserve.Member === data.Member) {
                         handleWarning(form, prevResExists);
                     } else {
-			console.log('send data');
-			console.log(data);
+                        console.log('send data');
+                        console.log(data);
                         sendAjax(form, data, staffDiscord, publicDiscord);
                     }
                 });
@@ -41,6 +41,46 @@ function checkReserves(form, data, staffDiscord = null, publicDiscord = null) {
         } else {
 			console.log('send data');
 			console.log(data);
+            sendAjax(form, data, staffDiscord, publicDiscord);
+        }
+    });
+}
+
+
+function checkReserves(form, data, staffDiscord = null, publicDiscord = null) {
+    fetch(`https://opensheet.elk.sh/${sheetID}/Reserves`)
+    .then((response) => response.json())
+    .then((reserveData) => {
+        let existing = reserveData.filter(item => item.Face === data.Face);
+        let oldReserves = [];
+
+        if(existing.length > 0) {
+            existing.forEach((reserve, i) => {
+                let difference = checkActiveReserve(reserve.Timestamp);
+                if(difference < (defaultReserve + parseInt(reserve.Extension))) {
+                    handleWarning(form, activeResExists);
+                } else {
+                    oldReserves.push(reserve);
+                    existing.splice(i, 1);
+                }
+            });
+            if(existing.length > 0) {
+                handleWarning(form, activeResExists);
+            } else {
+                oldReserves.forEach(reserve => {
+                    if(reserve.Member === data.Member) {
+                        let difference = checkActiveReserve(reserve.Timestamp);
+                        if(difference < (defaultReserve + parseInt(reserve.Extension) + coolDown)) {
+                            handleWarning(form, prevResExists);
+                        } else {
+                            sendAjax(form, data, staffDiscord, publicDiscord);
+                        }
+                    } else {
+                        sendAjax(form, data, staffDiscord, publicDiscord);
+                    }
+                });
+            }
+        } else {
             sendAjax(form, data, staffDiscord, publicDiscord);
         }
     });

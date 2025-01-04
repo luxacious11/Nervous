@@ -141,6 +141,8 @@ ner-image {
     top: var(--space-xs);
     left: var(--space-xs);
     border-radius: 2px; }
+    ner-image img:not([src]) {
+      display: none; }
 
 ner-content {
   padding: var(--space-md) !important;

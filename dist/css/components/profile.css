@@ -158,7 +158,7 @@
   margin-bottom: var(--space-sm); }
   @media (min-width: 601px) {
     .profile--columns {
-      grid-template-columns: 1fr 1fr; } }
+      grid-template-columns: calc(50% - (var(--space-lg) / 2)) calc(50% - (var(--space-lg) / 2)); } }
   .profile--columns > .profile--item {
     margin-bottom: 0 !important; }
   .profile--columns .scroll {

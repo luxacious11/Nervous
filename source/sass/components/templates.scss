@@ -182,6 +182,10 @@ ner-image {
         top: var(--space-xs);
         left: var(--space-xs);
         border-radius: 2px;
+
+        &:not([src]) {
+            display: none;
+        }
     }
 }
 ner-content {

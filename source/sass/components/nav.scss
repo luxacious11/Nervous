@@ -562,12 +562,9 @@
                         font-style: italic;
                         letter-spacing: 0.1em;
                         line-height: 160%;
-
-                        &::before {
-                            content: 'Written by\00A0';
-                        }
+                        color: var(--text-primary);
                     }
-                    &:nth-of-type(2) {
+                    &:nth-of-type(2):not(:last-of-type) {
                         display: none;
                     }
                     &:last-of-type {

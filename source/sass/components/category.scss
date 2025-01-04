@@ -60,6 +60,24 @@
       padding: var(--space-lg) var(--space-md);
       grid-template-columns: calc(var(--space-xl) + 75px + var(--space-sm) + var(--space-sm)) auto;
    }
+
+   @include mq-down(sm) {
+      &.forum-new-post {
+         & > a {
+            &:first-child {
+               position: absolute;
+               top: var(--space-md);
+               left: 0;
+
+               .macro--indicator {
+                  top: 0;
+                  transform: translateY(0);
+                  text-align: left;
+               }
+            }
+         }
+      }
+   }
    
    & > a {
       position: absolute;

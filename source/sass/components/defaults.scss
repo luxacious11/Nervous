@@ -23,15 +23,18 @@ a[href=""] {
     right: 0;
     z-index: 5;
     background: var(--bg-quaternary);
-    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     padding: 15px;
-    width: calc(100vw - 35px);
     max-width: 500px;
     color: var(--text-primary);
     text-align: left;
     border: 1px solid var(--border-primary);
     border-radius: 2px;
+
+    @include mq-up(xs) {
+        grid-template-columns: repeat(3, 1fr);
+        width: calc(100vw - 35px);
+    }
 
     &.is-open {
         display: grid;
@@ -47,7 +50,11 @@ a[href=""] {
         }
 
         .scroll {
-            max-height: 150px;
+            max-height: 80px;
+
+            @include mq-up(xs) {
+                max-height: 150px;
+            }
         }
 
         .input-wrap {

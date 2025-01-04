@@ -96,6 +96,8 @@
             text-align: center;
             color: var(--text-accent-transparent);
             font-weight: 700;
+            display: flex;
+            gap: var(--space-lg);
         }
     }
 
@@ -414,6 +416,7 @@
     }
     &--slide {
         flex: 0 0 100%;
+        max-width: 100%;
         left: 0;
         transition-duration: 0.5s;
         z-index: 2;
@@ -426,9 +429,13 @@
         }
 
         &-inner {
-            margin: var(--space-md);
+            margin: var(--space-md) 0;
             max-height: 100%;
             width: 100%;
+
+            @include mq-up(lg) {
+                margin: var(--space-md);
+            }
         }
     }
     &--item {
@@ -453,6 +460,14 @@
                 font-size: var(--size-sm);
                 letter-spacing: 0.4em;
                 gap: var(--space-md);
+            }
+
+            body.xlFont & {
+                letter-spacing: 0.1em;
+
+                @include mq-up(lg) {
+                    letter-spacing: 0.2em;
+                }
             }
 
             &::before {

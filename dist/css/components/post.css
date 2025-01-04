@@ -77,7 +77,9 @@
     font-size: var(--size-xs);
     text-align: center;
     color: var(--text-accent-transparent);
-    font-weight: 700; }
+    font-weight: 700;
+    display: flex;
+    gap: var(--space-lg); }
 
 #ST .postlinksbar {
   max-width: 1000px;
@@ -320,6 +322,7 @@
     display: flex; }
   .post--slide {
     flex: 0 0 100%;
+    max-width: 100%;
     left: 0;
     transition-duration: 0.5s;
     z-index: 2;
@@ -329,9 +332,12 @@
     .post--slide:not(:first-child) {
       background: var(--bg-overlay); }
     .post--slide-inner {
-      margin: var(--space-md);
+      margin: var(--space-md) 0;
       max-height: 100%;
       width: 100%; }
+      @media (min-width: 1281px) {
+        .post--slide-inner {
+          margin: var(--space-md); } }
   .post--item {
     display: flex;
     flex-direction: column; }
@@ -351,6 +357,11 @@
           font-size: var(--size-sm);
           letter-spacing: 0.4em;
           gap: var(--space-md); } }
+      body.xlFont .post--item > strong {
+        letter-spacing: 0.1em; }
+        @media (min-width: 1281px) {
+          body.xlFont .post--item > strong {
+            letter-spacing: 0.2em; } }
       .post--item > strong::before {
         content: '';
         display: block;

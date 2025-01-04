@@ -21,6 +21,9 @@ a[target="_blank"]:not(.staffOnly)::after,
 a.external::after {
   content: '\f08e'; }
 
+.alert--main .recent-alerts-msg:not(.reg-alert) > a:first-of-type::before {
+  content: 'Written by \00a0'; }
+
 .f-3 {
   --bg-redirect-image: url(https://files.jcink.net/uploads2/godlybehaviour/GB24/forum_guidebook_min.jpg); }
 

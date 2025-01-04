@@ -113,7 +113,7 @@ function fixMac(str) {
     });
 }
 function capitalize(str, separators = [` `, `'`, `-`]) {
-    str = str.replaceAll(`\&\#39\;`, `'`);
+    str = str.toLowerCase().replaceAll(`\&\#39\;`, `'`);
     separators = separators || [ ' ' ];
     var regex = new RegExp('(^|[' + separators.join('') + '])(\\w)', 'g');
     let first = str.split(' ')[0].replace(regex, function(x) { return x.toUpperCase(); });
