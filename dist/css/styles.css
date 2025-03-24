@@ -10240,6 +10240,13 @@ ner-scroll[data-scroll="XL"],
       width: 25px;
       height: 1px;
       background: var(--bg-accent); }
+  .webpage form label > i,
+  .webpage form .field-wrap > i {
+    font-size: calc(var(--size-sm) + 1px);
+    letter-spacing: 0.05em;
+    line-height: 200%;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary); }
   .webpage form label > u,
   .webpage form .field-wrap > u {
     text-transform: uppercase;
@@ -11337,11 +11344,26 @@ a[href=""] {
     #Post #posting-form > tbody > tr#post-as + tr:not(:last-child),
     #Post #posting-form > tbody > tr#post-as .pformleft,
     #Post #posting-form > tbody > tr#post-options .pformleft,
-    #Post #posting-form > tbody > tr#enter-your-post .pformleft,
     #Post #posting-form > tbody > tr#code-buttons .pformleft,
     #Post #posting-form > tbody > tr#topic-title .pformleft,
     #Post #posting-form > tbody > tr#topic-desc .pformleft,
     #Post #posting-form > tbody > tr#post-as + tr + tr:not(:last-child) .pformleft, #Post #posting-form > tbody > tr#upload-files-header, #Post #posting-form > tbody > tr#upload-files {
+      display: none; }
+    #Post #posting-form > tbody > tr#enter-your-post .pformleft #smilies-table {
+      display: block;
+      width: 100%; }
+      #Post #posting-form > tbody > tr#enter-your-post .pformleft #smilies-table tbody {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        margin-bottom: var(--space-lg); }
+        #Post #posting-form > tbody > tr#enter-your-post .pformleft #smilies-table tbody tr:first-child, #Post #posting-form > tbody > tr#enter-your-post .pformleft #smilies-table tbody tr:last-child {
+          display: none; }
+    #Post #posting-form > tbody > tr#enter-your-post .pformleft .desc {
       display: none; }
     #Post #posting-form > tbody > tr#topic-title, #Post #posting-form > tbody > tr#topic-desc {
       display: block; }

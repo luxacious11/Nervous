@@ -166,6 +166,13 @@
       width: 25px;
       height: 1px;
       background: var(--bg-accent); }
+  .webpage form label > i,
+  .webpage form .field-wrap > i {
+    font-size: calc(var(--size-sm) + 1px);
+    letter-spacing: 0.05em;
+    line-height: 200%;
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary); }
   .webpage form label > u,
   .webpage form .field-wrap > u {
     text-transform: uppercase;

@@ -496,7 +496,6 @@ a[href=""] {
                 &#post-as + tr:not(:last-child),
                 &#post-as .pformleft,
                 &#post-options .pformleft,
-                &#enter-your-post .pformleft,
                 &#code-buttons .pformleft,
                 &#topic-title .pformleft,
                 &#topic-desc .pformleft,
@@ -504,6 +503,29 @@ a[href=""] {
                 &#upload-files-header,
                 &#upload-files {
                     display: none;
+                }
+
+                &#enter-your-post .pformleft {
+                    #smilies-table {
+                        display: block;
+                        width: 100%;
+
+                        tbody {
+                            display: flex;
+                            flex-wrap: wrap;
+                            margin-bottom: var(--space-lg);
+
+                            tr {
+                                &:first-child, 
+                                &:last-child {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    .desc {
+                        display: none;
+                    }
                 }
 
                 &#topic-title,
